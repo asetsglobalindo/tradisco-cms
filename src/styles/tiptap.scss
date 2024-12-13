@@ -1,0 +1,21 @@
+.tiptap p.is-editor-empty:first-child::before {
+  color: #adb5bd;
+  content: attr(data-placeholder);
+  float: left;
+  height: 0;
+  pointer-events: none;
+}
+
+@layer components {
+  .title1 {
+    @apply text-4xl lg:text-6xl;
+  }
+  .title2 {
+    @apply text-2xl lg:text-[45px] text-[#4d4d4d];
+  }
+
+  .title3 {
+    @apply text-lg;
+    font-family: "Tenor Sans", sans-serif;
+  }
+}

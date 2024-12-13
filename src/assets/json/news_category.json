@@ -1,0 +1,13 @@
+[
+  {
+    "label": "News",
+    "value": "news",
+    "id": 1
+  },
+  {
+    "label": "Press Release",
+    "value": "press_release",
+    "id": 2
+  }
+]
+

@@ -1,0 +1,101 @@
+.ck-editor__editable_inline {
+  min-height: 350px;
+}
+.ck.ck-toolbar {
+  background: hsl(var(--background)) !important;
+}
+.ck-content.ck-editor__editable {
+  background: hsl(var(--background)) !important;
+}
+
+.ck.ck-icon {
+  color: hsl(var(--foreground)) !important;
+}
+
+.ck.ck-button {
+  span {
+    color: hsl(var(--foreground)) !important;
+  }
+}
+
+.ck-focused {
+  box-shadow: none !important;
+  border: 1px solid hsl(var(--border)) !important;
+}
+
+.ck.ck-editor__top {
+  box-shadow: none !important;
+  border: 1px solid hsl(var(--border)) !important;
+}
+.ck.ck-editor__top .ck-sticky-panel .ck-sticky-panel__content {
+  border: 0px solid hsl(var(--border)) !important;
+}
+
+.ck.ck-button.ck-on {
+  background: hsl(var(--background)) !important;
+}
+
+.ck.ck-button:not(.ck-disabled):hover {
+  background: hsl(var(--background)) !important;
+}
+.ck.ck-dropdown__panel {
+  background: hsl(var(--background)) !important;
+}
+.ck-rounded-corners .ck.ck-toolbar {
+  border-radius: hsl(var(--radius)) !important;
+}
+
+.ck.ck-editor__main > .ck-editor__editable:not(.ck-focused) {
+  border-color: hsl(var(--border)) !important;
+}
+
+.ck.ck-balloon-panel {
+  display: none !important;
+}
+
+.ck.ck-dialog {
+  box-shadow: none !important;
+  background: hsl(var(--background)) !important;
+  border-color: hsl(var(--border)) !important;
+}
+.ck-rounded-corners .ck.ck-dropdown__panel {
+  border-radius: hsl(var(--radius)) !important;
+}
+.ck.ck-dropdown__panel {
+  border: 1px solid hsl(var(--border)) !important;
+}
+
+.ck.ck-input {
+  background: hsl(var(--background)) !important;
+  border-color: hsl(var(--border)) !important;
+}
+.ck-source-editing-area {
+  textarea {
+    background: hsl(var(--background)) !important;
+    border-color: hsl(var(--border)) !important;
+  }
+}
+
+.ck.ck-dialog .ck.ck-form__header {
+  border-color: hsl(var(--border)) !important;
+}
+
+.ck.ck-button-action {
+  background: hsl(var(--primary)) !important;
+  border-radius: hsl(var(--radius)) !important;
+  span {
+    color: hsl(var(--primary-foreground)) !important;
+  }
+}
+
+.ck-dropdown__panel.ck-dropdown__panel_se.ck-dropdown__panel-visible {
+  ul {
+    background: hsl(var(--background)) !important;
+    li {
+      button {
+        background: hsl(var(--background)) !important;
+      }
+    }
+  }
+}
+

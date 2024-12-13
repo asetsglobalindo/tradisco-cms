@@ -1,0 +1,64 @@
+[
+  {
+    "label": "User Management",
+    "items": [
+      {
+        "label": "Users",
+        "to": "/dashboard/users",
+        "icon": "fas fa-solid fa-users",
+        "order": 500,
+        "_id": "63561c0367476ffe3d66d2f8",
+        "actions": {
+          "create": true,
+          "update": true,
+          "delete": true,
+          "view": true,
+          "approval": false,
+          "import": false,
+          "export": false
+        },
+        "sub_page_id": null
+      },
+      {
+        "label": "Roles Management",
+        "to": "/dashboard/role",
+        "icon": "fas fa-solid fa-user-lock",
+        "order": 501,
+        "_id": "63561c0367476ffe3d66d2fb",
+        "actions": {
+          "create": true,
+          "update": true,
+          "delete": true,
+          "view": true,
+          "approval": false,
+          "import": false,
+          "export": false
+        },
+        "sub_page_id": null
+      }
+    ]
+  },
+  {
+    "label": "Setting",
+    "items": [
+      {
+        "label": "Page Setting",
+        "to": "/dashboard/pages",
+        "icon": "fa-solid fa-book",
+        "order": 9999,
+        "_id": "63561c0467476ffe3d66d2fe",
+        "actions": {
+          "create": true,
+          "update": true,
+          "delete": true,
+          "view": true,
+          "approval": false,
+          "import": false,
+          "export": false
+        },
+        "sub_page_id": null
+      }
+    ]
+  }
+]
+

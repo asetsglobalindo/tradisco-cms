@@ -1,0 +1,5142 @@
+[
+  {
+    "id": 1,
+    "rayon_id": 1,
+    "area_id": 1,
+    "name": "Kab Aceh Besar",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:44",
+    "updated_at": "2024-05-14 17:13:44"
+  },
+  {
+    "id": 2,
+    "rayon_id": 1,
+    "area_id": 1,
+    "name": "Kab Aceh Jaya",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:44",
+    "updated_at": "2024-05-14 17:13:44"
+  },
+  {
+    "id": 3,
+    "rayon_id": 1,
+    "area_id": 1,
+    "name": "Kab Pidie",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:44",
+    "updated_at": "2024-05-14 17:13:44"
+  },
+  {
+    "id": 4,
+    "rayon_id": 1,
+    "area_id": 1,
+    "name": "Kab Pidie Jaya",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:44",
+    "updated_at": "2024-05-14 17:13:44"
+  },
+  {
+    "id": 5,
+    "rayon_id": 1,
+    "area_id": 1,
+    "name": "Kota Banda Aceh",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:44",
+    "updated_at": "2024-05-14 17:13:44"
+  },
+  {
+    "id": 6,
+    "rayon_id": 1,
+    "area_id": 1,
+    "name": "Kota Sabang",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:44",
+    "updated_at": "2024-05-14 17:13:44"
+  },
+  {
+    "id": 7,
+    "rayon_id": 2,
+    "area_id": 2,
+    "name": "Kab Bangka",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:44",
+    "updated_at": "2024-05-14 17:13:44"
+  },
+  {
+    "id": 8,
+    "rayon_id": 2,
+    "area_id": 2,
+    "name": "Kab Bangka Barat",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:44",
+    "updated_at": "2024-05-14 17:13:44"
+  },
+  {
+    "id": 9,
+    "rayon_id": 2,
+    "area_id": 2,
+    "name": "Kab Bangka Selatan",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:44",
+    "updated_at": "2024-05-14 17:13:44"
+  },
+  {
+    "id": 10,
+    "rayon_id": 2,
+    "area_id": 2,
+    "name": "Kab Bangka Tengah",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:44",
+    "updated_at": "2024-05-14 17:13:44"
+  },
+  {
+    "id": 11,
+    "rayon_id": 2,
+    "area_id": 2,
+    "name": "Kota Pangkal Pinang",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:44",
+    "updated_at": "2024-05-14 17:13:44"
+  },
+  {
+    "id": 12,
+    "rayon_id": 3,
+    "area_id": 3,
+    "name": "Kota Denpasar",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:44",
+    "updated_at": "2024-05-14 17:13:44"
+  },
+  {
+    "id": 13,
+    "rayon_id": 4,
+    "area_id": 4,
+    "name": "Kota Bandung",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:44",
+    "updated_at": "2024-05-14 17:13:44"
+  },
+  {
+    "id": 14,
+    "rayon_id": 4,
+    "area_id": 4,
+    "name": "Kota Cimahi",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:44",
+    "updated_at": "2024-05-14 17:13:44"
+  },
+  {
+    "id": 15,
+    "rayon_id": 5,
+    "area_id": 5,
+    "name": "Kota Tangerang",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:44",
+    "updated_at": "2024-05-14 17:13:44"
+  },
+  {
+    "id": 16,
+    "rayon_id": 5,
+    "area_id": 5,
+    "name": "Kota Tangerang Selatan",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:44",
+    "updated_at": "2024-05-14 17:13:44"
+  },
+  {
+    "id": 17,
+    "rayon_id": 6,
+    "area_id": 6,
+    "name": "Kab Bengkulu Selatan",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:44",
+    "updated_at": "2024-05-14 17:13:44"
+  },
+  {
+    "id": 18,
+    "rayon_id": 6,
+    "area_id": 6,
+    "name": "Kab Bengkulu Tengah",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:44",
+    "updated_at": "2024-05-14 17:13:44"
+  },
+  {
+    "id": 19,
+    "rayon_id": 6,
+    "area_id": 6,
+    "name": "Kab Kaur",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:44",
+    "updated_at": "2024-05-14 17:13:44"
+  },
+  {
+    "id": 20,
+    "rayon_id": 6,
+    "area_id": 6,
+    "name": "Kab Seluma",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:44",
+    "updated_at": "2024-05-14 17:13:44"
+  },
+  {
+    "id": 21,
+    "rayon_id": 6,
+    "area_id": 6,
+    "name": "Kota Bengkulu",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:44",
+    "updated_at": "2024-05-14 17:13:44"
+  },
+  {
+    "id": 22,
+    "rayon_id": 7,
+    "area_id": 7,
+    "name": "Kab Cirebon",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:44",
+    "updated_at": "2024-05-14 17:13:44"
+  },
+  {
+    "id": 23,
+    "rayon_id": 7,
+    "area_id": 7,
+    "name": "Kota Cirebon",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:44",
+    "updated_at": "2024-05-14 17:13:44"
+  },
+  {
+    "id": 24,
+    "rayon_id": 8,
+    "area_id": 8,
+    "name": "Kota Adm. Jakarta Pusat",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:44",
+    "updated_at": "2024-05-14 17:13:44"
+  },
+  {
+    "id": 25,
+    "rayon_id": 9,
+    "area_id": 9,
+    "name": "Kab Muaro Jambi",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:44",
+    "updated_at": "2024-05-14 17:13:44"
+  },
+  {
+    "id": 26,
+    "rayon_id": 9,
+    "area_id": 9,
+    "name": "Kab Tanjung Jabung Barat",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:44",
+    "updated_at": "2024-05-14 17:13:44"
+  },
+  {
+    "id": 27,
+    "rayon_id": 9,
+    "area_id": 9,
+    "name": "Kab Tanjung Jabung Timur",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:44",
+    "updated_at": "2024-05-14 17:13:44"
+  },
+  {
+    "id": 28,
+    "rayon_id": 9,
+    "area_id": 9,
+    "name": "Kota Jambi",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:44",
+    "updated_at": "2024-05-14 17:13:44"
+  },
+  {
+    "id": 29,
+    "rayon_id": 10,
+    "area_id": 10,
+    "name": "Kab Kubu Raya",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:44",
+    "updated_at": "2024-05-14 17:13:44"
+  },
+  {
+    "id": 30,
+    "rayon_id": 10,
+    "area_id": 10,
+    "name": "Kab Mempawah",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:44",
+    "updated_at": "2024-05-14 17:13:44"
+  },
+  {
+    "id": 31,
+    "rayon_id": 10,
+    "area_id": 10,
+    "name": "Kota Pontianak",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:44",
+    "updated_at": "2024-05-14 17:13:44"
+  },
+  {
+    "id": 32,
+    "rayon_id": 11,
+    "area_id": 11,
+    "name": "Kab Banjar",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:44",
+    "updated_at": "2024-05-14 17:13:44"
+  },
+  {
+    "id": 33,
+    "rayon_id": 11,
+    "area_id": 11,
+    "name": "Kab Barito Kuala",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:44",
+    "updated_at": "2024-05-14 17:13:44"
+  },
+  {
+    "id": 34,
+    "rayon_id": 11,
+    "area_id": 11,
+    "name": "Kota Banjarmasin",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:44",
+    "updated_at": "2024-05-14 17:13:44"
+  },
+  {
+    "id": 35,
+    "rayon_id": 12,
+    "area_id": 12,
+    "name": "Kab Gunung Mas",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:44",
+    "updated_at": "2024-05-14 17:13:44"
+  },
+  {
+    "id": 36,
+    "rayon_id": 12,
+    "area_id": 12,
+    "name": "Kab Kapuas",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:44",
+    "updated_at": "2024-05-14 17:13:44"
+  },
+  {
+    "id": 37,
+    "rayon_id": 12,
+    "area_id": 12,
+    "name": "Kab Katingan",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:44",
+    "updated_at": "2024-05-14 17:13:44"
+  },
+  {
+    "id": 38,
+    "rayon_id": 12,
+    "area_id": 12,
+    "name": "Kab Pulang Pisau",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:44",
+    "updated_at": "2024-05-14 17:13:44"
+  },
+  {
+    "id": 39,
+    "rayon_id": 12,
+    "area_id": 12,
+    "name": "Kota Palangkaraya",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:44",
+    "updated_at": "2024-05-14 17:13:44"
+  },
+  {
+    "id": 40,
+    "rayon_id": 13,
+    "area_id": 13,
+    "name": "Kab Paser",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:44",
+    "updated_at": "2024-05-14 17:13:44"
+  },
+  {
+    "id": 41,
+    "rayon_id": 13,
+    "area_id": 13,
+    "name": "Kab Penajam Paser Utara",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:44",
+    "updated_at": "2024-05-14 17:13:44"
+  },
+  {
+    "id": 42,
+    "rayon_id": 13,
+    "area_id": 13,
+    "name": "Kota Balikpapan",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:44",
+    "updated_at": "2024-05-14 17:13:44"
+  },
+  {
+    "id": 43,
+    "rayon_id": 14,
+    "area_id": 14,
+    "name": "Kota Bekasi",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:44",
+    "updated_at": "2024-05-14 17:13:44"
+  },
+  {
+    "id": 44,
+    "rayon_id": 15,
+    "area_id": 15,
+    "name": "Kab Kediri",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:44",
+    "updated_at": "2024-05-14 17:13:44"
+  },
+  {
+    "id": 45,
+    "rayon_id": 15,
+    "area_id": 15,
+    "name": "Kab Nganjuk",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:44",
+    "updated_at": "2024-05-14 17:13:44"
+  },
+  {
+    "id": 46,
+    "rayon_id": 15,
+    "area_id": 15,
+    "name": "Kota Kediri",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:44",
+    "updated_at": "2024-05-14 17:13:44"
+  },
+  {
+    "id": 47,
+    "rayon_id": 16,
+    "area_id": 16,
+    "name": "Kab Bintan",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:44",
+    "updated_at": "2024-05-14 17:13:44"
+  },
+  {
+    "id": 48,
+    "rayon_id": 16,
+    "area_id": 16,
+    "name": "Kab Kepulauan Anambas",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:44",
+    "updated_at": "2024-05-14 17:13:44"
+  },
+  {
+    "id": 49,
+    "rayon_id": 16,
+    "area_id": 16,
+    "name": "Kab Natuna",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:44",
+    "updated_at": "2024-05-14 17:13:44"
+  },
+  {
+    "id": 50,
+    "rayon_id": 16,
+    "area_id": 16,
+    "name": "Kota Tanjung Pinang",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:44",
+    "updated_at": "2024-05-14 17:13:44"
+  },
+  {
+    "id": 51,
+    "rayon_id": 17,
+    "area_id": 17,
+    "name": "Kab Lampung Selatan",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:44",
+    "updated_at": "2024-05-14 17:13:44"
+  },
+  {
+    "id": 52,
+    "rayon_id": 17,
+    "area_id": 17,
+    "name": "Kab Pesawaran",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:44",
+    "updated_at": "2024-05-14 17:13:44"
+  },
+  {
+    "id": 53,
+    "rayon_id": 17,
+    "area_id": 17,
+    "name": "Kab Pringsewu",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:44",
+    "updated_at": "2024-05-14 17:13:44"
+  },
+  {
+    "id": 54,
+    "rayon_id": 17,
+    "area_id": 17,
+    "name": "Kota Bandar Lampung",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:44",
+    "updated_at": "2024-05-14 17:13:44"
+  },
+  {
+    "id": 55,
+    "rayon_id": 18,
+    "area_id": 18,
+    "name": "Kab Malang",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:44",
+    "updated_at": "2024-05-14 17:13:44"
+  },
+  {
+    "id": 56,
+    "rayon_id": 18,
+    "area_id": 18,
+    "name": "Kota Batu",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:44",
+    "updated_at": "2024-05-14 17:13:44"
+  },
+  {
+    "id": 57,
+    "rayon_id": 18,
+    "area_id": 18,
+    "name": "Kota Malang",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:44",
+    "updated_at": "2024-05-14 17:13:44"
+  },
+  {
+    "id": 58,
+    "rayon_id": 19,
+    "area_id": 19,
+    "name": "Kab Maluku Tengah",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:44",
+    "updated_at": "2024-05-14 17:13:44"
+  },
+  {
+    "id": 59,
+    "rayon_id": 19,
+    "area_id": 19,
+    "name": "Kab Seram Bagian Barat",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:44",
+    "updated_at": "2024-05-14 17:13:44"
+  },
+  {
+    "id": 60,
+    "rayon_id": 19,
+    "area_id": 19,
+    "name": "Kab Seram Bagian Timur",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:44",
+    "updated_at": "2024-05-14 17:13:44"
+  },
+  {
+    "id": 61,
+    "rayon_id": 19,
+    "area_id": 19,
+    "name": "Kota Ambon",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:44",
+    "updated_at": "2024-05-14 17:13:44"
+  },
+  {
+    "id": 62,
+    "rayon_id": 20,
+    "area_id": 20,
+    "name": "Kab Halmahera Selatan",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:44",
+    "updated_at": "2024-05-14 17:13:44"
+  },
+  {
+    "id": 63,
+    "rayon_id": 20,
+    "area_id": 20,
+    "name": "Kab Kepulauan Sula",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:44",
+    "updated_at": "2024-05-14 17:13:44"
+  },
+  {
+    "id": 64,
+    "rayon_id": 20,
+    "area_id": 20,
+    "name": "Kab Pulau Taliabu",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:44",
+    "updated_at": "2024-05-14 17:13:44"
+  },
+  {
+    "id": 65,
+    "rayon_id": 20,
+    "area_id": 20,
+    "name": "Kota Ternate",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:44",
+    "updated_at": "2024-05-14 17:13:44"
+  },
+  {
+    "id": 66,
+    "rayon_id": 20,
+    "area_id": 20,
+    "name": "Kota Tidore Kepulauan",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:44",
+    "updated_at": "2024-05-14 17:13:44"
+  },
+  {
+    "id": 67,
+    "rayon_id": 21,
+    "area_id": 21,
+    "name": "Kab Langkat",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:44",
+    "updated_at": "2024-05-14 17:13:44"
+  },
+  {
+    "id": 68,
+    "rayon_id": 21,
+    "area_id": 21,
+    "name": "Kota Binjai",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:44",
+    "updated_at": "2024-05-14 17:13:44"
+  },
+  {
+    "id": 69,
+    "rayon_id": 21,
+    "area_id": 21,
+    "name": "Kota Medan",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:44",
+    "updated_at": "2024-05-14 17:13:44"
+  },
+  {
+    "id": 70,
+    "rayon_id": 22,
+    "area_id": 22,
+    "name": "Kab Lombok Barat",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:44",
+    "updated_at": "2024-05-14 17:13:44"
+  },
+  {
+    "id": 71,
+    "rayon_id": 22,
+    "area_id": 22,
+    "name": "Kab Lombok Tengah",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:44",
+    "updated_at": "2024-05-14 17:13:44"
+  },
+  {
+    "id": 72,
+    "rayon_id": 22,
+    "area_id": 22,
+    "name": "Kab Lombok Timur",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:44",
+    "updated_at": "2024-05-14 17:13:44"
+  },
+  {
+    "id": 73,
+    "rayon_id": 22,
+    "area_id": 22,
+    "name": "Kab Lombok Utara",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:44",
+    "updated_at": "2024-05-14 17:13:44"
+  },
+  {
+    "id": 74,
+    "rayon_id": 22,
+    "area_id": 22,
+    "name": "Kota Mataram",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:44",
+    "updated_at": "2024-05-14 17:13:44"
+  },
+  {
+    "id": 75,
+    "rayon_id": 23,
+    "area_id": 23,
+    "name": "Kab Kupang",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:44",
+    "updated_at": "2024-05-14 17:13:44"
+  },
+  {
+    "id": 76,
+    "rayon_id": 23,
+    "area_id": 23,
+    "name": "Kab Rote Ndao",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:44",
+    "updated_at": "2024-05-14 17:13:44"
+  },
+  {
+    "id": 77,
+    "rayon_id": 23,
+    "area_id": 23,
+    "name": "Kab Sabu Raijua",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:44",
+    "updated_at": "2024-05-14 17:13:44"
+  },
+  {
+    "id": 78,
+    "rayon_id": 23,
+    "area_id": 23,
+    "name": "Kab Timor Tengah Selatan",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:44",
+    "updated_at": "2024-05-14 17:13:44"
+  },
+  {
+    "id": 79,
+    "rayon_id": 23,
+    "area_id": 23,
+    "name": "Kota Kupang",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:44",
+    "updated_at": "2024-05-14 17:13:44"
+  },
+  {
+    "id": 80,
+    "rayon_id": 24,
+    "area_id": 24,
+    "name": "Kab Jayapura",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:44",
+    "updated_at": "2024-05-14 17:13:44"
+  },
+  {
+    "id": 81,
+    "rayon_id": 24,
+    "area_id": 24,
+    "name": "Kab Keerom",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:44",
+    "updated_at": "2024-05-14 17:13:44"
+  },
+  {
+    "id": 82,
+    "rayon_id": 24,
+    "area_id": 24,
+    "name": "Kab Mamberamo Raya",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:44",
+    "updated_at": "2024-05-14 17:13:44"
+  },
+  {
+    "id": 83,
+    "rayon_id": 24,
+    "area_id": 24,
+    "name": "Kab Sarmi",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:44",
+    "updated_at": "2024-05-14 17:13:44"
+  },
+  {
+    "id": 84,
+    "rayon_id": 24,
+    "area_id": 24,
+    "name": "Kota Jayapura",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:44",
+    "updated_at": "2024-05-14 17:13:44"
+  },
+  {
+    "id": 85,
+    "rayon_id": 25,
+    "area_id": 25,
+    "name": "Kab Maybrat",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:44",
+    "updated_at": "2024-05-14 17:13:44"
+  },
+  {
+    "id": 86,
+    "rayon_id": 25,
+    "area_id": 25,
+    "name": "Kab Raja Ampat",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:44",
+    "updated_at": "2024-05-14 17:13:44"
+  },
+  {
+    "id": 87,
+    "rayon_id": 25,
+    "area_id": 25,
+    "name": "Kab Sorong",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:44",
+    "updated_at": "2024-05-14 17:13:44"
+  },
+  {
+    "id": 88,
+    "rayon_id": 25,
+    "area_id": 25,
+    "name": "Kab Sorong Selatan",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:44",
+    "updated_at": "2024-05-14 17:13:44"
+  },
+  {
+    "id": 89,
+    "rayon_id": 25,
+    "area_id": 25,
+    "name": "Kab Tambrauw",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:44",
+    "updated_at": "2024-05-14 17:13:44"
+  },
+  {
+    "id": 90,
+    "rayon_id": 25,
+    "area_id": 25,
+    "name": "Kab Teluk Bintuni",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:44",
+    "updated_at": "2024-05-14 17:13:44"
+  },
+  {
+    "id": 91,
+    "rayon_id": 25,
+    "area_id": 25,
+    "name": "Kota Sorong",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:44",
+    "updated_at": "2024-05-14 17:13:44"
+  },
+  {
+    "id": 92,
+    "rayon_id": 26,
+    "area_id": 26,
+    "name": "Kab Asmat",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:44",
+    "updated_at": "2024-05-14 17:13:44"
+  },
+  {
+    "id": 93,
+    "rayon_id": 26,
+    "area_id": 26,
+    "name": "Kab Boven Digoel",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:44",
+    "updated_at": "2024-05-14 17:13:44"
+  },
+  {
+    "id": 94,
+    "rayon_id": 26,
+    "area_id": 26,
+    "name": "Kab Mappi",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:44",
+    "updated_at": "2024-05-14 17:13:44"
+  },
+  {
+    "id": 95,
+    "rayon_id": 26,
+    "area_id": 26,
+    "name": "Kab Merauke",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:44",
+    "updated_at": "2024-05-14 17:13:44"
+  },
+  {
+    "id": 96,
+    "rayon_id": 27,
+    "area_id": 27,
+    "name": "Kab Deiyai",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:44",
+    "updated_at": "2024-05-14 17:13:44"
+  },
+  {
+    "id": 97,
+    "rayon_id": 27,
+    "area_id": 27,
+    "name": "Kab Dogiyai",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:44",
+    "updated_at": "2024-05-14 17:13:44"
+  },
+  {
+    "id": 98,
+    "rayon_id": 27,
+    "area_id": 27,
+    "name": "Kab Nabire",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:44",
+    "updated_at": "2024-05-14 17:13:44"
+  },
+  {
+    "id": 99,
+    "rayon_id": 27,
+    "area_id": 27,
+    "name": "Kab Paniai",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:44",
+    "updated_at": "2024-05-14 17:13:44"
+  },
+  {
+    "id": 100,
+    "rayon_id": 28,
+    "area_id": 28,
+    "name": "Kab Bengkalis",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:44",
+    "updated_at": "2024-05-14 17:13:44"
+  },
+  {
+    "id": 101,
+    "rayon_id": 28,
+    "area_id": 28,
+    "name": "Kab Siak",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:44",
+    "updated_at": "2024-05-14 17:13:44"
+  },
+  {
+    "id": 102,
+    "rayon_id": 28,
+    "area_id": 28,
+    "name": "Kota Pekanbaru",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:44",
+    "updated_at": "2024-05-14 17:13:44"
+  },
+  {
+    "id": 103,
+    "rayon_id": 29,
+    "area_id": 29,
+    "name": "Kota Semarang",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:44",
+    "updated_at": "2024-05-14 17:13:44"
+  },
+  {
+    "id": 104,
+    "rayon_id": 30,
+    "area_id": 30,
+    "name": "Kab Tapanuli Tengah",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:44",
+    "updated_at": "2024-05-14 17:13:44"
+  },
+  {
+    "id": 105,
+    "rayon_id": 30,
+    "area_id": 30,
+    "name": "Kab Tapanuli Utara",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:44",
+    "updated_at": "2024-05-14 17:13:44"
+  },
+  {
+    "id": 106,
+    "rayon_id": 30,
+    "area_id": 30,
+    "name": "Kab Toba Samosir",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:44",
+    "updated_at": "2024-05-14 17:13:44"
+  },
+  {
+    "id": 107,
+    "rayon_id": 30,
+    "area_id": 30,
+    "name": "Kota Sibolga",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:44",
+    "updated_at": "2024-05-14 17:13:44"
+  },
+  {
+    "id": 108,
+    "rayon_id": 31,
+    "area_id": 31,
+    "name": "Kab Sukabumi",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:44",
+    "updated_at": "2024-05-14 17:13:44"
+  },
+  {
+    "id": 109,
+    "rayon_id": 31,
+    "area_id": 31,
+    "name": "Kota Sukabumi",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:44",
+    "updated_at": "2024-05-14 17:13:44"
+  },
+  {
+    "id": 110,
+    "rayon_id": 32,
+    "area_id": 32,
+    "name": "Kab Gowa",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:44",
+    "updated_at": "2024-05-14 17:13:44"
+  },
+  {
+    "id": 111,
+    "rayon_id": 32,
+    "area_id": 32,
+    "name": "Kab Maros",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:44",
+    "updated_at": "2024-05-14 17:13:44"
+  },
+  {
+    "id": 112,
+    "rayon_id": 32,
+    "area_id": 32,
+    "name": "Kota Makassar",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 113,
+    "rayon_id": 33,
+    "area_id": 33,
+    "name": "Kab Buol",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 114,
+    "rayon_id": 33,
+    "area_id": 33,
+    "name": "Kab Donggala",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 115,
+    "rayon_id": 33,
+    "area_id": 33,
+    "name": "Kab Toli Toli",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 116,
+    "rayon_id": 33,
+    "area_id": 33,
+    "name": "Kota Palu",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 117,
+    "rayon_id": 34,
+    "area_id": 34,
+    "name": "Kab Kolaka",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 118,
+    "rayon_id": 34,
+    "area_id": 34,
+    "name": "Kab Kolaka Timur",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 119,
+    "rayon_id": 34,
+    "area_id": 34,
+    "name": "Kab Kolaka Utara",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 120,
+    "rayon_id": 34,
+    "area_id": 34,
+    "name": "Kab Konawe",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 121,
+    "rayon_id": 34,
+    "area_id": 34,
+    "name": "Kab Konawe Utara",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 122,
+    "rayon_id": 35,
+    "area_id": 35,
+    "name": "Kab Kep. Siau Tagulandang Biaro",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 123,
+    "rayon_id": 35,
+    "area_id": 35,
+    "name": "Kab Kepulauan Sangihe",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 124,
+    "rayon_id": 35,
+    "area_id": 35,
+    "name": "Kab Kepulauan Talaud",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 125,
+    "rayon_id": 35,
+    "area_id": 35,
+    "name": "Kab Minahasa Utara",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 126,
+    "rayon_id": 35,
+    "area_id": 35,
+    "name": "Kota Bitung",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 127,
+    "rayon_id": 35,
+    "area_id": 35,
+    "name": "Kota Manado",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 128,
+    "rayon_id": 36,
+    "area_id": 36,
+    "name": "Kab Kepulauan Mentawai",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 129,
+    "rayon_id": 36,
+    "area_id": 36,
+    "name": "Kab Padang Pariaman",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 130,
+    "rayon_id": 36,
+    "area_id": 36,
+    "name": "Kab Pesisir Selatan",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 131,
+    "rayon_id": 36,
+    "area_id": 36,
+    "name": "Kota Padang",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 132,
+    "rayon_id": 36,
+    "area_id": 36,
+    "name": "Kota Pariaman",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 133,
+    "rayon_id": 37,
+    "area_id": 37,
+    "name": "Kab Banyuasin",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 134,
+    "rayon_id": 37,
+    "area_id": 37,
+    "name": "Kab Musi Banyuasin",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 135,
+    "rayon_id": 37,
+    "area_id": 37,
+    "name": "Kota Palembang",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 136,
+    "rayon_id": 38,
+    "area_id": 38,
+    "name": "Kota Surabaya",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 137,
+    "rayon_id": 39,
+    "area_id": 39,
+    "name": "Kab Brebes",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 138,
+    "rayon_id": 39,
+    "area_id": 39,
+    "name": "Kota Tegal",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 139,
+    "rayon_id": 40,
+    "area_id": 40,
+    "name": "Kota Yogyakarta",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 140,
+    "rayon_id": 41,
+    "area_id": 1,
+    "name": "Kab Aceh Barat",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 141,
+    "rayon_id": 41,
+    "area_id": 1,
+    "name": "Kab Aceh Barat Daya",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 142,
+    "rayon_id": 41,
+    "area_id": 1,
+    "name": "Kab Aceh Selatan",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 143,
+    "rayon_id": 41,
+    "area_id": 1,
+    "name": "Kab Aceh Singkil",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 144,
+    "rayon_id": 41,
+    "area_id": 1,
+    "name": "Kab Nagan Raya",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 145,
+    "rayon_id": 41,
+    "area_id": 1,
+    "name": "Kota Subulussalam",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 146,
+    "rayon_id": 42,
+    "area_id": 2,
+    "name": "Kab Belitung",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 147,
+    "rayon_id": 42,
+    "area_id": 2,
+    "name": "Kab Belitung Timur",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 148,
+    "rayon_id": 43,
+    "area_id": 3,
+    "name": "Kab Jembrana",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 149,
+    "rayon_id": 43,
+    "area_id": 3,
+    "name": "Kab Tabanan",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 150,
+    "rayon_id": 44,
+    "area_id": 4,
+    "name": "Kab Bandung",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 151,
+    "rayon_id": 44,
+    "area_id": 4,
+    "name": "Kab Bandung Barat",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 152,
+    "rayon_id": 45,
+    "area_id": 5,
+    "name": "Kab Tangerang",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 153,
+    "rayon_id": 46,
+    "area_id": 6,
+    "name": "Kab Bengkulu Utara",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 154,
+    "rayon_id": 46,
+    "area_id": 6,
+    "name": "Kab Kepahiang",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 155,
+    "rayon_id": 46,
+    "area_id": 6,
+    "name": "Kab Lebong",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 156,
+    "rayon_id": 46,
+    "area_id": 6,
+    "name": "Kab Muko Muko",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 157,
+    "rayon_id": 46,
+    "area_id": 6,
+    "name": "Kab Rejang Lebong",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 158,
+    "rayon_id": 47,
+    "area_id": 7,
+    "name": "Kab Kuningan",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 159,
+    "rayon_id": 48,
+    "area_id": 8,
+    "name": "Kab Adm. Kep. Seribu",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 160,
+    "rayon_id": 48,
+    "area_id": 8,
+    "name": "Kota Adm. Jakarta Utara",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 161,
+    "rayon_id": 49,
+    "area_id": 9,
+    "name": "Kab Batanghari",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 162,
+    "rayon_id": 49,
+    "area_id": 9,
+    "name": "Kab Bungo",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 163,
+    "rayon_id": 49,
+    "area_id": 9,
+    "name": "Kab Tebo",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 164,
+    "rayon_id": 50,
+    "area_id": 10,
+    "name": "Kab Sambas",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 165,
+    "rayon_id": 50,
+    "area_id": 10,
+    "name": "Kota Singkawang",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 166,
+    "rayon_id": 51,
+    "area_id": 11,
+    "name": "Kab Kotabaru",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 167,
+    "rayon_id": 51,
+    "area_id": 11,
+    "name": "Kab Tanah Bumbu",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 168,
+    "rayon_id": 51,
+    "area_id": 11,
+    "name": "Kab Tanah Laut",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 169,
+    "rayon_id": 51,
+    "area_id": 11,
+    "name": "Kota Banjarbaru",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 170,
+    "rayon_id": 52,
+    "area_id": 12,
+    "name": "Kab Kotawaringin Barat",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 171,
+    "rayon_id": 52,
+    "area_id": 12,
+    "name": "Kab Kotawaringin Timur",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 172,
+    "rayon_id": 52,
+    "area_id": 12,
+    "name": "Kab Lamandau",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 173,
+    "rayon_id": 52,
+    "area_id": 12,
+    "name": "Kab Seruyan",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 174,
+    "rayon_id": 52,
+    "area_id": 12,
+    "name": "Kab Sukamara",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 175,
+    "rayon_id": 53,
+    "area_id": 13,
+    "name": "Kab Kutai Kartanegara",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 176,
+    "rayon_id": 53,
+    "area_id": 13,
+    "name": "Kota Samarinda",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 177,
+    "rayon_id": 54,
+    "area_id": 14,
+    "name": "Kab Bekasi",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 178,
+    "rayon_id": 55,
+    "area_id": 15,
+    "name": "Kab Blitar",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 179,
+    "rayon_id": 55,
+    "area_id": 15,
+    "name": "Kota Blitar",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 180,
+    "rayon_id": 56,
+    "area_id": 16,
+    "name": "Kab Karimun",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 181,
+    "rayon_id": 56,
+    "area_id": 16,
+    "name": "Kab Lingga",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 182,
+    "rayon_id": 56,
+    "area_id": 16,
+    "name": "Kota Batam",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 183,
+    "rayon_id": 57,
+    "area_id": 17,
+    "name": "Kab Lampung Tengah",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 184,
+    "rayon_id": 57,
+    "area_id": 17,
+    "name": "Kab Lampung Timur",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 185,
+    "rayon_id": 57,
+    "area_id": 17,
+    "name": "Kota Metro",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 186,
+    "rayon_id": 58,
+    "area_id": 18,
+    "name": "Kab Pasuruan",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 187,
+    "rayon_id": 58,
+    "area_id": 18,
+    "name": "Kota Pasuruan",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 188,
+    "rayon_id": 59,
+    "area_id": 19,
+    "name": "Kab Buru",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 189,
+    "rayon_id": 59,
+    "area_id": 19,
+    "name": "Kab Buru Selatan",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 190,
+    "rayon_id": 59,
+    "area_id": 19,
+    "name": "Kab Kepulauan Aru",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 191,
+    "rayon_id": 59,
+    "area_id": 19,
+    "name": "Kab Kepulauan Tanimbar",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 192,
+    "rayon_id": 59,
+    "area_id": 19,
+    "name": "Kab Maluku Barat Daya",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 193,
+    "rayon_id": 59,
+    "area_id": 19,
+    "name": "Kab Maluku Tenggara",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 194,
+    "rayon_id": 59,
+    "area_id": 19,
+    "name": "Kota Tual",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 195,
+    "rayon_id": 60,
+    "area_id": 20,
+    "name": "Kab Halmahera Barat",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 196,
+    "rayon_id": 60,
+    "area_id": 20,
+    "name": "Kab Halmahera Tengah",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 197,
+    "rayon_id": 60,
+    "area_id": 20,
+    "name": "Kab Halmahera Timur",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 198,
+    "rayon_id": 60,
+    "area_id": 20,
+    "name": "Kab Halmahera Utara",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 199,
+    "rayon_id": 60,
+    "area_id": 20,
+    "name": "Kab Pulau Morotai",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 200,
+    "rayon_id": 61,
+    "area_id": 21,
+    "name": "Kab Deli Serdang",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 201,
+    "rayon_id": 61,
+    "area_id": 21,
+    "name": "Kab Serdang Bedagai",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 202,
+    "rayon_id": 61,
+    "area_id": 21,
+    "name": "Kota Tebing Tinggi",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 203,
+    "rayon_id": 62,
+    "area_id": 22,
+    "name": "Kab Bima",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 204,
+    "rayon_id": 62,
+    "area_id": 22,
+    "name": "Kab Dompu",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 205,
+    "rayon_id": 62,
+    "area_id": 22,
+    "name": "Kab Sumbawa",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 206,
+    "rayon_id": 62,
+    "area_id": 22,
+    "name": "Kab Sumbawa Barat",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 207,
+    "rayon_id": 62,
+    "area_id": 22,
+    "name": "Kota Bima",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 208,
+    "rayon_id": 63,
+    "area_id": 23,
+    "name": "Kab Alor",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 209,
+    "rayon_id": 63,
+    "area_id": 23,
+    "name": "Kab Belu",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 210,
+    "rayon_id": 63,
+    "area_id": 23,
+    "name": "Kab Flores Timur",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 211,
+    "rayon_id": 63,
+    "area_id": 23,
+    "name": "Kab Lembata",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 212,
+    "rayon_id": 63,
+    "area_id": 23,
+    "name": "Kab Malaka",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 213,
+    "rayon_id": 63,
+    "area_id": 23,
+    "name": "Kab Sikka",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 214,
+    "rayon_id": 63,
+    "area_id": 23,
+    "name": "Kab Timor Tengah Utara",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 215,
+    "rayon_id": 64,
+    "area_id": 24,
+    "name": "Kab Biak Numfor",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 216,
+    "rayon_id": 64,
+    "area_id": 24,
+    "name": "Kab Kepulauan Yapen",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 217,
+    "rayon_id": 64,
+    "area_id": 24,
+    "name": "Kab Supiori",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 218,
+    "rayon_id": 64,
+    "area_id": 24,
+    "name": "Kab Waropen",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 219,
+    "rayon_id": 65,
+    "area_id": 25,
+    "name": "Kab Fak Fak",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 220,
+    "rayon_id": 65,
+    "area_id": 25,
+    "name": "Kab Kaimana",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 221,
+    "rayon_id": 65,
+    "area_id": 25,
+    "name": "Kab Manokwari",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 222,
+    "rayon_id": 65,
+    "area_id": 25,
+    "name": "Kab Manokwari Selatan",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 223,
+    "rayon_id": 65,
+    "area_id": 25,
+    "name": "Kab Pegunungan Arfak",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 224,
+    "rayon_id": 65,
+    "area_id": 25,
+    "name": "Kab Teluk Wondama",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 225,
+    "rayon_id": 66,
+    "area_id": 26,
+    "name": "Kab Jayawijaya",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 226,
+    "rayon_id": 66,
+    "area_id": 26,
+    "name": "Kab Lanny Jaya",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 227,
+    "rayon_id": 66,
+    "area_id": 26,
+    "name": "Kab Mamberamo Tengah",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 228,
+    "rayon_id": 66,
+    "area_id": 26,
+    "name": "Kab Nduga",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 229,
+    "rayon_id": 66,
+    "area_id": 26,
+    "name": "Kab Pegunungan Bintang",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 230,
+    "rayon_id": 66,
+    "area_id": 26,
+    "name": "Kab Tolikara",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 231,
+    "rayon_id": 66,
+    "area_id": 26,
+    "name": "Kab Yahukimo",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 232,
+    "rayon_id": 66,
+    "area_id": 26,
+    "name": "Kab Yalimo",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 233,
+    "rayon_id": 67,
+    "area_id": 27,
+    "name": "Kab Intan Jaya",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 234,
+    "rayon_id": 67,
+    "area_id": 27,
+    "name": "Kab Mimika",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 235,
+    "rayon_id": 67,
+    "area_id": 27,
+    "name": "Kab Puncak",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 236,
+    "rayon_id": 67,
+    "area_id": 27,
+    "name": "Kab Puncak Jaya",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 237,
+    "rayon_id": 68,
+    "area_id": 28,
+    "name": "Kab Kampar",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 238,
+    "rayon_id": 68,
+    "area_id": 28,
+    "name": "Kab Kuantan Singingi",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 239,
+    "rayon_id": 68,
+    "area_id": 28,
+    "name": "Kab Rokan Hulu",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 240,
+    "rayon_id": 69,
+    "area_id": 29,
+    "name": "Kab Semarang",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 241,
+    "rayon_id": 69,
+    "area_id": 29,
+    "name": "Kota Salatiga",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 242,
+    "rayon_id": 70,
+    "area_id": 30,
+    "name": "Kab Labuhanbatu",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 243,
+    "rayon_id": 70,
+    "area_id": 30,
+    "name": "Kab Labuhanbatu Selatan",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 244,
+    "rayon_id": 70,
+    "area_id": 30,
+    "name": "Kab Labuhanbatu Utara",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 245,
+    "rayon_id": 70,
+    "area_id": 30,
+    "name": "Kab Padang Lawas Utara",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 246,
+    "rayon_id": 71,
+    "area_id": 31,
+    "name": "Kab Cianjur",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 247,
+    "rayon_id": 72,
+    "area_id": 32,
+    "name": "Kab Barru",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 248,
+    "rayon_id": 72,
+    "area_id": 32,
+    "name": "Kab Bone",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 249,
+    "rayon_id": 72,
+    "area_id": 32,
+    "name": "Kab Pangkajene Kepulauan",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 250,
+    "rayon_id": 72,
+    "area_id": 32,
+    "name": "Kab Sinjai",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 251,
+    "rayon_id": 73,
+    "area_id": 33,
+    "name": "Kab Morowali",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 252,
+    "rayon_id": 73,
+    "area_id": 33,
+    "name": "Kab Morowali Utara",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 253,
+    "rayon_id": 73,
+    "area_id": 33,
+    "name": "Kab Parigi Moutong",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 254,
+    "rayon_id": 73,
+    "area_id": 33,
+    "name": "Kab Poso",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 255,
+    "rayon_id": 73,
+    "area_id": 33,
+    "name": "Kab Sigi",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 256,
+    "rayon_id": 74,
+    "area_id": 34,
+    "name": "Kab Bombana",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 257,
+    "rayon_id": 74,
+    "area_id": 34,
+    "name": "Kab Konawe Kepulauan",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 258,
+    "rayon_id": 74,
+    "area_id": 34,
+    "name": "Kab Konawe Selatan",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 259,
+    "rayon_id": 74,
+    "area_id": 34,
+    "name": "Kota Kendari",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 260,
+    "rayon_id": 75,
+    "area_id": 35,
+    "name": "Kab Minahasa",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 261,
+    "rayon_id": 75,
+    "area_id": 35,
+    "name": "Kab Minahasa Selatan",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 262,
+    "rayon_id": 75,
+    "area_id": 35,
+    "name": "Kab Minahasa Tenggara",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 263,
+    "rayon_id": 75,
+    "area_id": 35,
+    "name": "Kota Tomohon",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 264,
+    "rayon_id": 76,
+    "area_id": 36,
+    "name": "Kab Dharmasraya",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 265,
+    "rayon_id": 76,
+    "area_id": 36,
+    "name": "Kab Sijunjung",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 266,
+    "rayon_id": 76,
+    "area_id": 36,
+    "name": "Kab Solok",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 267,
+    "rayon_id": 76,
+    "area_id": 36,
+    "name": "Kab Solok Selatan",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 268,
+    "rayon_id": 76,
+    "area_id": 36,
+    "name": "Kota Sawahlunto",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 269,
+    "rayon_id": 76,
+    "area_id": 36,
+    "name": "Kota Solok",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 270,
+    "rayon_id": 77,
+    "area_id": 37,
+    "name": "Kab Ogan Komering Ilir",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 271,
+    "rayon_id": 77,
+    "area_id": 37,
+    "name": "Kab Ogan Komering Ulu",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 272,
+    "rayon_id": 77,
+    "area_id": 37,
+    "name": "Kab Ogan Komering Ulu Selatan",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 273,
+    "rayon_id": 77,
+    "area_id": 37,
+    "name": "Kab Ogan Komering Ulu Timur",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 274,
+    "rayon_id": 78,
+    "area_id": 38,
+    "name": "Kab Jombang",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 275,
+    "rayon_id": 78,
+    "area_id": 38,
+    "name": "Kab Mojokerto",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 276,
+    "rayon_id": 78,
+    "area_id": 38,
+    "name": "Kota Mojokerto",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 277,
+    "rayon_id": 79,
+    "area_id": 39,
+    "name": "Kab Pemalang",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 278,
+    "rayon_id": 79,
+    "area_id": 39,
+    "name": "Kab Tegal",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 279,
+    "rayon_id": 80,
+    "area_id": 40,
+    "name": "Kab Kulon Progo",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 280,
+    "rayon_id": 80,
+    "area_id": 40,
+    "name": "Kab Sleman",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 281,
+    "rayon_id": 81,
+    "area_id": 1,
+    "name": "Kab Aceh Tamiang",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 282,
+    "rayon_id": 81,
+    "area_id": 1,
+    "name": "Kab Aceh Timur",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 283,
+    "rayon_id": 81,
+    "area_id": 1,
+    "name": "Kab Aceh Utara",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 284,
+    "rayon_id": 81,
+    "area_id": 1,
+    "name": "Kab Bireuen",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 285,
+    "rayon_id": 81,
+    "area_id": 1,
+    "name": "Kota Langsa",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 286,
+    "rayon_id": 81,
+    "area_id": 1,
+    "name": "Kota Lhokseumawe",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 287,
+    "rayon_id": 82,
+    "area_id": 3,
+    "name": "Kab Bangli",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 288,
+    "rayon_id": 82,
+    "area_id": 3,
+    "name": "Kab Buleleng",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 289,
+    "rayon_id": 83,
+    "area_id": 4,
+    "name": "Kab Sumedang",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 290,
+    "rayon_id": 84,
+    "area_id": 5,
+    "name": "Kab Serang",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 291,
+    "rayon_id": 84,
+    "area_id": 5,
+    "name": "Kota Cilegon",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 292,
+    "rayon_id": 84,
+    "area_id": 5,
+    "name": "Kota Serang",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 293,
+    "rayon_id": 85,
+    "area_id": 7,
+    "name": "Kab Indramayu",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 294,
+    "rayon_id": 86,
+    "area_id": 8,
+    "name": "Kota Adm. Jakarta Timur",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 295,
+    "rayon_id": 87,
+    "area_id": 9,
+    "name": "Kab Kerinci",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 296,
+    "rayon_id": 87,
+    "area_id": 9,
+    "name": "Kab Merangin",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 297,
+    "rayon_id": 87,
+    "area_id": 9,
+    "name": "Kab Sarolangun",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 298,
+    "rayon_id": 87,
+    "area_id": 9,
+    "name": "Kota Sungai Penuh",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 299,
+    "rayon_id": 88,
+    "area_id": 10,
+    "name": "Kab Kapuas Hulu",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 300,
+    "rayon_id": 88,
+    "area_id": 10,
+    "name": "Kab Melawi",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 301,
+    "rayon_id": 88,
+    "area_id": 10,
+    "name": "Kab Sekadau",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 302,
+    "rayon_id": 88,
+    "area_id": 10,
+    "name": "Kab Sintang",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 303,
+    "rayon_id": 89,
+    "area_id": 11,
+    "name": "Kab Balangan",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 304,
+    "rayon_id": 89,
+    "area_id": 11,
+    "name": "Kab Hulu Sungai Selatan",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 305,
+    "rayon_id": 89,
+    "area_id": 11,
+    "name": "Kab Hulu Sungai Tengah",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 306,
+    "rayon_id": 89,
+    "area_id": 11,
+    "name": "Kab Hulu Sungai Utara",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:45",
+    "updated_at": "2024-05-14 17:13:45"
+  },
+  {
+    "id": 307,
+    "rayon_id": 89,
+    "area_id": 11,
+    "name": "Kab Tabalong",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 308,
+    "rayon_id": 89,
+    "area_id": 11,
+    "name": "Kab Tapin",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 309,
+    "rayon_id": 90,
+    "area_id": 12,
+    "name": "Kab Barito Selatan",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 310,
+    "rayon_id": 90,
+    "area_id": 12,
+    "name": "Kab Barito Timur",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 311,
+    "rayon_id": 90,
+    "area_id": 12,
+    "name": "Kab Barito Utara",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 312,
+    "rayon_id": 90,
+    "area_id": 12,
+    "name": "Kab Murung Raya",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 313,
+    "rayon_id": 91,
+    "area_id": 13,
+    "name": "Kab Kutai Timur",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 314,
+    "rayon_id": 91,
+    "area_id": 13,
+    "name": "Kota Bontang",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 315,
+    "rayon_id": 92,
+    "area_id": 14,
+    "name": "Kab Karawang",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 316,
+    "rayon_id": 93,
+    "area_id": 15,
+    "name": "Kab Trenggalek",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 317,
+    "rayon_id": 93,
+    "area_id": 15,
+    "name": "Kab Tulungagung",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 318,
+    "rayon_id": 94,
+    "area_id": 17,
+    "name": "Kab Lampung Utara",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 319,
+    "rayon_id": 94,
+    "area_id": 17,
+    "name": "Kab Mesuji",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 320,
+    "rayon_id": 94,
+    "area_id": 17,
+    "name": "Kab Tulang Bawang",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 321,
+    "rayon_id": 94,
+    "area_id": 17,
+    "name": "Kab Tulang Bawang Barat",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 322,
+    "rayon_id": 95,
+    "area_id": 18,
+    "name": "Kab Probolinggo",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 323,
+    "rayon_id": 95,
+    "area_id": 18,
+    "name": "Kota Probolinggo",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 324,
+    "rayon_id": 96,
+    "area_id": 21,
+    "name": "Kab Dairi",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 325,
+    "rayon_id": 96,
+    "area_id": 21,
+    "name": "Kab Karo",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 326,
+    "rayon_id": 96,
+    "area_id": 21,
+    "name": "Kab Simalungun",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 327,
+    "rayon_id": 96,
+    "area_id": 21,
+    "name": "Kota PematangSiantar",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 328,
+    "rayon_id": 97,
+    "area_id": 23,
+    "name": "Kab Ende",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 329,
+    "rayon_id": 97,
+    "area_id": 23,
+    "name": "Kab Manggarai",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 330,
+    "rayon_id": 97,
+    "area_id": 23,
+    "name": "Kab Manggarai Barat",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 331,
+    "rayon_id": 97,
+    "area_id": 23,
+    "name": "Kab Manggarai Timur",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 332,
+    "rayon_id": 97,
+    "area_id": 23,
+    "name": "Kab Nagekeo",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 333,
+    "rayon_id": 97,
+    "area_id": 23,
+    "name": "Kab Ngada",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 334,
+    "rayon_id": 98,
+    "area_id": 28,
+    "name": "Kab Kepulauan Meranti",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 335,
+    "rayon_id": 98,
+    "area_id": 28,
+    "name": "Kab Rokan Hilir",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 336,
+    "rayon_id": 98,
+    "area_id": 28,
+    "name": "Kota Dumai",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 337,
+    "rayon_id": 99,
+    "area_id": 29,
+    "name": "Kab Batang",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 338,
+    "rayon_id": 99,
+    "area_id": 29,
+    "name": "Kab Kendal",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 339,
+    "rayon_id": 100,
+    "area_id": 30,
+    "name": "Kab Mandailing Natal",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 340,
+    "rayon_id": 100,
+    "area_id": 30,
+    "name": "Kab Padang Lawas",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 341,
+    "rayon_id": 100,
+    "area_id": 30,
+    "name": "Kab Tapanuli Selatan",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 342,
+    "rayon_id": 100,
+    "area_id": 30,
+    "name": "Kota Padang Sidempuan",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 343,
+    "rayon_id": 101,
+    "area_id": 32,
+    "name": "Kab Bantaeng",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 344,
+    "rayon_id": 101,
+    "area_id": 32,
+    "name": "Kab Bulukumba",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 345,
+    "rayon_id": 101,
+    "area_id": 32,
+    "name": "Kab Jeneponto",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 346,
+    "rayon_id": 101,
+    "area_id": 32,
+    "name": "Kab Kepulauan Selayar",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 347,
+    "rayon_id": 101,
+    "area_id": 32,
+    "name": "Kab Takalar",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 348,
+    "rayon_id": 102,
+    "area_id": 33,
+    "name": "Kab Banggai",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 349,
+    "rayon_id": 102,
+    "area_id": 33,
+    "name": "Kab Banggai Kepulauan",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 350,
+    "rayon_id": 102,
+    "area_id": 33,
+    "name": "Kab Banggai Laut",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 351,
+    "rayon_id": 102,
+    "area_id": 33,
+    "name": "Kab Tojo Una Una",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 352,
+    "rayon_id": 103,
+    "area_id": 34,
+    "name": "Kab Buton",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 353,
+    "rayon_id": 103,
+    "area_id": 34,
+    "name": "Kab Buton Selatan",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 354,
+    "rayon_id": 103,
+    "area_id": 34,
+    "name": "Kab Buton Tengah",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 355,
+    "rayon_id": 103,
+    "area_id": 34,
+    "name": "Kab Buton Utara",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 356,
+    "rayon_id": 103,
+    "area_id": 34,
+    "name": "Kab Muna",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 357,
+    "rayon_id": 103,
+    "area_id": 34,
+    "name": "Kab Muna Barat",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 358,
+    "rayon_id": 103,
+    "area_id": 34,
+    "name": "Kab Wakatobi",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 359,
+    "rayon_id": 103,
+    "area_id": 34,
+    "name": "Kota Bau Bau",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 360,
+    "rayon_id": 104,
+    "area_id": 35,
+    "name": "Kab Bolaang Mongondow",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 361,
+    "rayon_id": 104,
+    "area_id": 35,
+    "name": "Kab Bolaang Mongondow Selatan",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 362,
+    "rayon_id": 104,
+    "area_id": 35,
+    "name": "Kab Bolaang Mongondow Timur",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 363,
+    "rayon_id": 104,
+    "area_id": 35,
+    "name": "Kab Bolaang Mongondow Utara",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 364,
+    "rayon_id": 104,
+    "area_id": 35,
+    "name": "Kota Kotamobagu",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 365,
+    "rayon_id": 105,
+    "area_id": 36,
+    "name": "Kab Agam",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 366,
+    "rayon_id": 105,
+    "area_id": 36,
+    "name": "Kab Pasaman",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 367,
+    "rayon_id": 105,
+    "area_id": 36,
+    "name": "Kab Pasaman Barat",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 368,
+    "rayon_id": 105,
+    "area_id": 36,
+    "name": "Kota Bukittinggi",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 369,
+    "rayon_id": 105,
+    "area_id": 36,
+    "name": "Kota Padang Panjang",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 370,
+    "rayon_id": 106,
+    "area_id": 37,
+    "name": "Kab Muara Enim",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 371,
+    "rayon_id": 106,
+    "area_id": 37,
+    "name": "Kab Ogan Ilir",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 372,
+    "rayon_id": 106,
+    "area_id": 37,
+    "name": "Kab Penukal Abab Lematang Ilir",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 373,
+    "rayon_id": 106,
+    "area_id": 37,
+    "name": "Kota Prabumulih",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 374,
+    "rayon_id": 107,
+    "area_id": 38,
+    "name": "Kab Sidoarjo",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 375,
+    "rayon_id": 108,
+    "area_id": 39,
+    "name": "Kab Pekalongan",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 376,
+    "rayon_id": 108,
+    "area_id": 39,
+    "name": "Kota Pekalongan",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 377,
+    "rayon_id": 109,
+    "area_id": 40,
+    "name": "Kab Bantul",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 378,
+    "rayon_id": 109,
+    "area_id": 40,
+    "name": "Kab Gunungkidul",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 379,
+    "rayon_id": 110,
+    "area_id": 1,
+    "name": "Kab Aceh Tengah",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 380,
+    "rayon_id": 110,
+    "area_id": 1,
+    "name": "Kab Aceh Tenggara",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 381,
+    "rayon_id": 110,
+    "area_id": 1,
+    "name": "Kab Bener Meriah",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 382,
+    "rayon_id": 110,
+    "area_id": 1,
+    "name": "Kab Gayo Lues",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 383,
+    "rayon_id": 110,
+    "area_id": 1,
+    "name": "Kab Simeulue",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 384,
+    "rayon_id": 111,
+    "area_id": 3,
+    "name": "Kab Badung",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 385,
+    "rayon_id": 111,
+    "area_id": 3,
+    "name": "Kab Gianyar",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 386,
+    "rayon_id": 112,
+    "area_id": 4,
+    "name": "Kab Ciamis",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 387,
+    "rayon_id": 112,
+    "area_id": 4,
+    "name": "Kota Banjar",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 388,
+    "rayon_id": 113,
+    "area_id": 5,
+    "name": "Kab Pandeglang",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 389,
+    "rayon_id": 114,
+    "area_id": 7,
+    "name": "Kab Majalengka",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 390,
+    "rayon_id": 115,
+    "area_id": 8,
+    "name": "Kota Adm. Jakarta Barat",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 391,
+    "rayon_id": 116,
+    "area_id": 10,
+    "name": "Kab Kayong Utara",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 392,
+    "rayon_id": 116,
+    "area_id": 10,
+    "name": "Kab Ketapang",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 393,
+    "rayon_id": 117,
+    "area_id": 13,
+    "name": "Kab Kutai Barat",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 394,
+    "rayon_id": 117,
+    "area_id": 13,
+    "name": "Kab Mahakam Ulu",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 395,
+    "rayon_id": 118,
+    "area_id": 14,
+    "name": "Kab Subang",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 396,
+    "rayon_id": 119,
+    "area_id": 15,
+    "name": "Kab Madiun",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 397,
+    "rayon_id": 119,
+    "area_id": 15,
+    "name": "Kota Madiun",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 398,
+    "rayon_id": 120,
+    "area_id": 17,
+    "name": "Kab Lampung Barat",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 399,
+    "rayon_id": 120,
+    "area_id": 17,
+    "name": "Kab Pesisir Barat",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 400,
+    "rayon_id": 120,
+    "area_id": 17,
+    "name": "Kab Tanggamus",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 401,
+    "rayon_id": 120,
+    "area_id": 17,
+    "name": "Kab Way Kanan",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 402,
+    "rayon_id": 121,
+    "area_id": 18,
+    "name": "Kab Banyuwangi",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 403,
+    "rayon_id": 121,
+    "area_id": 18,
+    "name": "Kab Situbondo",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 404,
+    "rayon_id": 122,
+    "area_id": 21,
+    "name": "Kab Asahan",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 405,
+    "rayon_id": 122,
+    "area_id": 21,
+    "name": "Kab Batu Bara",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 406,
+    "rayon_id": 122,
+    "area_id": 21,
+    "name": "Kota Tanjung Balai",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 407,
+    "rayon_id": 123,
+    "area_id": 23,
+    "name": "Kab Sumba Barat",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 408,
+    "rayon_id": 123,
+    "area_id": 23,
+    "name": "Kab Sumba Barat Daya",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 409,
+    "rayon_id": 123,
+    "area_id": 23,
+    "name": "Kab Sumba Tengah",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 410,
+    "rayon_id": 123,
+    "area_id": 23,
+    "name": "Kab Sumba Timur",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 411,
+    "rayon_id": 124,
+    "area_id": 28,
+    "name": "Kab Indragiri Hilir",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 412,
+    "rayon_id": 124,
+    "area_id": 28,
+    "name": "Kab Indragiri Hulu",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 413,
+    "rayon_id": 124,
+    "area_id": 28,
+    "name": "Kab Pelalawan",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 414,
+    "rayon_id": 125,
+    "area_id": 29,
+    "name": "Kab Demak",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 415,
+    "rayon_id": 125,
+    "area_id": 29,
+    "name": "Kab Jepara",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 416,
+    "rayon_id": 125,
+    "area_id": 29,
+    "name": "Kab Kudus",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 417,
+    "rayon_id": 126,
+    "area_id": 30,
+    "name": "Kab Nias",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 418,
+    "rayon_id": 126,
+    "area_id": 30,
+    "name": "Kab Nias Barat",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 419,
+    "rayon_id": 126,
+    "area_id": 30,
+    "name": "Kab Nias Selatan",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 420,
+    "rayon_id": 126,
+    "area_id": 30,
+    "name": "Kab Nias Utara",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 421,
+    "rayon_id": 126,
+    "area_id": 30,
+    "name": "Kota Gunungsitoli",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 422,
+    "rayon_id": 127,
+    "area_id": 32,
+    "name": "Kab Enrekang",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 423,
+    "rayon_id": 127,
+    "area_id": 32,
+    "name": "Kab Pinrang",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 424,
+    "rayon_id": 127,
+    "area_id": 32,
+    "name": "Kab Sidenreng Rappang",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 425,
+    "rayon_id": 127,
+    "area_id": 32,
+    "name": "Kab Soppeng",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 426,
+    "rayon_id": 127,
+    "area_id": 32,
+    "name": "Kab Wajo",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 427,
+    "rayon_id": 127,
+    "area_id": 32,
+    "name": "Kota Pare Pare",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 428,
+    "rayon_id": 128,
+    "area_id": 35,
+    "name": "Kab Bone Bolango",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 429,
+    "rayon_id": 128,
+    "area_id": 35,
+    "name": "Kab Gorontalo",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 430,
+    "rayon_id": 128,
+    "area_id": 35,
+    "name": "Kota Gorontalo",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 431,
+    "rayon_id": 129,
+    "area_id": 36,
+    "name": "Kab Lima Puluh Kota",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 432,
+    "rayon_id": 129,
+    "area_id": 36,
+    "name": "Kab Tanah Datar",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 433,
+    "rayon_id": 129,
+    "area_id": 36,
+    "name": "Kota Payakumbuh",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 434,
+    "rayon_id": 130,
+    "area_id": 37,
+    "name": "Kab Empat Lawang",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 435,
+    "rayon_id": 130,
+    "area_id": 37,
+    "name": "Kab Lahat",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 436,
+    "rayon_id": 130,
+    "area_id": 37,
+    "name": "Kab Musi Rawas",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 437,
+    "rayon_id": 130,
+    "area_id": 37,
+    "name": "Kab Musi Rawas Utara",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 438,
+    "rayon_id": 130,
+    "area_id": 37,
+    "name": "Kota Lubuk Linggau",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 439,
+    "rayon_id": 130,
+    "area_id": 37,
+    "name": "Kota Pagar Alam",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 440,
+    "rayon_id": 131,
+    "area_id": 38,
+    "name": "Kab Bojonegoro",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 441,
+    "rayon_id": 131,
+    "area_id": 38,
+    "name": "Kab Tuban",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 442,
+    "rayon_id": 132,
+    "area_id": 39,
+    "name": "Kab Banyumas",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 443,
+    "rayon_id": 132,
+    "area_id": 39,
+    "name": "Kab Cilacap",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 444,
+    "rayon_id": 133,
+    "area_id": 40,
+    "name": "Kab Magelang",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 445,
+    "rayon_id": 133,
+    "area_id": 40,
+    "name": "Kota Magelang",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 446,
+    "rayon_id": 134,
+    "area_id": 3,
+    "name": "Kab Karangasem",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 447,
+    "rayon_id": 134,
+    "area_id": 3,
+    "name": "Kab Klungkung",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 448,
+    "rayon_id": 135,
+    "area_id": 4,
+    "name": "Kab Garut",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 449,
+    "rayon_id": 136,
+    "area_id": 5,
+    "name": "Kab Lebak",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 450,
+    "rayon_id": 137,
+    "area_id": 8,
+    "name": "Kota Adm. Jakarta Selatan",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 451,
+    "rayon_id": 138,
+    "area_id": 10,
+    "name": "Kab Bengkayang",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 452,
+    "rayon_id": 138,
+    "area_id": 10,
+    "name": "Kab Landak",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 453,
+    "rayon_id": 138,
+    "area_id": 10,
+    "name": "Kab Sanggau",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 454,
+    "rayon_id": 139,
+    "area_id": 13,
+    "name": "Kab Nunukan",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 455,
+    "rayon_id": 139,
+    "area_id": 13,
+    "name": "Kota Tarakan",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 456,
+    "rayon_id": 140,
+    "area_id": 14,
+    "name": "Kab Purwakarta",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 457,
+    "rayon_id": 141,
+    "area_id": 15,
+    "name": "Kab Magetan",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 458,
+    "rayon_id": 141,
+    "area_id": 15,
+    "name": "Kab Ngawi",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 459,
+    "rayon_id": 142,
+    "area_id": 18,
+    "name": "Kab Bondowoso",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 460,
+    "rayon_id": 142,
+    "area_id": 18,
+    "name": "Kab Jember",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 461,
+    "rayon_id": 142,
+    "area_id": 18,
+    "name": "Kab Lumajang",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 462,
+    "rayon_id": 143,
+    "area_id": 21,
+    "name": "Kab Humbang Hasundutan",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 463,
+    "rayon_id": 143,
+    "area_id": 21,
+    "name": "Kab Pakpak Bharat",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 464,
+    "rayon_id": 143,
+    "area_id": 21,
+    "name": "Kab Samosir",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 465,
+    "rayon_id": 144,
+    "area_id": 29,
+    "name": "Kab Grobogan",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 466,
+    "rayon_id": 144,
+    "area_id": 29,
+    "name": "Kab Pati",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 467,
+    "rayon_id": 145,
+    "area_id": 32,
+    "name": "Kab Luwu",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 468,
+    "rayon_id": 145,
+    "area_id": 32,
+    "name": "Kab Luwu Timur",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 469,
+    "rayon_id": 145,
+    "area_id": 32,
+    "name": "Kab Luwu Utara",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 470,
+    "rayon_id": 145,
+    "area_id": 32,
+    "name": "Kab Tana Toraja",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 471,
+    "rayon_id": 145,
+    "area_id": 32,
+    "name": "Kab Toraja Utara",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 472,
+    "rayon_id": 145,
+    "area_id": 32,
+    "name": "Kota Palopo",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 473,
+    "rayon_id": 146,
+    "area_id": 35,
+    "name": "Kab Boalemo",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 474,
+    "rayon_id": 146,
+    "area_id": 35,
+    "name": "Kab Gorontalo Utara",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 475,
+    "rayon_id": 146,
+    "area_id": 35,
+    "name": "Kab Pohuwato",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 476,
+    "rayon_id": 147,
+    "area_id": 38,
+    "name": "Kab Gresik",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 477,
+    "rayon_id": 147,
+    "area_id": 38,
+    "name": "Kab Lamongan",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 478,
+    "rayon_id": 148,
+    "area_id": 39,
+    "name": "Kab Kebumen",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 479,
+    "rayon_id": 148,
+    "area_id": 39,
+    "name": "Kab Purworejo",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 480,
+    "rayon_id": 149,
+    "area_id": 40,
+    "name": "Kab Boyolali",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 481,
+    "rayon_id": 149,
+    "area_id": 40,
+    "name": "Kab Klaten",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 482,
+    "rayon_id": 149,
+    "area_id": 40,
+    "name": "Kota Surakarta",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 483,
+    "rayon_id": 150,
+    "area_id": 4,
+    "name": "Kab Tasikmalaya",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 484,
+    "rayon_id": 150,
+    "area_id": 4,
+    "name": "Kota Tasikmalaya",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 485,
+    "rayon_id": 151,
+    "area_id": 8,
+    "name": "Kota Depok",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 486,
+    "rayon_id": 152,
+    "area_id": 13,
+    "name": "Kab Berau",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 487,
+    "rayon_id": 152,
+    "area_id": 13,
+    "name": "Kab Bulungan",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 488,
+    "rayon_id": 152,
+    "area_id": 13,
+    "name": "Kab Malinau",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 489,
+    "rayon_id": 152,
+    "area_id": 13,
+    "name": "Kab Tanah Tidung",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 490,
+    "rayon_id": 153,
+    "area_id": 15,
+    "name": "Kab Pacitan",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 491,
+    "rayon_id": 153,
+    "area_id": 15,
+    "name": "Kab Ponorogo",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 492,
+    "rayon_id": 154,
+    "area_id": 29,
+    "name": "Kab Blora",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 493,
+    "rayon_id": 154,
+    "area_id": 29,
+    "name": "Kab Rembang",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 494,
+    "rayon_id": 155,
+    "area_id": 32,
+    "name": "Kab Majene",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 495,
+    "rayon_id": 155,
+    "area_id": 32,
+    "name": "Kab Mamasa",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 496,
+    "rayon_id": 155,
+    "area_id": 32,
+    "name": "Kab Mamuju",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 497,
+    "rayon_id": 155,
+    "area_id": 32,
+    "name": "Kab Mamuju Tengah",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 498,
+    "rayon_id": 155,
+    "area_id": 32,
+    "name": "Kab Pasangkayu",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 499,
+    "rayon_id": 155,
+    "area_id": 32,
+    "name": "Kab Polewali Mandar",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 500,
+    "rayon_id": 156,
+    "area_id": 38,
+    "name": "Kab Pamekasan",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 501,
+    "rayon_id": 156,
+    "area_id": 38,
+    "name": "Kab Sumenep",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 502,
+    "rayon_id": 157,
+    "area_id": 39,
+    "name": "Kab Banjarnegara",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 503,
+    "rayon_id": 157,
+    "area_id": 39,
+    "name": "Kab Purbalingga",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 504,
+    "rayon_id": 158,
+    "area_id": 40,
+    "name": "Kab Karanganyar",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 505,
+    "rayon_id": 158,
+    "area_id": 40,
+    "name": "Kab Sragen",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 506,
+    "rayon_id": 159,
+    "area_id": 4,
+    "name": "Kab Pangandaran",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 507,
+    "rayon_id": 160,
+    "area_id": 8,
+    "name": "Kota Bogor",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 508,
+    "rayon_id": 161,
+    "area_id": 29,
+    "name": "Kab Temanggung",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 509,
+    "rayon_id": 161,
+    "area_id": 29,
+    "name": "Kab Wonosobo",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 510,
+    "rayon_id": 162,
+    "area_id": 38,
+    "name": "Kab Bangkalan",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 511,
+    "rayon_id": 162,
+    "area_id": 38,
+    "name": "Kab Sampang",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 512,
+    "rayon_id": 163,
+    "area_id": 40,
+    "name": "Kab Sukoharjo",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 513,
+    "rayon_id": 163,
+    "area_id": 40,
+    "name": "Kab Wonogiri",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  },
+  {
+    "id": 514,
+    "rayon_id": 164,
+    "area_id": 8,
+    "name": "Kab Bogor",
+    "created_by": "NULL",
+    "updated_by": "NULL",
+    "created_at": "2024-05-14 17:13:46",
+    "updated_at": "2024-05-14 17:13:46"
+  }
+]

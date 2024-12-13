@@ -1,0 +1,17 @@
+[
+  {"label": "forgot password", "value": 1},
+  {"label": "new user from third party", "value": 2},
+  {"label": "feedback for user", "value": 3},
+  {"label": "feedback for admin", "value": 4},
+  {"label": "reminder resi", "value": 5},
+  {"label": "new transaction for user", "value": 6},
+  {"label": "new transaction for admin", "value": 7},
+  {"label": "success payment for user", "value": 8},
+  {"label": "success payment for admin", "value": 9},
+  {"label": "expired transaction for user", "value": 10},
+  {"label": "completed transaction for user", "value": 11},
+  {"label": "reminder produk qty", "value": 12},
+  {"label": "new user from signup", "value": 13},
+  {"label": "new user for admin", "value": 14}
+]
+
