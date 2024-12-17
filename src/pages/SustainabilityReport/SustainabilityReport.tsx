@@ -5,10 +5,9 @@ import {useLocation, useNavigate, useSearchParams} from "react-router-dom";
 
 // component
 import {Button} from "@/components/ui/button";
-import {Copy, SquarePen, Trash2} from "lucide-react";
+import {SquarePen, Trash2} from "lucide-react";
 import {AlertModal} from "@/components/Modal/AlertModal";
 import MainTable from "@/components/MainTable";
-import {Checkbox} from "@/components/ui/checkbox";
 import TableHeaderPage from "@/components/TableHeaderPage";
 import {
   ColumnDef,
@@ -30,11 +29,12 @@ import {Permissions} from "@/types";
 import settledHandler from "@/helper/settledHandler";
 import {toast} from "react-toastify";
 import {useDebounce} from "@/components/ui/MultipleSelector";
-import {ResidentialItem} from "@/types/residential";
+import CONTENT_TYPE from "@/helper/content-type";
+import {ContentType} from "@/types/content";
 
 // schema
-const title_page = "Residential";
-const prefix_route = "/dashboard/residential";
+const title_page = "Sustainability Report";
+const prefix_route = "/dashboard/sustainability-report";
 
 interface MetaTable {
   refetch: () => void;
@@ -42,81 +42,45 @@ interface MetaTable {
 }
 
 // child components
-const columns: ColumnDef<ResidentialItem>[] = [
+const columns: ColumnDef<ContentType>[] = [
   {
-    id: "select",
-    header: ({table}) => (
-      <Checkbox
-        checked={table.getIsAllPageRowsSelected() || (table.getIsSomePageRowsSelected() && "indeterminate")}
-        onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
-        aria-label="Select all"
-      />
-    ),
+    header: "Title",
+    accessorKey: "title.en",
     cell: ({row}) => (
-      <Checkbox
-        checked={row.getIsSelected()}
-        onCheckedChange={(value) => row.toggleSelected(!!value)}
-        aria-label="Select row"
-      />
+      <div className="flex flex-col space-y-1">
+        <span className="pb-2 border-b">{row.original.title.en}</span>
+        <span>{row.original.title.id}</span>
+      </div>
     ),
-    enableSorting: false,
-    enableHiding: false,
   },
+
   {
-    header: "Project Name",
-    accessorKey: "title",
+    header: "Order",
+    accessorKey: "order",
   },
-  {
-    header: "Meta Title",
-    accessorKey: "meta_title",
-  },
-  {
-    header: "Meta Description",
-    accessorKey: "meta_description",
-  },
+
   {
     header: "Active Status",
     accessorKey: "active_status",
-
     cell: ({row}) => {
       return <div>{row.original.active_status ? "Active" : "Inactive"}</div>;
     },
   },
-  {
-    header: "Link (Front End)",
-    accessorKey: "_id",
-    cell: ({row}) => {
-      let prefix = "/project/residential/";
-      let finalLink = prefix + row.original.slug;
 
-      return (
-        <Button
-          onClick={() => {
-            navigator.clipboard.writeText(finalLink);
-            toast.success(<ToastBody title="Link copied" description={""} />);
-          }}
-          className="space-x-2"
-        >
-          <Copy size={14} />
-          <p>Copy Link</p>
-        </Button>
-      );
-    },
-  },
   {
     id: "actions",
     cell: ({row, table}) => <TableCallOut row={row} table={table} />,
   },
 ];
 
-const TableCallOut: React.FC<{row: Row<ResidentialItem>; table: Table<ResidentialItem>}> = ({row, table}) => {
+const TableCallOut: React.FC<{row: Row<ContentType>; table: Table<ContentType>}> = ({row, table}) => {
   const metaTable: MetaTable | undefined = table.options.meta as any;
   const navigate = useNavigate();
 
   const [showDelete, setShowDelete] = useState(false);
 
   const {mutate: removeUser, isLoading} = useMutation({
-    mutationFn: async (data: {residential_id: string[]}) => await ApiService.secure().delete("/residential", data),
+    mutationFn: async (data: {content_id: string[]}) => await ApiService.secure().delete("/content", data),
     onSettled: async (response) =>
       settledHandler({
         response,
@@ -152,7 +116,7 @@ const TableCallOut: React.FC<{row: Row<ResidentialItem>; table: Table<Residentia
         title="Are you sure want to remove ?"
         description="Alert removed item cant be undo"
         onConfirm={() => {
-          let payload = {residential_id: [row.original._id]};
+          let payload = {content_id: [row.original._id]};
           removeUser(payload);
           setShowDelete(false);
         }}
@@ -162,7 +126,7 @@ const TableCallOut: React.FC<{row: Row<ResidentialItem>; table: Table<Residentia
 };
 
 // main component
-const Residential: React.FC<{permissions: Permissions}> = ({permissions}) => {
+const SustainabilityReport: React.FC<{permissions: Permissions}> = ({permissions}) => {
   const limit_table = 10;
   const location = useLocation();
   const navigate = useNavigate();
@@ -229,14 +193,14 @@ const Residential: React.FC<{permissions: Permissions}> = ({permissions}) => {
       let quries: any = {
         page: pageIndex + 1,
         limit: pageSize,
-        // type: CONTENT_TYPE.NEWS,
+        type: CONTENT_TYPE.SUSTAINABILITY_REPORT,
       };
 
       if (searchTableQuery?.length) {
         quries.query = searchTableQuery;
       }
 
-      const response = await ApiService.secure().get(`/residential`, quries);
+      const response = await ApiService.secure().get(`/content`, quries);
 
       if (response.data.status !== 200) {
         throw new Error(response.data.err);
@@ -289,5 +253,5 @@ const Residential: React.FC<{permissions: Permissions}> = ({permissions}) => {
   );
 };
 
-export default Residential;
+export default SustainabilityReport;
 

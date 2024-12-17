@@ -23,18 +23,33 @@ const title_page = "Career";
 const action_context = "Create";
 
 const formSchema = z.object({
-  meta_title: z.string({required_error: "Field required"}).min(1),
-  meta_description: z.string({required_error: "Field required"}).min(1),
-  title: z.string({required_error: "Field required"}).min(1),
+  meta_title: z.object({
+    en: z.string({required_error: "Field required"}).min(1),
+    id: z.string({required_error: "Field required"}).min(1),
+  }),
+  meta_description: z.object({
+    en: z.string({required_error: "Field required"}).min(1),
+    id: z.string({required_error: "Field required"}).min(1),
+  }),
+  title: z.object({
+    en: z.string({required_error: "Field required"}).min(1),
+    id: z.string({required_error: "Field required"}).min(1),
+  }),
+  description: z.object({
+    en: z.string({required_error: "Field required"}).min(1),
+    id: z.string({required_error: "Field required"}).min(1),
+  }),
+  small_text: z.object({
+    en: z.string({required_error: "Field required"}).min(1),
+    id: z.string({required_error: "Field required"}).min(1),
+  }),
   active_status: z.boolean().default(false),
-  description: z.string({required_error: "Field required"}).min(1),
-  bottom_text: z.string().min(0),
+  type: z.string().default(CONTENT_TYPE.CAREER),
+  order: z.number().default(0),
 });
 
 type DataFormValue = z.infer<typeof formSchema>;
-type Payload = Omit<DataFormValue, "related"> & {
-  type: string;
-};
+type Payload = Omit<DataFormValue, "">;
 
 const CareerCreate = () => {
   const navigate = useNavigate();
@@ -58,7 +73,9 @@ const CareerCreate = () => {
   );
 
   const onSubmit = (data: DataFormValue) => {
-    mutate({...data, type: CONTENT_TYPE.CAREER_DETAIL});
+    mutate({
+      ...data,
+    });
   };
 
   return (
@@ -77,14 +94,14 @@ const CareerCreate = () => {
           <h4 className="pb-2 text-lg font-medium border-b border-primary/10">Meta Fields</h4>
           <Controller
             control={form.control}
-            name="meta_title"
+            name="meta_title.en"
             render={({field, fieldState: {error}}) => (
               <div className="flex flex-col space-y-2">
                 <label
                   htmlFor={field.name}
                   className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                 >
-                  Meta Title
+                  Meta Title (EN)
                 </label>
                 <Input
                   id={field.name}
@@ -101,14 +118,61 @@ const CareerCreate = () => {
           />
           <Controller
             control={form.control}
-            name="meta_description"
+            name="meta_description.en"
             render={({field, fieldState: {error}}) => (
               <div className="flex flex-col space-y-2">
                 <label
                   htmlFor={field.name}
                   className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                 >
-                  Meta Description
+                  Meta Description (EN)
+                </label>
+                <Textarea
+                  id={field.name}
+                  ref={field.ref}
+                  placeholder="Enter meta description"
+                  disabled={isLoading}
+                  value={field.value}
+                  onChange={(e) => field.onChange(e.target.value)}
+                />
+                {error?.message ? <p className="text-xs font-medium text-destructive">{error?.message}</p> : null}
+              </div>
+            )}
+          />
+          <Controller
+            control={form.control}
+            name="meta_title.id"
+            render={({field, fieldState: {error}}) => (
+              <div className="flex flex-col space-y-2">
+                <label
+                  htmlFor={field.name}
+                  className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                >
+                  Meta Title (ID)
+                </label>
+                <Input
+                  id={field.name}
+                  ref={field.ref}
+                  type="text"
+                  placeholder="Enter meta title"
+                  disabled={isLoading}
+                  value={field.value}
+                  onChange={(e) => field.onChange(e.target.value)}
+                />
+                {error?.message ? <p className="text-xs font-medium text-destructive">{error?.message}</p> : null}
+              </div>
+            )}
+          />
+          <Controller
+            control={form.control}
+            name="meta_description.id"
+            render={({field, fieldState: {error}}) => (
+              <div className="flex flex-col space-y-2">
+                <label
+                  htmlFor={field.name}
+                  className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                >
+                  Meta Description (ID)
                 </label>
                 <Textarea
                   id={field.name}
@@ -125,14 +189,14 @@ const CareerCreate = () => {
           <h4 className="pb-2 text-lg font-medium border-b border-primary/10">Content Fields</h4>
           <Controller
             control={form.control}
-            name="title"
+            name="title.en"
             render={({field, fieldState: {error}}) => (
               <div className="flex flex-col space-y-2">
                 <label
                   htmlFor={field.name}
                   className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                 >
-                  Title
+                  Title (EN)
                 </label>
                 <Input
                   id={field.name}
@@ -149,14 +213,85 @@ const CareerCreate = () => {
           />
           <Controller
             control={form.control}
-            name="description"
+            name="title.id"
             render={({field, fieldState: {error}}) => (
               <div className="flex flex-col space-y-2">
                 <label
                   htmlFor={field.name}
                   className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                 >
-                  Summary Description
+                  Title (ID)
+                </label>
+                <Input
+                  id={field.name}
+                  ref={field.ref}
+                  type="text"
+                  placeholder="Enter title"
+                  disabled={isLoading}
+                  value={field.value}
+                  onChange={(e) => field.onChange(e.target.value)}
+                />
+                {error?.message ? <p className="text-xs font-medium text-destructive">{error?.message}</p> : null}
+              </div>
+            )}
+          />
+
+          <Controller
+            control={form.control}
+            name="small_text.en"
+            render={({field, fieldState: {error}}) => (
+              <div className="flex flex-col space-y-2">
+                <label
+                  htmlFor={field.name}
+                  className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                >
+                  Thumbnail Description (EN)
+                </label>
+                <Textarea
+                  id={field.name}
+                  ref={field.ref}
+                  placeholder="Enter description"
+                  disabled={isLoading}
+                  value={field.value}
+                  onChange={(e) => field.onChange(e.target.value)}
+                />
+                {error?.message ? <p className="text-xs font-medium text-destructive">{error?.message}</p> : null}
+              </div>
+            )}
+          />
+          <Controller
+            control={form.control}
+            name="small_text.id"
+            render={({field, fieldState: {error}}) => (
+              <div className="flex flex-col space-y-2">
+                <label
+                  htmlFor={field.name}
+                  className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                >
+                  Thumbnail Description (ID)
+                </label>
+                <Textarea
+                  id={field.name}
+                  ref={field.ref}
+                  placeholder="Enter description"
+                  disabled={isLoading}
+                  value={field.value}
+                  onChange={(e) => field.onChange(e.target.value)}
+                />
+                {error?.message ? <p className="text-xs font-medium text-destructive">{error?.message}</p> : null}
+              </div>
+            )}
+          />
+          <Controller
+            control={form.control}
+            name="description.en"
+            render={({field, fieldState: {error}}) => (
+              <div className="flex flex-col space-y-2">
+                <label
+                  htmlFor={field.name}
+                  className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                >
+                  Body (EN)
                 </label>
                 <Ckeditor5
                   ref={field.ref}
@@ -171,27 +306,56 @@ const CareerCreate = () => {
           />
           <Controller
             control={form.control}
-            name="bottom_text"
+            name="description.id"
             render={({field, fieldState: {error}}) => (
               <div className="flex flex-col space-y-2">
                 <label
                   htmlFor={field.name}
                   className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                 >
-                  Details Description
+                  Body (ID)
                 </label>
                 <Ckeditor5
                   ref={field.ref}
                   onBlur={field.onBlur}
                   value={field.value}
                   onChange={field.onChange}
-                  placeholder="Enter Description"
+                  placeholder="Enter Body"
                 />
                 {error?.message ? <p className="text-xs font-medium text-destructive">{error?.message}</p> : null}
               </div>
             )}
           />
 
+          <Controller
+            control={form.control}
+            name="order"
+            render={({field, fieldState: {error}}) => (
+              <div className="flex flex-col space-y-2">
+                <label
+                  htmlFor={field.name}
+                  className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                >
+                  Order
+                </label>
+                <Input
+                  type="Name"
+                  {...field}
+                  placeholder="Enter order"
+                  onKeyPress={(event) => {
+                    if (!/[0-9]/.test(event.key)) {
+                      event.preventDefault();
+                    }
+                  }}
+                  disabled={isLoading}
+                  onChange={(e) => {
+                    field.onChange(+e.target.value);
+                  }}
+                />
+                {error?.message ? <p className="text-xs font-medium text-destructive">{error?.message}</p> : null}
+              </div>
+            )}
+          />
           <Controller
             control={form.control}
             name="active_status"

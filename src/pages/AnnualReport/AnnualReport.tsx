@@ -5,10 +5,9 @@ import {useLocation, useNavigate, useSearchParams} from "react-router-dom";
 
 // component
 import {Button} from "@/components/ui/button";
-import {Copy, SquarePen, Trash2} from "lucide-react";
+import {SquarePen, Trash2} from "lucide-react";
 import {AlertModal} from "@/components/Modal/AlertModal";
 import MainTable from "@/components/MainTable";
-import {Checkbox} from "@/components/ui/checkbox";
 import TableHeaderPage from "@/components/TableHeaderPage";
 import {
   ColumnDef,
@@ -34,8 +33,8 @@ import CONTENT_TYPE from "@/helper/content-type";
 import {ContentType} from "@/types/content";
 
 // schema
-const title_page = "Commercial";
-const prefix_route = "/dashboard/commercial";
+const title_page = "Annual Report";
+const prefix_route = "/dashboard/annual-report";
 
 interface MetaTable {
   refetch: () => void;
@@ -45,60 +44,26 @@ interface MetaTable {
 // child components
 const columns: ColumnDef<ContentType>[] = [
   {
-    id: "select",
-    header: ({table}) => (
-      <Checkbox
-        checked={table.getIsAllPageRowsSelected() || (table.getIsSomePageRowsSelected() && "indeterminate")}
-        onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
-        aria-label="Select all"
-      />
-    ),
-    cell: ({row}) => (
-      <Checkbox
-        checked={row.getIsSelected()}
-        onCheckedChange={(value) => row.toggleSelected(!!value)}
-        aria-label="Select row"
-      />
-    ),
-    enableSorting: false,
-    enableHiding: false,
-  },
-  {
     header: "Title",
-    accessorKey: "title",
+    accessorKey: "title.en",
+    cell: ({row}) => (
+      <div className="flex flex-col space-y-1">
+        <span className="pb-2 border-b">{row.original.title.en}</span>
+        <span>{row.original.title.id}</span>
+      </div>
+    ),
   },
 
   {
-    header: "Views",
-    accessorKey: "total_view",
+    header: "Order",
+    accessorKey: "order",
   },
+
   {
     header: "Active Status",
     accessorKey: "active_status",
-
     cell: ({row}) => {
       return <div>{row.original.active_status ? "Active" : "Inactive"}</div>;
-    },
-  },
-  {
-    header: "Link (Front End)",
-    accessorKey: "_id",
-    cell: ({row}) => {
-      let prefix = "/project/commercial/";
-      let finalLink = prefix + row.original.slug;
-
-      return (
-        <Button
-          onClick={() => {
-            navigator.clipboard.writeText(finalLink);
-            toast.success(<ToastBody title="Link copied" description={""} />);
-          }}
-          className="space-x-2"
-        >
-          <Copy size={14} />
-          <p>Copy Link</p>
-        </Button>
-      );
     },
   },
 
@@ -161,7 +126,7 @@ const TableCallOut: React.FC<{row: Row<ContentType>; table: Table<ContentType>}>
 };
 
 // main component
-const Commercial: React.FC<{permissions: Permissions}> = ({permissions}) => {
+const AnnualReport: React.FC<{permissions: Permissions}> = ({permissions}) => {
   const limit_table = 10;
   const location = useLocation();
   const navigate = useNavigate();
@@ -228,7 +193,7 @@ const Commercial: React.FC<{permissions: Permissions}> = ({permissions}) => {
       let quries: any = {
         page: pageIndex + 1,
         limit: pageSize,
-        type: CONTENT_TYPE.getTypeNumber(CONTENT_TYPE.COMMERCIAL),
+        type: CONTENT_TYPE.ANNUAL_REPORT,
       };
 
       if (searchTableQuery?.length) {
@@ -288,5 +253,5 @@ const Commercial: React.FC<{permissions: Permissions}> = ({permissions}) => {
   );
 };
 
-export default Commercial;
+export default AnnualReport;
 

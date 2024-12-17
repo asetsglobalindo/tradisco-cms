@@ -1,6 +1,4 @@
-import About from "./pages/About/About";
 import AccountSetting from "./pages/AccountSetting";
-import BannerPage from "./pages/BannerPage/BannerPage";
 import Business from "./pages/Business/Business";
 import BusinessCreate from "./pages/Business/BusinessCreate";
 import BusinessUpdate from "./pages/Business/BusinessUpdate";
@@ -8,48 +6,44 @@ import BusinessCategory from "./pages/BusinessCategory/BusinessCategory";
 import Career from "./pages/Career/Career";
 import CareerCreate from "./pages/Career/CareerCreate";
 import CareerUpdate from "./pages/Career/CareerUpdate";
-import CareerPage from "./pages/CareerPage/CareerPage";
-import Commercial from "./pages/Commercial/Commercial";
-import CommercialCreate from "./pages/Commercial/CommercialCreate";
-import CommercialUpdate from "./pages/Commercial/CommercialUpdate";
-import ContactUsPage from "./pages/ContactUsPage/ContactUsPage";
-import FooterContent from "./pages/FooterContent/FooterContent";
 import Header from "./pages/Header/Header";
 import HeaderCreate from "./pages/Header/HeaderCreate";
 import HeaderUpdate from "./pages/Header/HeaderUpdate";
 import HomePage from "./pages/HomePage/HomePage";
+import AnnualReport from "./pages/AnnualReport/AnnualReport";
+import AnnualReportCreate from "./pages/AnnualReport/AnnualReportCreate";
+import AnnualReportUpdate from "./pages/AnnualReport/AnnualReportUpdate";
 import Location from "./pages/Location/Location";
 import News from "./pages/News/News";
 import NewsCreate from "./pages/News/NewsCreate";
 import NewsUpdate from "./pages/News/NewsUpdate";
 import NewsCategory from "./pages/NewsCategory/NewsCategory";
-import NewsPage from "./pages/NewsPage/NewsPage";
 import PageSetting from "./pages/PageSetting/PageSetting";
-import ProjectPage from "./pages/Project/ProjectPage";
-import Residential from "./pages/Residential/Residential";
-import ResidentialCreate from "./pages/Residential/ResidentialCreate";
-import ResidentialUpdate from "./pages/Residential/ResidentialUpdate";
+
 import Role from "./pages/Role/Role";
 import RoleCreate from "./pages/Role/RoleCreate";
 import RoleUpdate from "./pages/Role/RoleUpdate";
 import Users from "./pages/Users/Users";
 import UsersCreate from "./pages/Users/UsersCreate";
 import UsersUpdate from "./pages/Users/UsersUpdate";
+import SustainabilityReport from "./pages/SustainabilityReport/SustainabilityReport";
+import SustainabilityReportCreate from "./pages/SustainabilityReport/SustainabilityReportCreate";
+import SustainabilityReportUpdate from "./pages/SustainabilityReport/SustainabilityReportUpdate";
+import BannerPage from "./pages/BannerPage/BannerPage";
 
 const pagesListWithChilds = [
-  // residential
   {
-    route: "/dashboard/residential",
-    component: Residential,
+    route: "/dashboard/sustainability-report",
+    component: SustainabilityReport,
     childs: [
       {
-        route: "/dashboard/residential/create",
-        component: ResidentialCreate,
+        route: "/dashboard/sustainability-report/create",
+        component: SustainabilityReportCreate,
         access: "create",
       },
       {
-        route: "/dashboard/residential/update/:id",
-        component: ResidentialUpdate,
+        route: "/dashboard/sustainability-report/update/:id",
+        component: SustainabilityReportUpdate,
         access: "update",
       },
     ],
@@ -73,24 +67,7 @@ const pagesListWithChilds = [
     ],
     hasChild: true,
   },
-  // Commercial
-  {
-    route: "/dashboard/commercial",
-    component: Commercial,
-    childs: [
-      {
-        route: "/dashboard/commercial/create",
-        component: CommercialCreate,
-        access: "create",
-      },
-      {
-        route: "/dashboard/commercial/update/:id",
-        component: CommercialUpdate,
-        access: "update",
-      },
-    ],
-    hasChild: true,
-  },
+
   // news
   {
     route: "/dashboard/news",
@@ -182,15 +159,26 @@ const pagesListWithChilds = [
     ],
     hasChild: true,
   },
+  {
+    route: "/dashboard/annual-report",
+    component: AnnualReport,
+    childs: [
+      {
+        route: "/dashboard/annual-report/create",
+        component: AnnualReportCreate,
+        access: "create",
+      },
+      {
+        route: "/dashboard/annual-report/update/:id",
+        component: AnnualReportUpdate,
+        access: "update",
+      },
+    ],
+    hasChild: true,
+  },
 ];
 
 const pageListNoChild = [
-  {
-    route: "/dashboard/project-page",
-    component: ProjectPage,
-    childs: [],
-    hasChild: false,
-  },
   {
     route: "/dashboard/location",
     component: Location,
@@ -210,44 +198,15 @@ const pageListNoChild = [
     hasChild: false,
   },
   {
-    route: "/dashboard/contact-us-page",
-    component: ContactUsPage,
-    childs: [],
-    hasChild: false,
-  },
-  {
-    route: "/dashboard/footer-content",
-    component: FooterContent,
-    childs: [],
-    hasChild: false,
-  },
-  {
-    route: "/dashboard/home-page",
-    component: HomePage,
-    childs: [],
-    hasChild: false,
-  },
-  {
     route: "/dashboard/banner-page",
     component: BannerPage,
     childs: [],
     hasChild: false,
   },
+
   {
-    route: "/dashboard/news-page",
-    component: NewsPage,
-    childs: [],
-    hasChild: false,
-  },
-  {
-    route: "/dashboard/career-page",
-    component: CareerPage,
-    childs: [],
-    hasChild: false,
-  },
-  {
-    route: "/dashboard/about-page",
-    component: About,
+    route: "/dashboard/home-page",
+    component: HomePage,
     childs: [],
     hasChild: false,
   },

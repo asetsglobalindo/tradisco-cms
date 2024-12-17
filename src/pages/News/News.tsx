@@ -8,7 +8,6 @@ import {Button} from "@/components/ui/button";
 import {Copy, SquarePen, Trash2} from "lucide-react";
 import {AlertModal} from "@/components/Modal/AlertModal";
 import MainTable from "@/components/MainTable";
-import {Checkbox} from "@/components/ui/checkbox";
 import TableHeaderPage from "@/components/TableHeaderPage";
 import {
   ColumnDef,
@@ -45,23 +44,17 @@ interface MetaTable {
 // child components
 const columns: ColumnDef<ContentType>[] = [
   {
-    id: "select",
-    header: ({table}) => (
-      <Checkbox
-        checked={table.getIsAllPageRowsSelected() || (table.getIsSomePageRowsSelected() && "indeterminate")}
-        onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
-        aria-label="Select all"
-      />
-    ),
+    header: "Thumbnail",
+    accessorKey: "thumbnail_images",
     cell: ({row}) => (
-      <Checkbox
-        checked={row.getIsSelected()}
-        onCheckedChange={(value) => row.toggleSelected(!!value)}
-        aria-label="Select row"
-      />
+      <div className="flex flex-col space-y-1">
+        <img
+          className="object-cover w-20 aspect-square"
+          src={row.original.thumbnail_images[0].en.images[0].url}
+          alt=""
+        />
+      </div>
     ),
-    enableSorting: false,
-    enableHiding: false,
   },
   {
     header: "Title",
@@ -73,12 +66,10 @@ const columns: ColumnDef<ContentType>[] = [
       </div>
     ),
   },
-
   {
     header: "Category",
     accessorKey: "category_id.name.en",
   },
-
   {
     header: "Order",
     accessorKey: "order",

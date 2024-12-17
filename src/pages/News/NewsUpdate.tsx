@@ -30,6 +30,7 @@ import {cn} from "@/lib/utils";
 import {Check, ChevronsUpDown} from "lucide-react";
 import {CategoryType} from "../NewsCategory/NewsCategory";
 import Ckeditor5 from "@/components/Ckeditor5";
+import combineImageMultiLang from "@/helper/combineImageMultiLang";
 
 const title_page = "News";
 const action_context = "Update";
@@ -43,10 +44,11 @@ const formSchema = z.object({
     en: z.string({required_error: "Field required"}).min(1),
     id: z.string({required_error: "Field required"}).min(1),
   }),
-  thumbnail_images: z.object({
-    id: z.string().array(),
-    en: z.string().array(),
-  }),
+  thumbnail_images_en: z.string().array().default([]),
+  thumbnail_images_id: z.string().array().default([]),
+  images_en: z.string().array().default([]),
+  images_id: z.string().array().default([]),
+
   title: z.object({
     en: z.string({required_error: "Field required"}).min(1),
     id: z.string({required_error: "Field required"}).min(1),
@@ -71,13 +73,21 @@ const formSchema = z.object({
 });
 
 type DataFormValue = z.infer<typeof formSchema>;
-type Payload = Omit<DataFormValue, "thumbnail_images"> & {
+type Payload = Omit<DataFormValue, "thumbnail_images" | "images"> & {
   type: string;
   content_id: string;
-  thumbnail_images: {
-    id: string;
-    en: string;
-  };
+  thumbnail_images:
+    | {
+        id: string;
+        en: string;
+      }[]
+    | [];
+  images:
+    | {
+        id: string;
+        en: string;
+      }[]
+    | [];
 };
 
 const NewsUpdate = () => {
@@ -121,15 +131,20 @@ const NewsUpdate = () => {
     }
   };
 
-  const onSubmit = (data: DataFormValue) => {
-    mutate({
-      ...data,
-      content_id: id || "",
-      thumbnail_images: {
-        id: data.thumbnail_images.id[0],
-        en: data.thumbnail_images.en[0],
-      },
-    });
+  const onSubmit = async (data: DataFormValue) => {
+    try {
+      const thumbnail_images = combineImageMultiLang(data.thumbnail_images_en, data.thumbnail_images_id);
+      const images = combineImageMultiLang(data.images_en, data.images_id);
+
+      mutate({
+        ...data,
+        content_id: id || "",
+        images: images,
+        thumbnail_images: thumbnail_images,
+      });
+    } catch (error: any) {
+      toast.error(<ToastBody title="an error occurred" description={error.message || "Something went wrong"} />);
+    }
   };
 
   useEffect(() => {
@@ -151,10 +166,10 @@ const NewsUpdate = () => {
           category_id: result?.category_id?._id,
           small_text: result.small_text,
           order: result.order,
-          thumbnail_images: {
-            id: result.thumbnail_images?.length ? [result.thumbnail_images[0].id] : [],
-            en: result.thumbnail_images?.length ? [result.thumbnail_images[0].en] : [],
-          },
+          thumbnail_images_en: result.thumbnail_images.map((img) => img.en._id) || [],
+          thumbnail_images_id: result.thumbnail_images.map((img) => img.id._id) || [],
+          images_en: result.images.map((img) => img.en._id) || [],
+          images_id: result.images.map((img) => img.id._id) || [],
         });
       } catch (error: any) {
         toast.error(<ToastBody title="an error occurred" description={error.message || "Something went wrong"} />);
@@ -471,7 +486,7 @@ const NewsUpdate = () => {
           />
           <Controller
             control={form.control}
-            name="thumbnail_images.en"
+            name="thumbnail_images_en"
             render={({field}) => {
               return (
                 <ImageRepository
@@ -482,7 +497,27 @@ const NewsUpdate = () => {
                   value={field.value?.length ? field.value : []}
                   onChange={(data) => {
                     let value = data.map((img) => img._id);
-                    form.setValue("thumbnail_images.id", value);
+                    form.setValue("thumbnail_images_id", value);
+                    field.onChange(value);
+                  }}
+                />
+              );
+            }}
+          />
+          <Controller
+            control={form.control}
+            name="images_en"
+            render={({field}) => {
+              return (
+                <ImageRepository
+                  label="Banner"
+                  limit={1}
+                  mobileSize={false}
+                  img_type={IMG_TYPE.NEWS}
+                  value={field.value?.length ? field.value : []}
+                  onChange={(data) => {
+                    let value = data.map((img) => img._id);
+                    form.setValue("images_id", value);
                     field.onChange(value);
                   }}
                 />

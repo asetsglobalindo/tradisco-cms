@@ -65,17 +65,28 @@ const columns: ColumnDef<ContentType>[] = [
   },
   {
     header: "Title",
-    accessorKey: "title",
+    accessorKey: "title.en",
+    cell: ({row}) => (
+      <div className="flex flex-col space-y-1">
+        <span className="pb-2 border-b">{row.original.title.en}</span>
+        <span>{row.original.title.id}</span>
+      </div>
+    ),
   },
 
   {
-    header: "Views",
-    accessorKey: "total_view",
+    header: "Category",
+    accessorKey: "category_id.name.en",
   },
+
+  {
+    header: "Order",
+    accessorKey: "order",
+  },
+
   {
     header: "Active Status",
     accessorKey: "active_status",
-
     cell: ({row}) => {
       return <div>{row.original.active_status ? "Active" : "Inactive"}</div>;
     },
@@ -84,7 +95,7 @@ const columns: ColumnDef<ContentType>[] = [
     header: "Link (Front End)",
     accessorKey: "_id",
     cell: ({row}) => {
-      let prefix = "/career/";
+      let prefix = "/news/";
       let finalLink = prefix + row.original.slug;
 
       return (
@@ -101,6 +112,7 @@ const columns: ColumnDef<ContentType>[] = [
       );
     },
   },
+
   {
     id: "actions",
     cell: ({row, table}) => <TableCallOut row={row} table={table} />,
@@ -227,7 +239,7 @@ const Career: React.FC<{permissions: Permissions}> = ({permissions}) => {
       let quries: any = {
         page: pageIndex + 1,
         limit: pageSize,
-        type: CONTENT_TYPE.getTypeNumber(CONTENT_TYPE.CAREER_DETAIL),
+        type: CONTENT_TYPE.CAREER,
       };
 
       if (searchTableQuery?.length) {
@@ -288,4 +300,3 @@ const Career: React.FC<{permissions: Permissions}> = ({permissions}) => {
 };
 
 export default Career;
-

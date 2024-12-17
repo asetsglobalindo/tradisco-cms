@@ -49,14 +49,28 @@ export interface ContentType {
   };
   body: {
     type: number;
-    title: string;
-    text: string;
-    image_size: 2;
+    title: {
+      en: string;
+      id: string;
+    };
+    text: {
+      en: string;
+      id: string;
+    };
+    image_size: number;
     top: number;
     left: number;
-    button_name: string;
+    button_name: {
+      en: string;
+      id: string;
+    };
     button_route: string;
-    images: ContentImage[];
+    images:
+      | {
+          en: ContentImage;
+          id: ContentImage;
+        }[]
+      | [];
     _id: string;
   }[];
   bottom_text: string;
@@ -65,11 +79,16 @@ export interface ContentType {
   active_status: boolean;
   total_view: number;
   order: number;
-  images: ContentImage[] | [];
+  images:
+    | {
+        id: ContentImage;
+        en: ContentImage;
+      }[]
+    | [];
   thumbnail_images:
     | {
-        id: string;
-        en: string;
+        id: ContentImage;
+        en: ContentImage;
       }[]
     | [];
   thumbnail_images2: ContentImage[] | [];

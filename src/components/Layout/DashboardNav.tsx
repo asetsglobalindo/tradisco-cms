@@ -100,7 +100,9 @@ export function DashboardNav({setOpen}: DashboardNavProps) {
             data?.map((parent) => (
               <AccordionItem key={parent.label} value={parent.label}>
                 <AccordionTrigger className="hover:no-underline">
-                  <div className="flex items-center gap-2 font-medium tracking-wide capitalize">{parent.label}</div>
+                  <div className="flex items-center gap-2 font-medium tracking-wide text-left capitalize">
+                    {parent.label}
+                  </div>
                 </AccordionTrigger>
                 <AccordionContent>
                   {parent.items.map((item) => {
@@ -115,7 +117,9 @@ export function DashboardNav({setOpen}: DashboardNavProps) {
                         <span
                           className={cn(
                             "group flex items-center rounded-md  p-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground",
-                            location.pathname === item.to ? "font-semibold bg-accent" : "font-normal"
+                            "/dashboard/" + location.pathname.split("/")[2] === item.to
+                              ? "font-semibold bg-accent"
+                              : "font-normal"
                           )}
                         >
                           <Circle size={8} className="mr-2" />
@@ -127,36 +131,43 @@ export function DashboardNav({setOpen}: DashboardNavProps) {
                 </AccordionContent>
               </AccordionItem>
             ))
-          : userStore.route_menu.map((parent) => (
-              <AccordionItem key={parent.label} value={parent.label}>
-                <AccordionTrigger className="hover:no-underline">
-                  <div className="flex items-center gap-2 font-medium tracking-wide capitalize">{parent.label}</div>
-                </AccordionTrigger>
-                <AccordionContent>
-                  {parent.items.map((item) => {
-                    return (
-                      <Link
-                        key={item._id}
-                        to={item.to}
-                        onClick={() => {
-                          if (setOpen) setOpen(false);
-                        }}
-                      >
-                        <span
-                          className={cn(
-                            "group flex items-center rounded-md  p-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground",
-                            location.pathname === item.to ? "font-semibold bg-accent" : "font-normal"
-                          )}
+          : userStore.route_menu
+              .map((parent) => ({...parent, order: parent.items.map((item) => item.order).reduce((a, b) => a + b)}))
+              .sort((a, b) => a.order - b.order)
+              .map((parent) => (
+                <AccordionItem key={parent.label} value={parent.label}>
+                  <AccordionTrigger className="hover:no-underline">
+                    <div className="flex items-center gap-2 font-medium tracking-wide text-left capitalize">
+                      {parent.label}
+                    </div>
+                  </AccordionTrigger>
+                  <AccordionContent>
+                    {parent.items.map((item) => {
+                      return (
+                        <Link
+                          key={item._id}
+                          to={item.to}
+                          onClick={() => {
+                            if (setOpen) setOpen(false);
+                          }}
                         >
-                          <Circle size={8} className="mr-2" />
-                          <span className="text-xs tracking-wide">{item.label}</span>
-                        </span>
-                      </Link>
-                    );
-                  })}
-                </AccordionContent>
-              </AccordionItem>
-            ))}
+                          <span
+                            className={cn(
+                              "group flex items-center rounded-md  p-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground",
+                              "/dashboard/" + location.pathname.split("/")[2] === item.to
+                                ? "font-semibold bg-accent"
+                                : "font-normal"
+                            )}
+                          >
+                            <Circle size={8} className="mr-2" />
+                            <span className="text-xs tracking-wide">{item.label}</span>
+                          </span>
+                        </Link>
+                      );
+                    })}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
       </Accordion>
     </nav>
   );

@@ -30,23 +30,22 @@ import {cn} from "@/lib/utils";
 import {Check, ChevronsUpDown} from "lucide-react";
 import {CategoryType} from "../NewsCategory/NewsCategory";
 import Ckeditor5 from "@/components/Ckeditor5";
+import combineImageMultiLang from "@/helper/combineImageMultiLang";
 
 const title_page = "Business";
 const action_context = "Update";
 
 const formSchema = z.object({
-  meta_title: z.object({
-    en: z.string({required_error: "Field required"}).min(1),
-    id: z.string({required_error: "Field required"}).min(1),
-  }),
-  meta_description: z.object({
-    en: z.string({required_error: "Field required"}).min(1),
-    id: z.string({required_error: "Field required"}).min(1),
-  }),
-  thumbnail_images: z.object({
-    id: z.string().array(),
-    en: z.string().array(),
-  }),
+  // meta_title: z.object({
+  //   en: z.string({required_error: "Field required"}).min(1),
+  //   id: z.string({required_error: "Field required"}).min(1),
+  // }),
+  // meta_description: z.object({
+  //   en: z.string({required_error: "Field required"}).min(1),
+  //   id: z.string({required_error: "Field required"}).min(1),
+  // }),
+  thumbnail_images_en: z.string().array().default([]),
+  thumbnail_images_id: z.string().array().default([]),
   title: z.object({
     en: z.string({required_error: "Field required"}).min(1),
     id: z.string({required_error: "Field required"}).min(1),
@@ -66,18 +65,20 @@ const formSchema = z.object({
   // bottom_button_route: z.string({required_error: "Field required"}).min(1),
   category_id: z.string({required_error: "Field required"}).min(1),
   active_status: z.boolean().default(false),
-  type: z.string().default(CONTENT_TYPE.NEWS),
+  type: z.string().default(CONTENT_TYPE.BUSINESS),
   order: z.number().default(0),
 });
 
 type DataFormValue = z.infer<typeof formSchema>;
-type Payload = Omit<DataFormValue, "thumbnail_images"> & {
+type Payload = Omit<DataFormValue, "thumbnail_images_en" | "thumbnail_images_id"> & {
   type: string;
   content_id: string;
-  thumbnail_images: {
-    id: string;
-    en: string;
-  };
+  thumbnail_images:
+    | {
+        id: string;
+        en: string;
+      }[]
+    | [];
 };
 
 const BusinessUpdate = () => {
@@ -103,13 +104,17 @@ const BusinessUpdate = () => {
   );
 
   const {data: categoryOptions} = useQuery({
-    queryKey: ["category-option"],
+    queryKey: ["category-option", CONTENT_TYPE.BUSINESS],
     queryFn: async () => await getCategoryHandler({pageIndex: 0, pageSize: 200}),
   });
 
   const getCategoryHandler = async ({pageIndex, pageSize}: {pageIndex: number; pageSize: number}) => {
     try {
-      const response = await ApiService.secure().get(`/category`, {page: pageIndex + 1, limit: pageSize});
+      const response = await ApiService.secure().get(`/category`, {
+        page: pageIndex + 1,
+        limit: pageSize,
+        type: CONTENT_TYPE.BUSINESS,
+      });
 
       if (response.data.status !== 200) {
         throw new Error(response.data.err);
@@ -121,15 +126,18 @@ const BusinessUpdate = () => {
     }
   };
 
-  const onSubmit = (data: DataFormValue) => {
-    mutate({
-      ...data,
-      content_id: id || "",
-      thumbnail_images: {
-        id: data.thumbnail_images.id[0],
-        en: data.thumbnail_images.en[0],
-      },
-    });
+  const onSubmit = async (data: DataFormValue) => {
+    try {
+      const thumbnail_images = combineImageMultiLang(data.thumbnail_images_en, data.thumbnail_images_id);
+
+      mutate({
+        ...data,
+        content_id: id || "",
+        thumbnail_images: thumbnail_images,
+      });
+    } catch (error: any) {
+      toast.error(<ToastBody title="an error occurred" description={error.message || "Something went wrong"} />);
+    }
   };
 
   useEffect(() => {
@@ -146,15 +154,13 @@ const BusinessUpdate = () => {
           active_status: result.active_status,
           description: result.description,
           title: result.title,
-          meta_title: result.meta_title,
-          meta_description: result.meta_description,
+          // meta_title: result.meta_title,
+          // meta_description: result.meta_description,
           category_id: result?.category_id?._id,
           small_text: result.small_text,
           order: result.order,
-          thumbnail_images: {
-            id: result.thumbnail_images?.length ? [result.thumbnail_images[0].id] : [],
-            en: result.thumbnail_images?.length ? [result.thumbnail_images[0].en] : [],
-          },
+          thumbnail_images_en: result.thumbnail_images.map((img) => img.en._id) || [],
+          thumbnail_images_id: result.thumbnail_images.map((img) => img.id._id) || [],
         });
       } catch (error: any) {
         toast.error(<ToastBody title="an error occurred" description={error.message || "Something went wrong"} />);
@@ -176,7 +182,7 @@ const BusinessUpdate = () => {
 
       <FormProvider {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col w-full mt-5 space-y-4">
-          <h4 className="pb-2 text-lg font-medium border-b border-primary/10">Meta Fields</h4>
+          {/* <h4 className="pb-2 text-lg font-medium border-b border-primary/10">Meta Fields</h4>
           <Controller
             control={form.control}
             name="meta_title.en"
@@ -270,7 +276,7 @@ const BusinessUpdate = () => {
                 {error?.message ? <p className="text-xs font-medium text-destructive">{error?.message}</p> : null}
               </div>
             )}
-          />
+          /> */}
           <h4 className="pb-2 text-lg font-medium border-b border-primary/10">Content Fields</h4>
           <Controller
             control={form.control}
@@ -471,18 +477,18 @@ const BusinessUpdate = () => {
           />
           <Controller
             control={form.control}
-            name="thumbnail_images.en"
+            name="thumbnail_images_en"
             render={({field}) => {
               return (
                 <ImageRepository
                   label="Thumbnail"
                   limit={1}
                   mobileSize={false}
-                  img_type={IMG_TYPE.NEWS}
+                  img_type={IMG_TYPE.BUSINESS}
                   value={field.value?.length ? field.value : []}
                   onChange={(data) => {
                     let value = data.map((img) => img._id);
-                    form.setValue("thumbnail_images.id", value);
+                    form.setValue("thumbnail_images_id", value);
                     field.onChange(value);
                   }}
                 />

@@ -8,8 +8,6 @@ import Breadcrumb from "@/components/Breadcrumb";
 import {Button} from "@/components/ui/button";
 import {Input} from "@/components/ui/input";
 import {Separator} from "@/components/ui/separator";
-import {toast} from "react-toastify";
-import ToastBody from "@/components/ToastBody";
 
 // utils
 import settledHandler from "@/helper/settledHandler";
@@ -17,26 +15,45 @@ import ApiService from "@/lib/ApiService";
 import {zodResolver} from "@hookform/resolvers/zod";
 import {z} from "zod";
 import {Textarea} from "@/components/ui/textarea";
+import {toast} from "react-toastify";
+import ToastBody from "@/components/ToastBody";
 import {Switch} from "@/components/ui/switch";
 import CONTENT_TYPE from "@/helper/content-type";
-import {useEffect} from "react";
 import {ContentType} from "@/types/content";
+import {useEffect} from "react";
 import Ckeditor5 from "@/components/Ckeditor5";
 
-const title_page = "Career";
+const title_page = "Business";
 const action_context = "Update";
 
 const formSchema = z.object({
-  meta_title: z.string({required_error: "Field required"}).min(1),
-  meta_description: z.string({required_error: "Field required"}).min(1),
-  title: z.string({required_error: "Field required"}).min(1),
+  meta_title: z.object({
+    en: z.string({required_error: "Field required"}).min(1),
+    id: z.string({required_error: "Field required"}).min(1),
+  }),
+  meta_description: z.object({
+    en: z.string({required_error: "Field required"}).min(1),
+    id: z.string({required_error: "Field required"}).min(1),
+  }),
+  title: z.object({
+    en: z.string({required_error: "Field required"}).min(1),
+    id: z.string({required_error: "Field required"}).min(1),
+  }),
+  description: z.object({
+    en: z.string({required_error: "Field required"}).min(1),
+    id: z.string({required_error: "Field required"}).min(1),
+  }),
+  small_text: z.object({
+    en: z.string({required_error: "Field required"}).min(1),
+    id: z.string({required_error: "Field required"}).min(1),
+  }),
   active_status: z.boolean().default(false),
-  description: z.string({required_error: "Field required"}).min(1),
-  bottom_text: z.string().min(0),
+  type: z.string().default(CONTENT_TYPE.BUSINESS),
+  order: z.number().default(0),
 });
 
 type DataFormValue = z.infer<typeof formSchema>;
-type Payload = Omit<DataFormValue, "related"> & {
+type Payload = Omit<DataFormValue, "thumbnail_images"> & {
   type: string;
   content_id: string;
 };
@@ -64,7 +81,10 @@ const CareerUpdate = () => {
   );
 
   const onSubmit = (data: DataFormValue) => {
-    mutate({...data, type: CONTENT_TYPE.CAREER_DETAIL, content_id: id || ""});
+    mutate({
+      ...data,
+      content_id: id || "",
+    });
   };
 
   useEffect(() => {
@@ -76,13 +96,15 @@ const CareerUpdate = () => {
         }
 
         const result: ContentType = response.data.data;
+
         form.reset({
           active_status: result.active_status,
           description: result.description,
           title: result.title,
           meta_title: result.meta_title,
           meta_description: result.meta_description,
-          bottom_text: result.bottom_text,
+          small_text: result.small_text,
+          order: result.order,
         });
       } catch (error: any) {
         toast.error(<ToastBody title="an error occurred" description={error.message || "Something went wrong"} />);
@@ -107,14 +129,14 @@ const CareerUpdate = () => {
           <h4 className="pb-2 text-lg font-medium border-b border-primary/10">Meta Fields</h4>
           <Controller
             control={form.control}
-            name="meta_title"
+            name="meta_title.en"
             render={({field, fieldState: {error}}) => (
               <div className="flex flex-col space-y-2">
                 <label
                   htmlFor={field.name}
                   className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                 >
-                  Meta Title
+                  Meta Title (EN)
                 </label>
                 <Input
                   id={field.name}
@@ -131,14 +153,61 @@ const CareerUpdate = () => {
           />
           <Controller
             control={form.control}
-            name="meta_description"
+            name="meta_description.en"
             render={({field, fieldState: {error}}) => (
               <div className="flex flex-col space-y-2">
                 <label
                   htmlFor={field.name}
                   className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                 >
-                  Meta Description
+                  Meta Description (EN)
+                </label>
+                <Textarea
+                  id={field.name}
+                  ref={field.ref}
+                  placeholder="Enter meta description"
+                  disabled={isLoading}
+                  value={field.value}
+                  onChange={(e) => field.onChange(e.target.value)}
+                />
+                {error?.message ? <p className="text-xs font-medium text-destructive">{error?.message}</p> : null}
+              </div>
+            )}
+          />
+          <Controller
+            control={form.control}
+            name="meta_title.id"
+            render={({field, fieldState: {error}}) => (
+              <div className="flex flex-col space-y-2">
+                <label
+                  htmlFor={field.name}
+                  className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                >
+                  Meta Title (ID)
+                </label>
+                <Input
+                  id={field.name}
+                  ref={field.ref}
+                  type="text"
+                  placeholder="Enter meta title"
+                  disabled={isLoading}
+                  value={field.value}
+                  onChange={(e) => field.onChange(e.target.value)}
+                />
+                {error?.message ? <p className="text-xs font-medium text-destructive">{error?.message}</p> : null}
+              </div>
+            )}
+          />
+          <Controller
+            control={form.control}
+            name="meta_description.id"
+            render={({field, fieldState: {error}}) => (
+              <div className="flex flex-col space-y-2">
+                <label
+                  htmlFor={field.name}
+                  className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                >
+                  Meta Description (ID)
                 </label>
                 <Textarea
                   id={field.name}
@@ -155,14 +224,14 @@ const CareerUpdate = () => {
           <h4 className="pb-2 text-lg font-medium border-b border-primary/10">Content Fields</h4>
           <Controller
             control={form.control}
-            name="title"
+            name="title.en"
             render={({field, fieldState: {error}}) => (
               <div className="flex flex-col space-y-2">
                 <label
                   htmlFor={field.name}
                   className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                 >
-                  Title
+                  Title (EN)
                 </label>
                 <Input
                   id={field.name}
@@ -179,21 +248,47 @@ const CareerUpdate = () => {
           />
           <Controller
             control={form.control}
-            name="description"
+            name="title.id"
             render={({field, fieldState: {error}}) => (
               <div className="flex flex-col space-y-2">
                 <label
                   htmlFor={field.name}
                   className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                 >
-                  Summary Description
+                  Title (ID)
                 </label>
-                <Ckeditor5
+                <Input
+                  id={field.name}
                   ref={field.ref}
-                  onBlur={field.onBlur}
+                  type="text"
+                  placeholder="Enter title"
+                  disabled={isLoading}
                   value={field.value}
-                  onChange={field.onChange}
-                  placeholder="Enter Description"
+                  onChange={(e) => field.onChange(e.target.value)}
+                />
+                {error?.message ? <p className="text-xs font-medium text-destructive">{error?.message}</p> : null}
+              </div>
+            )}
+          />
+
+          <Controller
+            control={form.control}
+            name="small_text.en"
+            render={({field, fieldState: {error}}) => (
+              <div className="flex flex-col space-y-2">
+                <label
+                  htmlFor={field.name}
+                  className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                >
+                  Thumbnail Description (EN)
+                </label>
+                <Textarea
+                  id={field.name}
+                  ref={field.ref}
+                  placeholder="Enter description"
+                  disabled={isLoading}
+                  value={field.value}
+                  onChange={(e) => field.onChange(e.target.value)}
                 />
                 {error?.message ? <p className="text-xs font-medium text-destructive">{error?.message}</p> : null}
               </div>
@@ -201,27 +296,101 @@ const CareerUpdate = () => {
           />
           <Controller
             control={form.control}
-            name="bottom_text"
+            name="small_text.id"
             render={({field, fieldState: {error}}) => (
               <div className="flex flex-col space-y-2">
                 <label
                   htmlFor={field.name}
                   className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                 >
-                  Details Description
+                  Thumbnail Description (ID)
+                </label>
+                <Textarea
+                  id={field.name}
+                  ref={field.ref}
+                  placeholder="Enter description"
+                  disabled={isLoading}
+                  value={field.value}
+                  onChange={(e) => field.onChange(e.target.value)}
+                />
+                {error?.message ? <p className="text-xs font-medium text-destructive">{error?.message}</p> : null}
+              </div>
+            )}
+          />
+          <Controller
+            control={form.control}
+            name="description.en"
+            render={({field, fieldState: {error}}) => (
+              <div className="flex flex-col space-y-2">
+                <label
+                  htmlFor={field.name}
+                  className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                >
+                  Body (EN)
                 </label>
                 <Ckeditor5
                   ref={field.ref}
                   onBlur={field.onBlur}
                   value={field.value}
                   onChange={field.onChange}
-                  placeholder="Enter Description"
+                  placeholder="Enter Body"
+                />
+                {error?.message ? <p className="text-xs font-medium text-destructive">{error?.message}</p> : null}
+              </div>
+            )}
+          />
+          <Controller
+            control={form.control}
+            name="description.id"
+            render={({field, fieldState: {error}}) => (
+              <div className="flex flex-col space-y-2">
+                <label
+                  htmlFor={field.name}
+                  className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                >
+                  Body (ID)
+                </label>
+                <Ckeditor5
+                  ref={field.ref}
+                  onBlur={field.onBlur}
+                  value={field.value}
+                  onChange={field.onChange}
+                  placeholder="Enter Body"
                 />
                 {error?.message ? <p className="text-xs font-medium text-destructive">{error?.message}</p> : null}
               </div>
             )}
           />
 
+          <Controller
+            control={form.control}
+            name="order"
+            render={({field, fieldState: {error}}) => (
+              <div className="flex flex-col space-y-2">
+                <label
+                  htmlFor={field.name}
+                  className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                >
+                  Order
+                </label>
+                <Input
+                  type="Name"
+                  {...field}
+                  placeholder="Enter order"
+                  onKeyPress={(event) => {
+                    if (!/[0-9]/.test(event.key)) {
+                      event.preventDefault();
+                    }
+                  }}
+                  disabled={isLoading}
+                  onChange={(e) => {
+                    field.onChange(+e.target.value);
+                  }}
+                />
+                {error?.message ? <p className="text-xs font-medium text-destructive">{error?.message}</p> : null}
+              </div>
+            )}
+          />
           <Controller
             control={form.control}
             name="active_status"
