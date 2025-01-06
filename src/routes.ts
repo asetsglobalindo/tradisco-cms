@@ -30,6 +30,10 @@ import SustainabilityReport from "./pages/SustainabilityReport/SustainabilityRep
 import SustainabilityReportCreate from "./pages/SustainabilityReport/SustainabilityReportCreate";
 import SustainabilityReportUpdate from "./pages/SustainabilityReport/SustainabilityReportUpdate";
 import BannerPage from "./pages/BannerPage/BannerPage";
+import BussinessPage from "./pages/BussinessPage/BussinessPage";
+import BussinessPageCreate from "./pages/BussinessPage/BussinessPageCreate";
+import BussinessPageUpdate from "./pages/BussinessPage/BussinessPageUpdate";
+import NewsPage from "./pages/NewsPage/NewsPage";
 
 const pagesListWithChilds = [
   {
@@ -160,6 +164,23 @@ const pagesListWithChilds = [
     hasChild: true,
   },
   {
+    route: "/dashboard/business-page",
+    component: BussinessPage,
+    childs: [
+      {
+        route: "/dashboard/business-page/create",
+        component: BussinessPageCreate,
+        access: "create",
+      },
+      {
+        route: "/dashboard/business-page/update/:id",
+        component: BussinessPageUpdate,
+        access: "update",
+      },
+    ],
+    hasChild: true,
+  },
+  {
     route: "/dashboard/annual-report",
     component: AnnualReport,
     childs: [
@@ -182,6 +203,12 @@ const pageListNoChild = [
   {
     route: "/dashboard/location",
     component: Location,
+    childs: [],
+    hasChild: false,
+  },
+  {
+    route: "/dashboard/news-page",
+    component: NewsPage,
     childs: [],
     hasChild: false,
   },

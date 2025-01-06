@@ -36,7 +36,12 @@ export interface ContentType {
     en: string;
     id: string;
   };
-  banner: ContentImage[];
+  banner:
+    | {
+        id: ContentImage;
+        en: ContentImage;
+      }[]
+    | [];
   use_list: false;
   show_on_homepage: false;
   publish_date: string;

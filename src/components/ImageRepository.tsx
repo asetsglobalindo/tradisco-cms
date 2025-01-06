@@ -52,12 +52,14 @@ interface Props {
   value: string[] | [];
   limit?: number;
   showButtonRoute?: boolean;
+  extraField?: string;
   size?: "sm" | "md" | "lg";
 }
 
 interface ImageItemProps {
   image: ImageItemType;
   selected?: boolean;
+  extraField?: string;
   showButtonRoute?: boolean;
   type: "thumbnail" | "crud";
   refetch: () => void;
@@ -68,6 +70,7 @@ interface ImageItemProps {
 }
 
 interface ImageRepositoryUploadProps {
+  extraField?: string;
   handleFinish: () => void;
   showButtonRoute?: boolean;
   img_type?: string;
@@ -83,6 +86,7 @@ const ImageRepositoryUpload: React.FC<ImageRepositoryUploadProps> = ({
   mobileSize,
   update,
   showButtonRoute,
+  extraField,
 }) => {
   let endpoint = update ? "/image/edit" : "/image";
 
@@ -235,21 +239,23 @@ const ImageRepositoryUpload: React.FC<ImageRepositoryUploadProps> = ({
           )}
         />
 
-        <section className="grid grid-cols-2 space-x-4">
-          {/* <FormField
-            control={form.control}
-            name="button_name"
-            render={({field}) => (
-              <FormItem>
-                <FormLabel>Button Name (optional)</FormLabel>
-                <FormControl>
-                  <Input placeholder="Enter button name" disabled={isLoading} {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          /> */}
-        </section>
+        {extraField?.length ? (
+          <section className="grid grid-cols-1 space-x-4">
+            <FormField
+              control={form.control}
+              name="button_name"
+              render={({field}) => (
+                <FormItem>
+                  <FormLabel>{extraField}</FormLabel>
+                  <FormControl>
+                    <Input placeholder={`Enter ${extraField.toLocaleLowerCase()}`} disabled={isLoading} {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </section>
+        ) : null}
 
         {showButtonRoute ? (
           <FormField
@@ -402,6 +408,7 @@ const ImageItem: React.FC<ImageItemProps> = ({
   limit,
   totalImage,
   mobileSize,
+  extraField,
   showButtonRoute,
 }) => {
   const [showUpdate, setShowUpdate] = useState(false);
@@ -533,6 +540,7 @@ const ImageItem: React.FC<ImageItemProps> = ({
       <Dialog open={showUpdate} onOpenChange={(open) => setShowUpdate(open)}>
         <DialogContent className="">
           <ImageRepositoryUpload
+            extraField={extraField}
             mobileSize={mobileSize}
             showButtonRoute={showButtonRoute}
             handleFinish={() => {
@@ -558,6 +566,7 @@ const ImageRepository: React.FC<Props> = ({
   size = "lg",
   mobileSize = true,
   showButtonRoute,
+  extraField,
 }) => {
   const IMAGE_TYPE = img_type;
   const [open, setOpen] = useState(false);
@@ -656,6 +665,7 @@ const ImageRepository: React.FC<Props> = ({
             {selectedImage.map((img) => {
               return (
                 <ImageItem
+                  extraField={extraField}
                   mobileSize={mobileSize}
                   showButtonRoute={showButtonRoute}
                   totalImage={selectedImage.length}
@@ -695,6 +705,7 @@ const ImageRepository: React.FC<Props> = ({
               value="upload"
             >
               <ImageRepositoryUpload
+                extraField={extraField}
                 mobileSize={mobileSize}
                 showButtonRoute={showButtonRoute}
                 handleFinish={handleFinish}
@@ -713,6 +724,7 @@ const ImageRepository: React.FC<Props> = ({
                   {data?.pages?.map((page) =>
                     page.map((image) => (
                       <ImageItem
+                        extraField={extraField}
                         mobileSize={mobileSize}
                         showButtonRoute={showButtonRoute}
                         refetch={refetch}
@@ -749,6 +761,7 @@ const ImageRepository: React.FC<Props> = ({
                         {selectedImage.map((image) => (
                           <CarouselItem key={image._id} className="basis-1/3 lg:basis-1/6">
                             <ImageItem
+                              extraField={extraField}
                               showButtonRoute={showButtonRoute}
                               mobileSize={mobileSize}
                               refetch={refetch}

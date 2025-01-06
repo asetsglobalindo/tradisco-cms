@@ -44,6 +44,7 @@ type HomeType = {
     tab: {
       title: MultiLang;
       content: string[];
+      image: string;
       _id: string;
     }[];
   };
@@ -100,6 +101,7 @@ const formSchema = z.object({
           id: z.string({required_error: "Field required"}).min(1),
         }),
         content: z.string().array().default([]),
+        image: z.string(),
       })
       .array()
       .default([]),
@@ -219,6 +221,7 @@ const HomePage = () => {
               en: item.title.en,
               id: item.title.id,
             },
+            image: item.image,
             content: item.content,
           })),
           title: {
@@ -301,6 +304,7 @@ const HomePage = () => {
                 id: item.title.id,
               },
               content: item.content,
+              image: item.image,
             })),
           },
           section3: {
@@ -511,6 +515,7 @@ const HomePage = () => {
               render={({field}) => {
                 return (
                   <ImageRepository
+                    extraField="Extra"
                     label="Banner (EN)"
                     limit={10}
                     showButtonRoute
@@ -531,6 +536,7 @@ const HomePage = () => {
                 return (
                   <ImageRepository
                     label="Banner (ID)"
+                    extraField="Extra"
                     limit={10}
                     showButtonRoute
                     img_type={IMG_TYPE.HOME}
@@ -665,6 +671,27 @@ const HomePage = () => {
                   />
                   <Controller
                     control={form.control}
+                    name={`section2.tab.${index}.image`}
+                    render={({field}) => {
+                      return (
+                        <ImageRepository
+                          label="Image"
+                          limit={1}
+                          mobileSize={false}
+                          img_type={IMG_TYPE.HOME}
+                          value={field.value?.length ? [field.value] : []}
+                          onChange={(data) => {
+                            let value = data.map((img) => img._id);
+                            if (value.length) {
+                              field.onChange(value[0]);
+                            }
+                          }}
+                        />
+                      );
+                    }}
+                  />
+                  <Controller
+                    control={form.control}
                     name={`section2.tab.${index}.content`}
                     render={({field, fieldState: {error}}) => (
                       <div className="flex flex-col space-y-2">
@@ -702,7 +729,7 @@ const HomePage = () => {
                 <Button
                   className="mt-2"
                   type="button"
-                  onClick={() => appendSection2({title: {en: "", id: ""}, content: []})}
+                  onClick={() => appendSection2({title: {en: "", id: ""}, content: [], image: ""})}
                 >
                   Add Tab
                 </Button>

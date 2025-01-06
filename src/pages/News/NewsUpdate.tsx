@@ -119,7 +119,11 @@ const NewsUpdate = () => {
 
   const getCategoryHandler = async ({pageIndex, pageSize}: {pageIndex: number; pageSize: number}) => {
     try {
-      const response = await ApiService.secure().get(`/category`, {page: pageIndex + 1, limit: pageSize});
+      const response = await ApiService.secure().get(`/category`, {
+        page: pageIndex + 1,
+        limit: pageSize,
+        type: CONTENT_TYPE.BUSINESS,
+      });
 
       if (response.data.status !== 200) {
         throw new Error(response.data.err);

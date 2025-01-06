@@ -1,13 +1,15 @@
 // hook
 import {Controller, FormProvider, useForm} from "react-hook-form";
 import {useMutation, useQuery} from "react-query";
-import {useLocation, useNavigate} from "react-router-dom";
+import {useLocation, useNavigate, useParams} from "react-router-dom";
 
 // component
 import Breadcrumb from "@/components/Breadcrumb";
 import {Button} from "@/components/ui/button";
 import {Input} from "@/components/ui/input";
 import {Separator} from "@/components/ui/separator";
+import {Popover, PopoverContent, PopoverTrigger} from "@/components/ui/popover";
+import {Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList} from "@/components/ui/command";
 
 // utils
 import settledHandler from "@/helper/settledHandler";
@@ -21,15 +23,16 @@ import {Switch} from "@/components/ui/switch";
 import ImageRepository from "@/components/ImageRepository";
 import IMG_TYPE from "@/helper/img-type";
 import CONTENT_TYPE from "@/helper/content-type";
-import {CategoryType} from "../NewsCategory/NewsCategory";
+import {ContentType} from "@/types/content";
+import {useEffect} from "react";
+
 import {cn} from "@/lib/utils";
 import {Check, ChevronsUpDown} from "lucide-react";
-import {Popover, PopoverContent, PopoverTrigger} from "@/components/ui/popover";
-import {Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList} from "@/components/ui/command";
-import Ckeditor5 from "@/components/Ckeditor5";
+import {CategoryType} from "../NewsCategory/NewsCategory";
+import combineImageMultiLang from "@/helper/combineImageMultiLang";
 
-const title_page = "News";
-const action_context = "Create";
+const title_page = "Business Page";
+const action_context = "Update";
 
 const formSchema = z.object({
   meta_title: z.object({
@@ -40,18 +43,16 @@ const formSchema = z.object({
     en: z.string({required_error: "Field required"}).min(1),
     id: z.string({required_error: "Field required"}).min(1),
   }),
-  thumbnail_images: z.object({
-    id: z.string().array(),
-    en: z.string().array(),
-  }),
+  thumbnail_images_en: z.string().array().default([]),
+  thumbnail_images_id: z.string().array().default([]),
+  images_en: z.string().array().default([]),
+  images_id: z.string().array().default([]),
+
   title: z.object({
     en: z.string({required_error: "Field required"}).min(1),
     id: z.string({required_error: "Field required"}).min(1),
   }),
-  description: z.object({
-    en: z.string({required_error: "Field required"}).min(1),
-    id: z.string({required_error: "Field required"}).min(1),
-  }),
+
   small_text: z.object({
     en: z.string({required_error: "Field required"}).min(1),
     id: z.string({required_error: "Field required"}).min(1),
@@ -63,21 +64,32 @@ const formSchema = z.object({
   // bottom_button_route: z.string({required_error: "Field required"}).min(1),
   category_id: z.string({required_error: "Field required"}).min(1),
   active_status: z.boolean().default(false),
-  type: z.string().default(CONTENT_TYPE.NEWS),
+  type: z.string().default(CONTENT_TYPE.BUSINESS_PAGE),
   order: z.number().default(0),
 });
 
 type DataFormValue = z.infer<typeof formSchema>;
-type Payload = Omit<DataFormValue, "thumbnail_images"> & {
-  thumbnail_images: {
-    id: string;
-    en: string;
-  };
+type Payload = Omit<DataFormValue, "thumbnail_images" | "images"> & {
+  type: string;
+  content_id: string;
+  thumbnail_images:
+    | {
+        id: string;
+        en: string;
+      }[]
+    | [];
+  images:
+    | {
+        id: string;
+        en: string;
+      }[]
+    | [];
 };
 
-const NewsCreate = () => {
+const BussinessPageUpdate = () => {
   const navigate = useNavigate();
   const location = useLocation();
+  const {id} = useParams();
   const prevLocation = location.pathname.split("/").slice(0, 3).join("/");
   const breadcrumbItems = [
     {title: title_page, link: prevLocation},
@@ -89,7 +101,7 @@ const NewsCreate = () => {
   });
 
   const {mutate, isLoading} = useMutation(
-    async (payload: Payload) => await ApiService.secure().post("content", payload),
+    async (payload: Payload) => await ApiService.secure().post("/content/edit", payload),
     {
       onSettled: (response) =>
         settledHandler({response, contextAction: action_context, onFinish: () => navigate(prevLocation)}),
@@ -106,7 +118,7 @@ const NewsCreate = () => {
       const response = await ApiService.secure().get(`/category`, {
         page: pageIndex + 1,
         limit: pageSize,
-        type: CONTENT_TYPE.NEWS,
+        type: CONTENT_TYPE.BUSINESS,
       });
 
       if (response.data.status !== 200) {
@@ -119,15 +131,51 @@ const NewsCreate = () => {
     }
   };
 
-  const onSubmit = (data: DataFormValue) => {
-    mutate({
-      ...data,
-      thumbnail_images: {
-        id: data.thumbnail_images.id[0],
-        en: data.thumbnail_images.en[0],
-      },
-    });
+  const onSubmit = async (data: DataFormValue) => {
+    try {
+      const thumbnail_images = combineImageMultiLang(data.thumbnail_images_en, data.thumbnail_images_id);
+      const images = combineImageMultiLang(data.images_en, data.images_id);
+
+      mutate({
+        ...data,
+        content_id: id || "",
+        images: images,
+        thumbnail_images: thumbnail_images,
+      });
+    } catch (error: any) {
+      toast.error(<ToastBody title="an error occurred" description={error.message || "Something went wrong"} />);
+    }
   };
+
+  useEffect(() => {
+    const getDetails = async () => {
+      try {
+        const response = await ApiService.secure().get(`/content/detail/${id}`);
+        if (response.data.status !== 200) {
+          throw new Error(response.data.message);
+        }
+
+        const result: ContentType = response.data.data;
+
+        form.reset({
+          active_status: result.active_status,
+          title: result.title,
+          meta_title: result.meta_title,
+          meta_description: result.meta_description,
+          category_id: result?.category_id?._id,
+          small_text: result.small_text,
+          order: result.order,
+          thumbnail_images_en: result.thumbnail_images.map((img) => img.en._id) || [],
+          thumbnail_images_id: result.thumbnail_images.map((img) => img.id._id) || [],
+          images_en: result.images.map((img) => img.en._id) || [],
+          images_id: result.images.map((img) => img.id._id) || [],
+        });
+      } catch (error: any) {
+        toast.error(<ToastBody title="an error occurred" description={error.message || "Something went wrong"} />);
+      }
+    };
+    getDetails();
+  }, [id]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <section>
@@ -391,64 +439,21 @@ const NewsCreate = () => {
               </div>
             )}
           />
+
           <Controller
             control={form.control}
-            name="description.en"
-            render={({field, fieldState: {error}}) => (
-              <div className="flex flex-col space-y-2">
-                <label
-                  htmlFor={field.name}
-                  className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                >
-                  Body (EN)
-                </label>
-                <Ckeditor5
-                  ref={field.ref}
-                  onBlur={field.onBlur}
-                  value={field.value}
-                  onChange={field.onChange}
-                  placeholder="Enter Body"
-                />
-                {error?.message ? <p className="text-xs font-medium text-destructive">{error?.message}</p> : null}
-              </div>
-            )}
-          />
-          <Controller
-            control={form.control}
-            name="description.id"
-            render={({field, fieldState: {error}}) => (
-              <div className="flex flex-col space-y-2">
-                <label
-                  htmlFor={field.name}
-                  className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                >
-                  Body (ID)
-                </label>
-                <Ckeditor5
-                  ref={field.ref}
-                  onBlur={field.onBlur}
-                  value={field.value}
-                  onChange={field.onChange}
-                  placeholder="Enter Body"
-                />
-                {error?.message ? <p className="text-xs font-medium text-destructive">{error?.message}</p> : null}
-              </div>
-            )}
-          />
-          <Controller
-            control={form.control}
-            name="thumbnail_images.en"
+            name="images_en"
             render={({field}) => {
               return (
                 <ImageRepository
-                  label="Thumbnail"
+                  label="Banner"
                   limit={1}
                   mobileSize={false}
                   img_type={IMG_TYPE.NEWS}
                   value={field.value?.length ? field.value : []}
                   onChange={(data) => {
                     let value = data.map((img) => img._id);
-                    form.setValue("thumbnail_images.id", value);
+                    form.setValue("images_id", value);
                     field.onChange(value);
                   }}
                 />
@@ -456,35 +461,6 @@ const NewsCreate = () => {
             }}
           />
 
-          <Controller
-            control={form.control}
-            name="order"
-            render={({field, fieldState: {error}}) => (
-              <div className="flex flex-col space-y-2">
-                <label
-                  htmlFor={field.name}
-                  className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                >
-                  Order
-                </label>
-                <Input
-                  type="Name"
-                  {...field}
-                  placeholder="Enter order"
-                  onKeyPress={(event) => {
-                    if (!/[0-9]/.test(event.key)) {
-                      event.preventDefault();
-                    }
-                  }}
-                  disabled={isLoading}
-                  onChange={(e) => {
-                    field.onChange(+e.target.value);
-                  }}
-                />
-                {error?.message ? <p className="text-xs font-medium text-destructive">{error?.message}</p> : null}
-              </div>
-            )}
-          />
           <Controller
             control={form.control}
             name="active_status"
@@ -518,4 +494,5 @@ const NewsCreate = () => {
   );
 };
 
-export default NewsCreate;
+export default BussinessPageUpdate;
+

@@ -1,7 +1,7 @@
 // hook
 import {Controller, FormProvider, useFieldArray, useForm} from "react-hook-form";
 import {useMutation} from "react-query";
-import {useLocation, useNavigate} from "react-router-dom";
+import {useLocation, useNavigate, useParams} from "react-router-dom";
 
 // component
 import Breadcrumb from "@/components/Breadcrumb";
@@ -14,16 +14,17 @@ import settledHandler from "@/helper/settledHandler";
 import ApiService from "@/lib/ApiService";
 import {zodResolver} from "@hookform/resolvers/zod";
 import {z} from "zod";
-import {Textarea} from "@/components/ui/textarea";
 import {toast} from "react-toastify";
 import ToastBody from "@/components/ToastBody";
 import {Switch} from "@/components/ui/switch";
 import CONTENT_TYPE from "@/helper/content-type";
+import React from "react";
 import PopConfirm from "@/components/PopConfirm";
 import {Trash} from "lucide-react";
 import IMG_TYPE from "@/helper/img-type";
 import ImageRepository from "@/components/ImageRepository";
 import combineImageMultiLang from "@/helper/combineImageMultiLang";
+import Ckeditor5 from "@/components/Ckeditor5";
 
 const title_page = "Sustainability Report";
 const action_context = "Update";
@@ -33,13 +34,15 @@ const formSchema = z.object({
     en: z.string({required_error: "Field required"}).min(1),
     id: z.string({required_error: "Field required"}).min(1),
   }),
+  banner_en: z.string().array().default([]),
+  banner_id: z.string().array().default([]),
+  description: z.object({
+    en: z.string({required_error: "Field required"}).min(1),
+    id: z.string({required_error: "Field required"}).min(1),
+  }),
   body: z
     .object({
       title: z.object({
-        en: z.string({required_error: "Field required"}).min(1),
-        id: z.string({required_error: "Field required"}).min(1),
-      }),
-      text: z.object({
         en: z.string({required_error: "Field required"}).min(1),
         id: z.string({required_error: "Field required"}).min(1),
       }),
@@ -61,13 +64,16 @@ const formSchema = z.object({
 type DataFormValue = z.infer<typeof formSchema>;
 type Payload = Omit<DataFormValue, "body"> & {
   type: string;
+  content_id: string;
+  banner:
+    | {
+        id: string;
+        en: string;
+      }[]
+    | [];
   body:
     | {
         title: {
-          en: string;
-          id: string;
-        };
-        text: {
           en: string;
           id: string;
         };
@@ -87,6 +93,7 @@ type Payload = Omit<DataFormValue, "body"> & {
 const SustainabilityReportCreate = () => {
   const navigate = useNavigate();
   const location = useLocation();
+  const {id} = useParams();
   const prevLocation = location.pathname.split("/").slice(0, 3).join("/");
   const breadcrumbItems = [
     {title: title_page, link: prevLocation},
@@ -127,20 +134,21 @@ const SustainabilityReportCreate = () => {
           en: item.title.en,
           id: item.title.id,
         },
-        text: {
-          en: item.text.en,
-          id: item.text.id,
-        },
         button_name: {
           en: item.button_name.en,
           id: item.button_name.id,
         },
+
         button_route: item.button_route,
         images: combineImageMultiLang(item.image_en, item.image_id),
       }));
 
+      const banner = combineImageMultiLang(data.banner_en, data.banner_id);
+
       mutate({
         ...data,
+        banner: banner,
+        content_id: id || "",
         body: body,
       });
 
@@ -163,6 +171,29 @@ const SustainabilityReportCreate = () => {
 
       <FormProvider {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col w-full mt-5 space-y-4">
+          <React.Fragment>
+            <h4 className="pb-2 text-lg font-medium border-b border-primary/10">Banner</h4>
+            <Controller
+              control={form.control}
+              name={"banner_en"}
+              render={({field}) => {
+                return (
+                  <ImageRepository
+                    label="Banner"
+                    limit={1}
+                    img_type={IMG_TYPE.SUSTAINABILITY_REPORT_BANNER}
+                    value={field.value?.length ? field.value : []}
+                    onChange={(data) => {
+                      let value = data.map((img) => img._id);
+                      form.setValue("banner_id", value);
+                      field.onChange(value);
+                    }}
+                  />
+                );
+              }}
+            />
+          </React.Fragment>
+
           <h4 className="pb-2 text-lg font-medium border-b border-primary/10">Content Fields</h4>
           <Controller
             control={form.control}
@@ -212,6 +243,51 @@ const SustainabilityReportCreate = () => {
               </div>
             )}
           />
+          <Controller
+            control={form.control}
+            name="description.en"
+            render={({field, fieldState: {error}}) => (
+              <div className="flex flex-col space-y-2">
+                <label
+                  htmlFor={field.name}
+                  className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                >
+                  Body (EN)
+                </label>
+                <Ckeditor5
+                  ref={field.ref}
+                  onBlur={field.onBlur}
+                  value={field.value}
+                  onChange={field.onChange}
+                  placeholder="Enter Body"
+                />
+                {error?.message ? <p className="text-xs font-medium text-destructive">{error?.message}</p> : null}
+              </div>
+            )}
+          />
+          <Controller
+            control={form.control}
+            name="description.id"
+            render={({field, fieldState: {error}}) => (
+              <div className="flex flex-col space-y-2">
+                <label
+                  htmlFor={field.name}
+                  className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                >
+                  Body (ID)
+                </label>
+                <Ckeditor5
+                  ref={field.ref}
+                  onBlur={field.onBlur}
+                  value={field.value}
+                  onChange={field.onChange}
+                  placeholder="Enter Body"
+                />
+                {error?.message ? <p className="text-xs font-medium text-destructive">{error?.message}</p> : null}
+              </div>
+            )}
+          />
+
           <h4 className="pb-2 text-lg font-medium border-b border-primary/10">File Sections</h4>
 
           <section className="p-4 space-y-6 border">
@@ -255,29 +331,6 @@ const SustainabilityReportCreate = () => {
                     )}
                   />
                 </div>
-                <Controller
-                  control={form.control}
-                  name={`body.${index}.text.en`}
-                  render={({field, fieldState: {error}}) => (
-                    <div className="flex flex-col space-y-2">
-                      <label
-                        htmlFor={field.name}
-                        className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                      >
-                        Description
-                      </label>
-                      <Textarea
-                        id={field.name}
-                        ref={field.ref}
-                        placeholder="Enter description"
-                        disabled={isLoading}
-                        value={field.value}
-                        onChange={(e) => field.onChange(e.target.value)}
-                      />
-                      {error?.message ? <p className="text-xs font-medium text-destructive">{error?.message}</p> : null}
-                    </div>
-                  )}
-                />
 
                 <Controller
                   control={form.control}
@@ -322,29 +375,6 @@ const SustainabilityReportCreate = () => {
                         ref={field.ref}
                         type="text"
                         placeholder="Enter name"
-                        disabled={isLoading}
-                        value={field.value}
-                        onChange={(e) => field.onChange(e.target.value)}
-                      />
-                      {error?.message ? <p className="text-xs font-medium text-destructive">{error?.message}</p> : null}
-                    </div>
-                  )}
-                />
-                <Controller
-                  control={form.control}
-                  name={`body.${index}.text.id`}
-                  render={({field, fieldState: {error}}) => (
-                    <div className="flex flex-col space-y-2">
-                      <label
-                        htmlFor={field.name}
-                        className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                      >
-                        Description
-                      </label>
-                      <Textarea
-                        id={field.name}
-                        ref={field.ref}
-                        placeholder="Enter description"
                         disabled={isLoading}
                         value={field.value}
                         onChange={(e) => field.onChange(e.target.value)}
@@ -431,7 +461,6 @@ const SustainabilityReportCreate = () => {
                 onClick={() =>
                   append({
                     title: {en: "", id: ""},
-                    text: {en: "", id: ""},
                     button_name: {en: "", id: ""},
                     button_route: "",
                     image_en: [],
