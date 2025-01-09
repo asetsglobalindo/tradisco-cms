@@ -95,7 +95,7 @@ const columns: ColumnDef<ContentType>[] = [
     header: "Link (Front End)",
     accessorKey: "_id",
     cell: ({row}) => {
-      let prefix = "/news/";
+      let prefix = "/career/";
       let finalLink = prefix + row.original.slug;
 
       return (

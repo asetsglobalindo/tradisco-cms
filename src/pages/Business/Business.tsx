@@ -5,7 +5,7 @@ import {useLocation, useNavigate, useSearchParams} from "react-router-dom";
 
 // component
 import {Button} from "@/components/ui/button";
-import {Copy, SquarePen, Trash2} from "lucide-react";
+import {SquarePen, Trash2} from "lucide-react";
 import {AlertModal} from "@/components/Modal/AlertModal";
 import MainTable from "@/components/MainTable";
 import {Checkbox} from "@/components/ui/checkbox";
@@ -89,27 +89,6 @@ const columns: ColumnDef<ContentType>[] = [
     accessorKey: "active_status",
     cell: ({row}) => {
       return <div>{row.original.active_status ? "Active" : "Inactive"}</div>;
-    },
-  },
-  {
-    header: "Link (Front End)",
-    accessorKey: "_id",
-    cell: ({row}) => {
-      let prefix = "/news/";
-      let finalLink = prefix + row.original.slug;
-
-      return (
-        <Button
-          onClick={() => {
-            navigator.clipboard.writeText(finalLink);
-            toast.success(<ToastBody title="Link copied" description={""} />);
-          }}
-          className="space-x-2"
-        >
-          <Copy size={14} />
-          <p>Copy Link</p>
-        </Button>
-      );
     },
   },
 

@@ -23,7 +23,7 @@ import {ContentType} from "@/types/content";
 import {useEffect} from "react";
 import Ckeditor5 from "@/components/Ckeditor5";
 
-const title_page = "Business";
+const title_page = "Career";
 const action_context = "Update";
 
 const formSchema = z.object({
@@ -48,7 +48,7 @@ const formSchema = z.object({
     id: z.string({required_error: "Field required"}).min(1),
   }),
   active_status: z.boolean().default(false),
-  type: z.string().default(CONTENT_TYPE.BUSINESS),
+  type: z.string().default(CONTENT_TYPE.CAREER),
   order: z.number().default(0),
 });
 

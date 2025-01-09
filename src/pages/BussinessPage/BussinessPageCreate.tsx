@@ -28,6 +28,7 @@ import {cn} from "@/lib/utils";
 import {Check, ChevronsUpDown} from "lucide-react";
 import {CategoryType} from "../NewsCategory/NewsCategory";
 import combineImageMultiLang from "@/helper/combineImageMultiLang";
+import Ckeditor5 from "@/components/Ckeditor5";
 
 const title_page = "Business Page";
 const action_context = "Create";
@@ -43,8 +44,8 @@ const formSchema = z.object({
   }),
   thumbnail_images_en: z.string().array().default([]),
   thumbnail_images_id: z.string().array().default([]),
-  images_en: z.string().array().default([]),
-  images_id: z.string().array().default([]),
+  banner_en: z.string().array().default([]),
+  banner_id: z.string().array().default([]),
 
   title: z.object({
     en: z.string({required_error: "Field required"}).min(1),
@@ -75,7 +76,7 @@ type Payload = Omit<DataFormValue, "thumbnail_images" | "images"> & {
         en: string;
       }[]
     | [];
-  images:
+  banner:
     | {
         id: string;
         en: string;
@@ -95,7 +96,6 @@ const BussinessPageCreate = () => {
   const form = useForm<DataFormValue>({
     resolver: zodResolver(formSchema),
   });
-  console.log(form.formState.errors);
 
   const {mutate, isLoading} = useMutation(
     async (payload: Payload) => await ApiService.secure().post("/content", payload),
@@ -131,11 +131,11 @@ const BussinessPageCreate = () => {
   const onSubmit = async (data: DataFormValue) => {
     try {
       const thumbnail_images = combineImageMultiLang(data.thumbnail_images_en, data.thumbnail_images_id);
-      const images = combineImageMultiLang(data.images_en, data.images_id);
+      const banner = combineImageMultiLang(data.banner_en, data.banner_id);
 
       mutate({
         ...data,
-        images: images,
+        banner: banner,
         thumbnail_images: thumbnail_images,
       });
     } catch (error: any) {
@@ -370,13 +370,12 @@ const BussinessPageCreate = () => {
                 >
                   Thumbnail Description (EN)
                 </label>
-                <Textarea
-                  id={field.name}
+                <Ckeditor5
                   ref={field.ref}
-                  placeholder="Enter description"
-                  disabled={isLoading}
+                  onBlur={field.onBlur}
                   value={field.value}
-                  onChange={(e) => field.onChange(e.target.value)}
+                  onChange={field.onChange}
+                  placeholder="Enter Body"
                 />
                 {error?.message ? <p className="text-xs font-medium text-destructive">{error?.message}</p> : null}
               </div>
@@ -393,13 +392,12 @@ const BussinessPageCreate = () => {
                 >
                   Thumbnail Description (ID)
                 </label>
-                <Textarea
-                  id={field.name}
+                <Ckeditor5
                   ref={field.ref}
-                  placeholder="Enter description"
-                  disabled={isLoading}
+                  onBlur={field.onBlur}
                   value={field.value}
-                  onChange={(e) => field.onChange(e.target.value)}
+                  onChange={field.onChange}
+                  placeholder="Enter Body"
                 />
                 {error?.message ? <p className="text-xs font-medium text-destructive">{error?.message}</p> : null}
               </div>
@@ -408,7 +406,7 @@ const BussinessPageCreate = () => {
 
           <Controller
             control={form.control}
-            name="images_en"
+            name="banner_en"
             render={({field}) => {
               return (
                 <ImageRepository
@@ -419,7 +417,7 @@ const BussinessPageCreate = () => {
                   value={field.value?.length ? field.value : []}
                   onChange={(data) => {
                     let value = data.map((img) => img._id);
-                    form.setValue("images_id", value);
+                    form.setValue("banner_id", value);
                     field.onChange(value);
                   }}
                 />

@@ -30,6 +30,7 @@ import {cn} from "@/lib/utils";
 import {Check, ChevronsUpDown} from "lucide-react";
 import {CategoryType} from "../NewsCategory/NewsCategory";
 import combineImageMultiLang from "@/helper/combineImageMultiLang";
+import Ckeditor5 from "@/components/Ckeditor5";
 
 const title_page = "Business Page";
 const action_context = "Update";
@@ -45,8 +46,8 @@ const formSchema = z.object({
   }),
   thumbnail_images_en: z.string().array().default([]),
   thumbnail_images_id: z.string().array().default([]),
-  images_en: z.string().array().default([]),
-  images_id: z.string().array().default([]),
+  banner_en: z.string().array().default([]),
+  banner_id: z.string().array().default([]),
 
   title: z.object({
     en: z.string({required_error: "Field required"}).min(1),
@@ -78,7 +79,7 @@ type Payload = Omit<DataFormValue, "thumbnail_images" | "images"> & {
         en: string;
       }[]
     | [];
-  images:
+  banner:
     | {
         id: string;
         en: string;
@@ -134,12 +135,12 @@ const BussinessPageUpdate = () => {
   const onSubmit = async (data: DataFormValue) => {
     try {
       const thumbnail_images = combineImageMultiLang(data.thumbnail_images_en, data.thumbnail_images_id);
-      const images = combineImageMultiLang(data.images_en, data.images_id);
+      const banner = combineImageMultiLang(data.banner_en, data.banner_id);
 
       mutate({
         ...data,
         content_id: id || "",
-        images: images,
+        banner: banner,
         thumbnail_images: thumbnail_images,
       });
     } catch (error: any) {
@@ -167,8 +168,8 @@ const BussinessPageUpdate = () => {
           order: result.order,
           thumbnail_images_en: result.thumbnail_images.map((img) => img.en._id) || [],
           thumbnail_images_id: result.thumbnail_images.map((img) => img.id._id) || [],
-          images_en: result.images.map((img) => img.en._id) || [],
-          images_id: result.images.map((img) => img.id._id) || [],
+          banner_en: result.banner.map((img) => img.en._id) || [],
+          banner_id: result.banner.map((img) => img.id._id) || [],
         });
       } catch (error: any) {
         toast.error(<ToastBody title="an error occurred" description={error.message || "Something went wrong"} />);
@@ -404,13 +405,12 @@ const BussinessPageUpdate = () => {
                 >
                   Thumbnail Description (EN)
                 </label>
-                <Textarea
-                  id={field.name}
+                <Ckeditor5
                   ref={field.ref}
-                  placeholder="Enter description"
-                  disabled={isLoading}
+                  onBlur={field.onBlur}
                   value={field.value}
-                  onChange={(e) => field.onChange(e.target.value)}
+                  onChange={field.onChange}
+                  placeholder="Enter Body"
                 />
                 {error?.message ? <p className="text-xs font-medium text-destructive">{error?.message}</p> : null}
               </div>
@@ -427,13 +427,12 @@ const BussinessPageUpdate = () => {
                 >
                   Thumbnail Description (ID)
                 </label>
-                <Textarea
-                  id={field.name}
+                <Ckeditor5
                   ref={field.ref}
-                  placeholder="Enter description"
-                  disabled={isLoading}
+                  onBlur={field.onBlur}
                   value={field.value}
-                  onChange={(e) => field.onChange(e.target.value)}
+                  onChange={field.onChange}
+                  placeholder="Enter Body"
                 />
                 {error?.message ? <p className="text-xs font-medium text-destructive">{error?.message}</p> : null}
               </div>
@@ -442,7 +441,7 @@ const BussinessPageUpdate = () => {
 
           <Controller
             control={form.control}
-            name="images_en"
+            name="banner_en"
             render={({field}) => {
               return (
                 <ImageRepository
@@ -453,7 +452,7 @@ const BussinessPageUpdate = () => {
                   value={field.value?.length ? field.value : []}
                   onChange={(data) => {
                     let value = data.map((img) => img._id);
-                    form.setValue("images_id", value);
+                    form.setValue("banner_id", value);
                     field.onChange(value);
                   }}
                 />

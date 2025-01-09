@@ -47,6 +47,7 @@ export interface ContentType {
   publish_date: string;
   category_id: {
     _id: string;
+    slug: string;
     name: {
       en: string;
       id: string;

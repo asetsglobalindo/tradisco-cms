@@ -34,6 +34,8 @@ import BussinessPage from "./pages/BussinessPage/BussinessPage";
 import BussinessPageCreate from "./pages/BussinessPage/BussinessPageCreate";
 import BussinessPageUpdate from "./pages/BussinessPage/BussinessPageUpdate";
 import NewsPage from "./pages/NewsPage/NewsPage";
+import CareerPage from "./pages/CareerPage/CareerPage";
+import ProcuremenetReport from "./pages/ProcuremenetReport/ProcuremenetReport";
 
 const pagesListWithChilds = [
   {
@@ -203,6 +205,18 @@ const pageListNoChild = [
   {
     route: "/dashboard/location",
     component: Location,
+    childs: [],
+    hasChild: false,
+  },
+  {
+    route: "/dashboard/procurement-information",
+    component: ProcuremenetReport,
+    childs: [],
+    hasChild: false,
+  },
+  {
+    route: "/dashboard/career-page",
+    component: CareerPage,
     childs: [],
     hasChild: false,
   },

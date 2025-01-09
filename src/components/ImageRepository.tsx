@@ -119,7 +119,6 @@ const ImageRepositoryUpload: React.FC<ImageRepositoryUploadProps> = ({
         onFinish: () => {
           setSelectedFile(null);
           setSelectedFileMobile(null);
-
           setDesktopPreview(undefined);
           setMobilePreview(undefined);
 
@@ -164,25 +163,42 @@ const ImageRepositoryUpload: React.FC<ImageRepositoryUploadProps> = ({
 
     if (selectedFile) {
       formData.append("files", selectedFile[0]);
-      if (!mobileSize) {
-        formData.append("files_mobile", selectedFile[0]);
-      }
-    } else {
-      if (update && data) {
-        formData.append("images", JSON.stringify(data.images[0]));
-        if (!mobileSize) {
-          formData.append("images_mobile", JSON.stringify(data.images[0]));
-        }
-      }
     }
 
-    if (mobileSize && selectedFileMobile) {
-      formData.append("files_mobile", selectedFileMobile[0]);
-    } else {
-      if (update && data) {
-        formData.append("images_mobile", JSON.stringify(data.images_mobile[0]));
-      }
+    if (!selectedFile && update && data) {
+      formData.append("images", JSON.stringify(data.images[0]));
     }
+
+    if (selectedFileMobile) {
+      formData.append("files_mobile", selectedFileMobile[0]);
+    }
+
+    if (!selectedFileMobile && update && data) {
+      formData.append("images_mobile", JSON.stringify(data.images_mobile[0]));
+    }
+
+    // if (selectedFile) {
+    //   // new file
+    //   formData.append("files", selectedFile[0]);
+    //   if (!mobileSize) {
+    //     formData.append("files_mobile", selectedFile[0]);
+    //   }
+    // } else {
+    //   if (update && data) {
+    //     formData.append("images", JSON.stringify(data.images[0]));
+    //     if (!mobileSize) {
+    //       formData.append("images_mobile", JSON.stringify(data.images[0]));
+    //     }
+    //   }
+    // }
+
+    // if (mobileSize && selectedFileMobile) {
+    //   formData.append("files_mobile", selectedFileMobile[0]);
+    // } else {
+    //   if (update && data) {
+    //     formData.append("images_mobile", JSON.stringify(data.images_mobile[0]));
+    //   }
+    // }
 
     mutate(formData);
   };
@@ -294,6 +310,9 @@ const ImageRepositoryUpload: React.FC<ImageRepositoryUploadProps> = ({
                 onChange={(e) => {
                   if (e.target.files?.length) {
                     setSelectedFile(e.target.files);
+                    if (!mobileSize) {
+                      setSelectedFileMobile(e.target.files);
+                    }
                     setShowRequiredFile(false);
                     setDesktopPreview(URL.createObjectURL(e.target.files[0]));
                   }
@@ -670,7 +689,7 @@ const ImageRepository: React.FC<Props> = ({
                   showButtonRoute={showButtonRoute}
                   totalImage={selectedImage.length}
                   refetch={refetch}
-                  image={img}
+                  image={{...img, type: img_type}}
                   setSelectedImage={setSelectedImage}
                   type="thumbnail"
                 />

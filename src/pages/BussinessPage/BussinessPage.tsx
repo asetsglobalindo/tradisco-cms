@@ -45,10 +45,10 @@ interface MetaTable {
 const columns: ColumnDef<ContentType>[] = [
   {
     header: "Banner",
-    accessorKey: "images",
+    accessorKey: "banner",
     cell: ({row}) => (
       <div className="flex flex-col space-y-1">
-        <img className="object-cover w-20 aspect-square" src={row.original.images[0].en.images[0].url} alt="" />
+        <img className="object-cover w-20 aspect-square" src={row.original?.banner[0]?.en?.images[0]?.url} alt="" />
       </div>
     ),
   },
@@ -82,8 +82,8 @@ const columns: ColumnDef<ContentType>[] = [
     header: "Link (Front End)",
     accessorKey: "_id",
     cell: ({row}) => {
-      let prefix = "/business/";
-      let finalLink = prefix + row.original.slug;
+      let prefix = "/bussines/";
+      let finalLink = prefix + row.original.category_id.slug;
 
       return (
         <Button

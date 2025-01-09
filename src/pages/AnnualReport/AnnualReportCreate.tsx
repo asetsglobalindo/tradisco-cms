@@ -25,11 +25,20 @@ import IMG_TYPE from "@/helper/img-type";
 import ImageRepository from "@/components/ImageRepository";
 import combineImageMultiLang from "@/helper/combineImageMultiLang";
 import Ckeditor5 from "@/components/Ckeditor5";
+import {Textarea} from "@/components/ui/textarea";
 
 const title_page = "Annual Report";
 const action_context = "Update";
 
 const formSchema = z.object({
+  meta_title: z.object({
+    en: z.string({required_error: "Field required"}).min(1),
+    id: z.string({required_error: "Field required"}).min(1),
+  }),
+  meta_description: z.object({
+    en: z.string({required_error: "Field required"}).min(1),
+    id: z.string({required_error: "Field required"}).min(1),
+  }),
   title: z.object({
     en: z.string({required_error: "Field required"}).min(1),
     id: z.string({required_error: "Field required"}).min(1),
@@ -172,6 +181,105 @@ const AnnualReportCreate = () => {
 
       <FormProvider {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col w-full mt-5 space-y-4">
+          <React.Fragment>
+            <h4 className="pb-2 text-lg font-medium border-b border-primary/10">Meta Fields</h4>
+            <Controller
+              control={form.control}
+              name="meta_title.en"
+              render={({field, fieldState: {error}}) => (
+                <div className="flex flex-col space-y-2">
+                  <label
+                    htmlFor={field.name}
+                    className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                  >
+                    Meta Title (EN)
+                  </label>
+                  <Input
+                    id={field.name}
+                    ref={field.ref}
+                    type="text"
+                    placeholder="Enter meta title"
+                    disabled={isLoading}
+                    value={field.value}
+                    onChange={(e) => field.onChange(e.target.value)}
+                  />
+                  {error?.message ? <p className="text-xs font-medium text-destructive">{error?.message}</p> : null}
+                </div>
+              )}
+            />
+            <Controller
+              control={form.control}
+              name="meta_description.en"
+              render={({field, fieldState: {error}}) => (
+                <div className="flex flex-col space-y-2">
+                  <label
+                    htmlFor={field.name}
+                    className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                  >
+                    Meta Description (EN)
+                  </label>
+                  <Textarea
+                    id={field.name}
+                    ref={field.ref}
+                    placeholder="Enter meta description"
+                    disabled={isLoading}
+                    value={field.value}
+                    onChange={(e) => field.onChange(e.target.value)}
+                  />
+                  {error?.message ? <p className="text-xs font-medium text-destructive">{error?.message}</p> : null}
+                </div>
+              )}
+            />
+
+            <Controller
+              control={form.control}
+              name="meta_title.id"
+              render={({field, fieldState: {error}}) => (
+                <div className="flex flex-col space-y-2">
+                  <label
+                    htmlFor={field.name}
+                    className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                  >
+                    Meta Title (ID)
+                  </label>
+                  <Input
+                    id={field.name}
+                    ref={field.ref}
+                    type="text"
+                    placeholder="Enter meta title"
+                    disabled={isLoading}
+                    value={field.value}
+                    onChange={(e) => field.onChange(e.target.value)}
+                  />
+                  {error?.message ? <p className="text-xs font-medium text-destructive">{error?.message}</p> : null}
+                </div>
+              )}
+            />
+
+            <Controller
+              control={form.control}
+              name="meta_description.id"
+              render={({field, fieldState: {error}}) => (
+                <div className="flex flex-col space-y-2">
+                  <label
+                    htmlFor={field.name}
+                    className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                  >
+                    Meta Description (ID)
+                  </label>
+                  <Textarea
+                    id={field.name}
+                    ref={field.ref}
+                    placeholder="Enter meta description"
+                    disabled={isLoading}
+                    value={field.value}
+                    onChange={(e) => field.onChange(e.target.value)}
+                  />
+                  {error?.message ? <p className="text-xs font-medium text-destructive">{error?.message}</p> : null}
+                </div>
+              )}
+            />
+          </React.Fragment>
           <React.Fragment>
             <h4 className="pb-2 text-lg font-medium border-b border-primary/10">Banner</h4>
             <Controller
