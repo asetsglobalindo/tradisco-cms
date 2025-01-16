@@ -7,15 +7,16 @@
 }
 
 @layer components {
-  .title1 {
-    @apply text-4xl lg:text-6xl;
+  .title-1 {
+    @apply text-3xl md:text-4xl lg:text-6xl font-semibold;
   }
-  .title2 {
-    @apply text-2xl lg:text-[45px] text-[#4d4d4d];
+  .title-2 {
+    @apply text-2xl md:text-3xl lg:text-5xl font-semibold;
   }
-
-  .title3 {
-    @apply text-lg;
-    font-family: "Tenor Sans", sans-serif;
+  .title-3 {
+    @apply text-xl md:text-2xl lg:text-4xl font-semibold;
+  }
+  .title-4 {
+    @apply text-base md:text-lg lg:text-2xl font-semibold;
   }
 }

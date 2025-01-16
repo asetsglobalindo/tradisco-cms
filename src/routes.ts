@@ -36,6 +36,7 @@ import BussinessPageUpdate from "./pages/BussinessPage/BussinessPageUpdate";
 import NewsPage from "./pages/NewsPage/NewsPage";
 import CareerPage from "./pages/CareerPage/CareerPage";
 import ProcuremenetReport from "./pages/ProcuremenetReport/ProcuremenetReport";
+import AboutPage from "./pages/AboutPage/AboutPage";
 
 const pagesListWithChilds = [
   {
@@ -205,6 +206,12 @@ const pageListNoChild = [
   {
     route: "/dashboard/location",
     component: Location,
+    childs: [],
+    hasChild: false,
+  },
+  {
+    route: "/dashboard/about-page",
+    component: AboutPage,
     childs: [],
     hasChild: false,
   },

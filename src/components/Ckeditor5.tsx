@@ -135,19 +135,19 @@ const Ckeditor5: React.FC<Props> = ({ref, onBlur, placeholder, onChange, value})
             {model: "paragraph", title: "Paragraph", class: ""},
             {
               model: "heading1",
-              view: {name: "h1", classes: "text-xl lg:text-2xl"},
+              view: {name: "h1", classes: "text-3xl md:text-4xl lg:text-6xl font-semibold"},
               title: "Heading 1",
               class: "ck-heading_heading1",
             },
             {
               model: "heading2",
-              view: {name: "h2", classes: "text-lg lg:text-xl"},
+              view: {name: "h2", classes: "text-2xl md:text-3xl lg:text-5xl font-semibold"},
               title: "Heading 2",
               class: "ck-heading_heading2",
             },
             {
               model: "heading3",
-              view: {name: "h3", classes: "text-base lg:text-lg"},
+              view: {name: "h3", classes: "text-xl md:text-2xl lg:text-4xl font-semibold"},
               title: "Heading 3",
               class: "ck-heading_heading3",
             },
