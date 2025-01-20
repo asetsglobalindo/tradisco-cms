@@ -68,11 +68,7 @@ const columns: ColumnDef<UserGetItemType>[] = [
     header: "E-mail",
     accessorKey: "email",
   },
-  {
-    header: "Point",
-    accessorKey: "member_point",
-    cell: ({row}) => <span>{row?.original?.member_point || "0"} Points</span>,
-  },
+
   {
     header: "Role",
     accessorKey: "Role",
