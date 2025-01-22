@@ -37,6 +37,11 @@ import NewsPage from "./pages/NewsPage/NewsPage";
 import CareerPage from "./pages/CareerPage/CareerPage";
 import ProcuremenetReport from "./pages/ProcuremenetReport/ProcuremenetReport";
 import AboutPage from "./pages/AboutPage/AboutPage";
+import AboutReward from "./pages/AboutReward/AboutReward";
+import AboutValue from "./pages/AboutValue/AboutValue";
+import AboutWork from "./pages/AboutWork/AboutWork";
+import AboutHSSE from "./pages/AboutHSSE/AboutHSSE";
+import AboutManagement from "./pages/AboutManagement/AboutManagement";
 
 const pagesListWithChilds = [
   {
@@ -206,6 +211,36 @@ const pageListNoChild = [
   {
     route: "/dashboard/location",
     component: Location,
+    childs: [],
+    hasChild: false,
+  },
+  {
+    route: "/dashboard/about-reward",
+    component: AboutReward,
+    childs: [],
+    hasChild: false,
+  },
+  {
+    route: "/dashboard/about-value",
+    component: AboutValue,
+    childs: [],
+    hasChild: false,
+  },
+  {
+    route: "/dashboard/about-hsse",
+    component: AboutHSSE,
+    childs: [],
+    hasChild: false,
+  },
+  {
+    route: "/dashboard/about-workers",
+    component: AboutWork,
+    childs: [],
+    hasChild: false,
+  },
+  {
+    route: "/dashboard/about-management",
+    component: AboutManagement,
     childs: [],
     hasChild: false,
   },

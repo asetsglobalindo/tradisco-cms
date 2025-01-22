@@ -11,6 +11,13 @@ const CONTENT_TYPE = {
   BUSINESS_PAGE: "business_page",
   NEWS_PAGE: "news_page",
   CAREER_PAGE: "career_page",
+  ABOUT_MANAGEMENT: "about_management",
+  ABOUT_HSS: "about_hsse",
+  ABOUT_PREEMPLOYMENT: "about_preemployment",
+  ABOUT_VALUE: "about_value",
+  ABOUT_REWARD: "about_reward",
+  MITRA: "mitra",
+  MITRA_PAGE: "mitra_page",
   getTypeNumber: (type: string) => {
     return Object.keys(CONTENT_TYPE).indexOf(type.toUpperCase()) + 1;
   },

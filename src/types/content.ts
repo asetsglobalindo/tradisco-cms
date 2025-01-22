@@ -27,7 +27,10 @@ export interface ContentType {
     en: string;
     id: string;
   };
-  small_text2: string;
+  small_text2: {
+    en: string;
+    id: string;
+  };
   title: {
     en: string;
     id: string;
@@ -79,8 +82,14 @@ export interface ContentType {
       | [];
     _id: string;
   }[];
-  bottom_text: string;
-  bottom_button_name: string;
+  bottom_text: {
+    en: string;
+    id: string;
+  };
+  bottom_button_name: {
+    en: string;
+    id: string;
+  };
   bottom_button_route: string;
   active_status: boolean;
   total_view: number;
