@@ -2,7 +2,7 @@ const CONTENT_TYPE = {
   BUSINESS: "business",
   NEWS: "news",
   CAREER: "career",
-  ABOUT: "about",
+  ABOUT_PROFILE: "about_profile",
   INVESTOR: "investor",
   ANNUAL_REPORT: "annual_report",
   SUSTAINABILITY_REPORT: "sustainability_report",

@@ -35,6 +35,18 @@ export interface ContentType {
     en: string;
     id: string;
   };
+  sub_title1: {
+    en: string;
+    id: string;
+  };
+  sub_title2: {
+    en: string;
+    id: string;
+  };
+  sub_title3: {
+    en: string;
+    id: string;
+  };
   description: {
     en: string;
     id: string;
@@ -82,6 +94,17 @@ export interface ContentType {
       | [];
     _id: string;
   }[];
+  body2: {
+    title: {
+      en: string;
+      id: string;
+    };
+    text: {
+      en: string;
+      id: string;
+    };
+    _id: string;
+  }[];
   bottom_text: {
     en: string;
     id: string;
@@ -100,13 +123,24 @@ export interface ContentType {
         en: ContentImage;
       }[]
     | [];
+  images2:
+    | {
+        id: ContentImage;
+        en: ContentImage;
+      }[]
+    | [];
   thumbnail_images:
     | {
         id: ContentImage;
         en: ContentImage;
       }[]
     | [];
-  thumbnail_images2: ContentImage[] | [];
+  thumbnail_images2:
+    | {
+        id: ContentImage;
+        en: ContentImage;
+      }[]
+    | [];
   related: ContentType[] | [];
   related2: [];
   category: number;
