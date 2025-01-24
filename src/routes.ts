@@ -42,6 +42,11 @@ import AboutValue from "./pages/AboutValue/AboutValue";
 import AboutWork from "./pages/AboutWork/AboutWork";
 import AboutHSSE from "./pages/AboutHSSE/AboutHSSE";
 import AboutManagement from "./pages/AboutManagement/AboutManagement";
+import Partnership from "./pages/Partnership/Partnership";
+import PartnershipCreate from "./pages/Partnership/PartnershipCreate";
+import PartnershipUpdate from "./pages/Partnership/PartnershipUpdate";
+import PartnershipPage from "./pages/PartnershipPage/PartnershipPage";
+import CSRPage from "./pages/CSRPage/CSRPage";
 
 const pagesListWithChilds = [
   {
@@ -205,12 +210,35 @@ const pagesListWithChilds = [
     ],
     hasChild: true,
   },
+  {
+    route: "/dashboard/partnership",
+    component: Partnership,
+    childs: [
+      {
+        route: "/dashboard/partnership/create",
+        component: PartnershipCreate,
+        access: "create",
+      },
+      {
+        route: "/dashboard/partnership/update/:id",
+        component: PartnershipUpdate,
+        access: "update",
+      },
+    ],
+    hasChild: true,
+  },
 ];
 
 const pageListNoChild = [
   {
     route: "/dashboard/location",
     component: Location,
+    childs: [],
+    hasChild: false,
+  },
+  {
+    route: "/dashboard/partnership-page",
+    component: PartnershipPage,
     childs: [],
     hasChild: false,
   },
@@ -229,6 +257,12 @@ const pageListNoChild = [
   {
     route: "/dashboard/about-hsse",
     component: AboutHSSE,
+    childs: [],
+    hasChild: false,
+  },
+  {
+    route: "/dashboard/csr-page",
+    component: CSRPage,
     childs: [],
     hasChild: false,
   },

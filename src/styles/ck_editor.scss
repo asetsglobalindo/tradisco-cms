@@ -8,6 +8,17 @@
   background: hsl(var(--background)) !important;
 }
 
+.ck-content {
+  ul {
+    margin-left: 18px;
+    list-style-type: disc;
+  }
+  ol {
+    margin-left: 18px;
+    list-style: decimal;
+  }
+}
+
 .ck.ck-icon {
   color: hsl(var(--foreground)) !important;
 }

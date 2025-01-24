@@ -52,6 +52,11 @@ type HomeType = {
     small_text: MultiLang;
     title: MultiLang;
   };
+  section4a: {
+    title: MultiLang;
+    description: MultiLang;
+    content: string[];
+  };
   section5: {
     title: MultiLang;
     button_name: MultiLang;
@@ -115,6 +120,17 @@ const formSchema = z.object({
       en: z.string({required_error: "Field required"}).min(1),
       id: z.string({required_error: "Field required"}).min(1),
     }),
+  }),
+  section4a: z.object({
+    title: z.object({
+      en: z.string({required_error: "Field required"}).min(1),
+      id: z.string({required_error: "Field required"}).min(1),
+    }),
+    description: z.object({
+      en: z.string({required_error: "Field required"}).min(1),
+      id: z.string({required_error: "Field required"}).min(1),
+    }),
+    content: z.string().array().default([]),
   }),
   section4: z
     .object({
@@ -200,6 +216,10 @@ const HomePage = () => {
     queryKey: ["news", 999],
     queryFn: async () => await getContent({pageIndex: 0, pageSize: 999, type: CONTENT_TYPE.NEWS}),
   });
+  const {data: realtedPartnership} = useQuery({
+    queryKey: ["partnership", 999],
+    queryFn: async () => await getContent({pageIndex: 0, pageSize: 999, type: CONTENT_TYPE.MITRA}),
+  });
 
   const onSubmit = async (data: DataFormValue) => {
     try {
@@ -238,6 +258,17 @@ const HomePage = () => {
             en: data.section3.small_text.en,
             id: data.section3.small_text.id,
           },
+        },
+        section4a: {
+          title: {
+            en: data.section4a.title.en,
+            id: data.section4a.title.id,
+          },
+          description: {
+            en: data.section4a.description.en,
+            id: data.section4a.description.id,
+          },
+          content: data.section4a.content,
         },
         section4: data.section4.map((item) => ({
           tab: {
@@ -293,6 +324,17 @@ const HomePage = () => {
           },
           banner_en: result.banner.map((img) => img.en) || [],
           banner_id: result.banner.map((img) => img.id) || [],
+          section4a: {
+            title: {
+              en: result.section4a.title.en,
+              id: result.section4a.title.id,
+            },
+            description: {
+              en: result.section4a.description.en,
+              id: result.section4a.description.id,
+            },
+            content: result.section4a.content,
+          },
           section2: {
             title: {
               en: result.section2.title.en,
@@ -1054,6 +1096,131 @@ const HomePage = () => {
           </React.Fragment>
 
           {/* news section */}
+          <React.Fragment>
+            <h4 className="pb-2 text-lg font-medium border-b border-primary/10">Partnership Section</h4>
+            <Controller
+              control={form.control}
+              name={`section4a.title.en`}
+              render={({field, fieldState: {error}}) => (
+                <div className="flex flex-col w-full space-y-2">
+                  <label
+                    htmlFor={field.name}
+                    className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                  >
+                    Title (EN)
+                  </label>
+                  <Input
+                    id={field.name}
+                    ref={field.ref}
+                    type="text"
+                    placeholder="Enter title"
+                    disabled={isLoading}
+                    value={field.value}
+                    onChange={(e) => field.onChange(e.target.value)}
+                  />
+                  {error?.message ? <p className="text-xs font-medium text-destructive">{error?.message}</p> : null}
+                </div>
+              )}
+            />
+            <Controller
+              control={form.control}
+              name={`section4a.title.id`}
+              render={({field, fieldState: {error}}) => (
+                <div className="flex flex-col w-full space-y-2">
+                  <label
+                    htmlFor={field.name}
+                    className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                  >
+                    Title (ID)
+                  </label>
+                  <Input
+                    id={field.name}
+                    ref={field.ref}
+                    type="text"
+                    placeholder="Enter title"
+                    disabled={isLoading}
+                    value={field.value}
+                    onChange={(e) => field.onChange(e.target.value)}
+                  />
+                  {error?.message ? <p className="text-xs font-medium text-destructive">{error?.message}</p> : null}
+                </div>
+              )}
+            />
+            <Controller
+              control={form.control}
+              name={`section4a.description.en`}
+              render={({field, fieldState: {error}}) => (
+                <div className="flex flex-col w-full space-y-2">
+                  <label
+                    htmlFor={field.name}
+                    className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                  >
+                    Description (EN)
+                  </label>
+                  <Ckeditor5
+                    ref={field.ref}
+                    onBlur={field.onBlur}
+                    value={field.value}
+                    onChange={field.onChange}
+                    placeholder="Enter Body"
+                  />
+                  {error?.message ? <p className="text-xs font-medium text-destructive">{error?.message}</p> : null}
+                </div>
+              )}
+            />
+            <Controller
+              control={form.control}
+              name={`section4a.description.id`}
+              render={({field, fieldState: {error}}) => (
+                <div className="flex flex-col w-full space-y-2">
+                  <label
+                    htmlFor={field.name}
+                    className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                  >
+                    Description (ID)
+                  </label>
+                  <Ckeditor5
+                    ref={field.ref}
+                    onBlur={field.onBlur}
+                    value={field.value}
+                    onChange={field.onChange}
+                    placeholder="Enter Body"
+                  />
+                  {error?.message ? <p className="text-xs font-medium text-destructive">{error?.message}</p> : null}
+                </div>
+              )}
+            />
+            <Controller
+              control={form.control}
+              name={`section4a.content`}
+              render={({field, fieldState: {error}}) => (
+                <div className="flex flex-col space-y-2">
+                  <label
+                    htmlFor={field.name}
+                    className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                  >
+                    Related Partnership
+                  </label>
+                  <MultipleSelector
+                    placeholder="Select item"
+                    maxSelected={10}
+                    onChange={(option) => {
+                      field.onChange(option.map((item) => item.value));
+                    }}
+                    emptyIndicator="No related contents"
+                    value={idToContent(field.value, realtedPartnership || [])}
+                    options={realtedPartnership?.map((option) => {
+                      return {
+                        label: option.title.en,
+                        value: option._id,
+                      };
+                    })}
+                  />
+                  {error?.message ? <p className="text-xs font-medium text-destructive">{error?.message}</p> : null}
+                </div>
+              )}
+            />
+          </React.Fragment>
           <React.Fragment>
             <h4 className="pb-2 text-lg font-medium border-b border-primary/10">News Section</h4>
             <Controller

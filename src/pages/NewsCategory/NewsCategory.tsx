@@ -6,7 +6,6 @@ import {useMutation, useQuery} from "react-query";
 // component
 import {Button} from "@/components/ui/button";
 import {SquarePen, Trash2} from "lucide-react";
-import {Checkbox} from "@/components/ui/checkbox";
 import TableHeaderPage from "@/components/TableHeaderPage";
 import {AlertModal} from "@/components/Modal/AlertModal";
 import MainTable from "@/components/MainTable";
@@ -66,25 +65,6 @@ interface MetaTable {
 
 // child components
 const columns: ColumnDef<CategoryType>[] = [
-  {
-    id: "select",
-    header: ({table}) => (
-      <Checkbox
-        checked={table.getIsAllPageRowsSelected() || (table.getIsSomePageRowsSelected() && "indeterminate")}
-        onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
-        aria-label="Select all"
-      />
-    ),
-    cell: ({row}) => (
-      <Checkbox
-        checked={row.getIsSelected()}
-        onCheckedChange={(value) => row.toggleSelected(!!value)}
-        aria-label="Select row"
-      />
-    ),
-    enableSorting: false,
-    enableHiding: false,
-  },
   {
     header: "Name (EN)",
     accessorKey: "name.en",

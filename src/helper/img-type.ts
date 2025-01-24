@@ -12,7 +12,10 @@ const IMG_TYPE = {
   ANNUAL_REPORT_BANNER: "annual_report_banner",
   SUSTAINABILITY_REPORT_BANNER: "sustainability_report_banner",
   PROCUREMENT_REPORT_BANNER: "procurement_information_banner",
-  BUSINESS_BANNER: "business_banner",
+  MITRA: "mitra",
+  MITTA_PAGE: "mitra_page",
+  SUB_COMPANY: "sub_company",
+  CSR_PAGE: "csr_page",
 
   getTypeNumber: (type: string) => {
     return Object.keys(IMG_TYPE).indexOf(type.toUpperCase()) + 1;

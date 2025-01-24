@@ -27,7 +27,7 @@ import {Textarea} from "@/components/ui/textarea";
 import {Trash} from "lucide-react";
 import PopConfirm from "@/components/PopConfirm";
 
-const title_page = "About Profile Page";
+const title_page = "CSR Page";
 
 const formSchema = z.object({
   meta_title: z.object({
@@ -48,6 +48,8 @@ const formSchema = z.object({
   images_id: z.string().array().default([]),
   images2_en: z.string().array().default([]),
   images2_id: z.string().array().default([]),
+  thumbnail_images_en: z.string().array().default([]),
+  thumbnail_images_id: z.string().array().default([]),
   sub_title1: z.object({
     en: z.string({required_error: "Field required"}).min(1),
     id: z.string({required_error: "Field required"}).min(1),
@@ -105,12 +107,23 @@ const formSchema = z.object({
         en: z.string({required_error: "Field required"}).min(1),
         id: z.string({required_error: "Field required"}).min(1),
       }),
-      button_name: z.object({
+      type: z.number().optional().default(2), // 2 mean section top
+    })
+    .array()
+    .default([]),
+  body_commitment: z
+    .object({
+      title: z.object({
         en: z.string({required_error: "Field required"}).min(1),
         id: z.string({required_error: "Field required"}).min(1),
       }),
-      button_route: z.string({required_error: "Field required"}).min(1),
-      type: z.number().optional().default(2), // 2 mean section top
+      text: z.object({
+        en: z.string({required_error: "Field required"}).min(1),
+        id: z.string({required_error: "Field required"}).min(1),
+      }),
+      type: z.number().optional().default(3), // 1 mean commitment
+      image_en: z.string({required_error: "Field required"}).array().default([]),
+      image_id: z.string({required_error: "Field required"}).array().default([]),
     })
     .array()
     .default([]),
@@ -118,16 +131,16 @@ const formSchema = z.object({
     en: z.string({required_error: "Field required"}).min(1),
     id: z.string({required_error: "Field required"}).min(1),
   }),
-  small_text2: z.object({
-    en: z.string({required_error: "Field required"}).min(1),
-    id: z.string({required_error: "Field required"}).min(1),
-  }),
+  //   small_text2: z.object({
+  //     en: z.string({required_error: "Field required"}).min(1),
+  //     id: z.string({required_error: "Field required"}).min(1),
+  //   }),
   bottom_button_name: z.object({
     en: z.string({required_error: "Field required"}).min(1),
     id: z.string({required_error: "Field required"}).min(1),
   }),
   active_status: z.boolean().default(true),
-  type: z.string().default(CONTENT_TYPE.ABOUT_PROFILE),
+  type: z.string().default(CONTENT_TYPE.CSR),
   order: z.number().default(0),
 });
 type DataFormValue = z.infer<typeof formSchema>;
@@ -158,6 +171,12 @@ type Payload = Omit<DataFormValue, "body"> & {
         en: string;
       }[]
     | [];
+  thumbnail_images:
+    | {
+        id: string;
+        en: string;
+      }[]
+    | [];
   body:
     | {
         text: {
@@ -168,7 +187,7 @@ type Payload = Omit<DataFormValue, "body"> & {
     | [];
 };
 
-const AboutPage = () => {
+const CSRPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [id, setId] = useState<string | null>(null);
@@ -179,10 +198,10 @@ const AboutPage = () => {
     resolver: zodResolver(formSchema),
   });
 
-  const {fields, remove, append} = useFieldArray({
-    name: "body",
-    control: form.control,
-  });
+  //   const {fields, remove, append} = useFieldArray({
+  //     name: "body",
+  //     control: form.control,
+  //   });
   const {
     fields: fieldsReview,
     remove: removeReview,
@@ -192,11 +211,11 @@ const AboutPage = () => {
     control: form.control,
   });
   const {
-    fields: fieldsMission,
-    remove: removeMission,
-    append: appendMission,
+    fields: fieldsCommitment,
+    remove: removeCommitment,
+    append: appendCommitment,
   } = useFieldArray({
-    name: "body2",
+    name: "body_commitment",
     control: form.control,
   });
 
@@ -237,6 +256,19 @@ const AboutPage = () => {
         type: item.type,
         images: combineImageMultiLang(item.image_en, item.image_id),
       }));
+      const bodyCommitment = data.body_commitment.map((item) => ({
+        title: {
+          en: item.title.en,
+          id: item.title.id,
+        },
+
+        text: {
+          en: item.text.en,
+          id: item.text.id,
+        },
+        type: item.type,
+        images: combineImageMultiLang(item.image_en, item.image_id),
+      }));
 
       const bodyReview = data.body_review.map((item) => ({
         title: {
@@ -247,12 +279,7 @@ const AboutPage = () => {
           en: item.text.en,
           id: item.text.id,
         },
-        button_name: {
-          en: item.button_name.en,
-          id: item.button_name.id,
-        },
         type: item.type,
-        button_route: item.button_route,
         images: [],
       }));
 
@@ -260,16 +287,18 @@ const AboutPage = () => {
       const images = combineImageMultiLang(data.images_en, data.images_id);
       const images2 = combineImageMultiLang(data.images2_en, data.images2_id);
       const thumbnail_images2 = combineImageMultiLang(data.thumbnail_images2_en, data.thumbnail_images2_id);
+      const thumbnail_images = combineImageMultiLang(data.thumbnail_images_en, data.thumbnail_images_id);
 
       mutate({
         ...data,
         banner: banner,
         content_id: id || "",
-        body: [...body, ...bodyReview],
+        body: [...body, ...bodyReview, ...bodyCommitment],
         images: images,
         images2: images2,
-        type: CONTENT_TYPE.ABOUT_PROFILE,
+        type: CONTENT_TYPE.CSR,
         thumbnail_images2,
+        thumbnail_images,
       });
 
       // mutate();
@@ -284,7 +313,7 @@ const AboutPage = () => {
         const params = {
           limit: 1,
           page: 1,
-          type: CONTENT_TYPE.ABOUT_PROFILE,
+          type: CONTENT_TYPE.CSR,
         };
 
         const response = await ApiService.get("/content", params);
@@ -336,12 +365,14 @@ const AboutPage = () => {
             images_en: result.images.map((img) => img.en._id) || [],
             images_id: result.images.map((img) => img.id._id) || [],
             small_text: result.small_text,
-            small_text2: result.small_text2,
+            // small_text2: result.small_text2,
             bottom_button_name: {
-              en: result.bottom_button_name.en,
-              id: result.bottom_button_name.id,
+              en: result?.bottom_button_name?.en,
+              id: result?.bottom_button_name?.id,
             },
-            type: CONTENT_TYPE.ABOUT_PROFILE,
+            thumbnail_images_en: result.thumbnail_images.map((img) => img.en._id) || [],
+            thumbnail_images_id: result.thumbnail_images.map((img) => img.id._id) || [],
+            type: CONTENT_TYPE.CSR,
             body: result.body
               .filter((d) => d.type === 1)
               .map((item) => ({
@@ -361,13 +392,28 @@ const AboutPage = () => {
                 },
                 type: item.type,
               })),
+            body_commitment: result.body
+              .filter((d) => d.type === 3)
+              .map((item) => ({
+                image_en: item.images.map((img) => img.en._id) || [],
+                image_id: item.images.map((img) => img.id._id) || [],
+                text: {
+                  en: item.text.en,
+                  id: item.text.id,
+                },
+                title: {
+                  en: item.title.en,
+                  id: item.title.id,
+                },
+                type: item.type,
+              })),
             body_review: result.body
               .filter((d) => d.type === 2)
               .map((item) => ({
-                button_name: {
-                  en: item.button_name.en,
-                  id: item.button_name.id,
-                },
+                // button_name: {
+                //   en: item.button_name.en,
+                //   id: item.button_name.id,
+                // },
                 image_en: item.images.map((img) => img.en._id) || [],
                 image_id: item.images.map((img) => img.id._id) || [],
                 text: {
@@ -399,6 +445,8 @@ const AboutPage = () => {
     };
     getDetails();
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
+  console.log(form.formState.errors);
 
   return (
     <section>
@@ -520,7 +568,7 @@ const AboutPage = () => {
                   <ImageRepository
                     label="Banner"
                     limit={1}
-                    img_type={IMG_TYPE.ABOUT}
+                    img_type={IMG_TYPE.CSR_PAGE}
                     value={field.value?.length ? field.value : []}
                     onChange={(data) => {
                       let value = data.map((img) => img._id);
@@ -626,115 +674,16 @@ const AboutPage = () => {
               </div>
             )}
           />
-          <h4 className="pb-2 text-lg font-medium border-b border-primary/10">Vision Section</h4>
-          <Controller
-            control={form.control}
-            name="small_text2.en"
-            render={({field, fieldState: {error}}) => (
-              <div className="flex flex-col space-y-2">
-                <label
-                  htmlFor={field.name}
-                  className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                >
-                  Title (EN)
-                </label>
-                <Input
-                  id={field.name}
-                  ref={field.ref}
-                  type="text"
-                  placeholder="Enter title"
-                  disabled={isLoading}
-                  value={field.value}
-                  onChange={(e) => field.onChange(e.target.value)}
-                />
-                {error?.message ? <p className="text-xs font-medium text-destructive">{error?.message}</p> : null}
-              </div>
-            )}
-          />
-          <Controller
-            control={form.control}
-            name="small_text2.id"
-            render={({field, fieldState: {error}}) => (
-              <div className="flex flex-col space-y-2">
-                <label
-                  htmlFor={field.name}
-                  className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                >
-                  Title (ID)
-                </label>
-                <Input
-                  id={field.name}
-                  ref={field.ref}
-                  type="text"
-                  placeholder="Enter title"
-                  disabled={isLoading}
-                  value={field.value}
-                  onChange={(e) => field.onChange(e.target.value)}
-                />
-                {error?.message ? <p className="text-xs font-medium text-destructive">{error?.message}</p> : null}
-              </div>
-            )}
-          />
-
-          <Controller
-            control={form.control}
-            name="bottom_button_name.en"
-            render={({field, fieldState: {error}}) => (
-              <div className="flex flex-col space-y-2">
-                <label
-                  htmlFor={field.name}
-                  className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                >
-                  Vision (EN)
-                </label>
-                <Input
-                  id={field.name}
-                  ref={field.ref}
-                  type="text"
-                  placeholder="Enter vision"
-                  disabled={isLoading}
-                  value={field.value}
-                  onChange={(e) => field.onChange(e.target.value)}
-                />
-                {error?.message ? <p className="text-xs font-medium text-destructive">{error?.message}</p> : null}
-              </div>
-            )}
-          />
-          <Controller
-            control={form.control}
-            name="bottom_button_name.id"
-            render={({field, fieldState: {error}}) => (
-              <div className="flex flex-col space-y-2">
-                <label
-                  htmlFor={field.name}
-                  className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                >
-                  Vision (ID)
-                </label>
-                <Input
-                  id={field.name}
-                  ref={field.ref}
-                  type="text"
-                  placeholder="Enter vision"
-                  disabled={isLoading}
-                  value={field.value}
-                  onChange={(e) => field.onChange(e.target.value)}
-                />
-                {error?.message ? <p className="text-xs font-medium text-destructive">{error?.message}</p> : null}
-              </div>
-            )}
-          />
-
           <Controller
             control={form.control}
             name={"images_en"}
             render={({field}) => {
               return (
                 <ImageRepository
-                  label="Vision Images"
+                  label="Images"
                   limit={1}
                   mobileSize={false}
-                  img_type={IMG_TYPE.ABOUT}
+                  img_type={IMG_TYPE.CSR_PAGE}
                   value={field.value?.length ? field.value : []}
                   onChange={(data) => {
                     let value = data.map((img) => img._id);
@@ -745,7 +694,6 @@ const AboutPage = () => {
               );
             }}
           />
-          <h4 className="pb-2 text-lg font-medium border-b border-primary/10">Mission</h4>
           <Controller
             control={form.control}
             name="sub_title1.en"
@@ -796,18 +744,83 @@ const AboutPage = () => {
           />
           <Controller
             control={form.control}
-            name={"images2_en"}
+            name={`bottom_button_name.en`}
+            render={({field, fieldState: {error}}) => (
+              <div className="flex flex-col w-full space-y-2">
+                <label
+                  htmlFor={field.name}
+                  className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                >
+                  Text (EN)
+                </label>
+                <Ckeditor5
+                  onBlur={field.onBlur}
+                  ref={field.ref}
+                  placeholder="Enter text"
+                  value={field.value}
+                  onChange={(e) => field.onChange(e)}
+                />
+                {error?.message ? <p className="text-xs font-medium text-destructive">{error?.message}</p> : null}
+              </div>
+            )}
+          />
+          <Controller
+            control={form.control}
+            name={`bottom_button_name.id`}
+            render={({field, fieldState: {error}}) => (
+              <div className="flex flex-col w-full space-y-2">
+                <label
+                  htmlFor={field.name}
+                  className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                >
+                  Text (ID)
+                </label>
+                <Ckeditor5
+                  onBlur={field.onBlur}
+                  ref={field.ref}
+                  placeholder="Enter text"
+                  value={field.value}
+                  onChange={(e) => field.onChange(e)}
+                />
+                {error?.message ? <p className="text-xs font-medium text-destructive">{error?.message}</p> : null}
+              </div>
+            )}
+          />
+          <Controller
+            control={form.control}
+            name={"thumbnail_images_en"}
             render={({field}) => {
               return (
                 <ImageRepository
-                  label="Mision Background"
+                  label="Image"
                   limit={1}
                   mobileSize={false}
-                  img_type={IMG_TYPE.ABOUT}
+                  img_type={IMG_TYPE.CSR_PAGE}
                   value={field.value?.length ? field.value : []}
                   onChange={(data) => {
                     let value = data.map((img) => img._id);
-                    form.setValue("images2_id", value);
+                    form.setValue("thumbnail_images_id", value);
+                    field.onChange(value);
+                  }}
+                />
+              );
+            }}
+          />
+          <h4 className="pb-2 text-lg font-medium border-b border-primary/10">Our Commitment</h4>
+          <Controller
+            control={form.control}
+            name={"thumbnail_images2_en"}
+            render={({field}) => {
+              return (
+                <ImageRepository
+                  label="Image"
+                  limit={1}
+                  mobileSize={false}
+                  img_type={IMG_TYPE.CSR_PAGE}
+                  value={field.value?.length ? field.value : []}
+                  onChange={(data) => {
+                    let value = data.map((img) => img._id);
+                    form.setValue("thumbnail_images2_id", value);
                     field.onChange(value);
                   }}
                 />
@@ -815,186 +828,12 @@ const AboutPage = () => {
             }}
           />
           <section className="p-4 space-y-6 border">
-            {fieldsMission.map((item, index) => (
+            {fieldsCommitment.map((item, index) => (
               <div key={item.id} className="pb-8 space-y-4 border-b border-primary/10 ">
                 <div className="flex justify-between space-x-4">
                   <Controller
                     control={form.control}
-                    name={`body2.${index}.text.en`}
-                    render={({field, fieldState: {error}}) => (
-                      <div className="flex flex-col w-full space-y-2">
-                        <label
-                          htmlFor={field.name}
-                          className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                        >
-                          Text (EN)
-                        </label>
-                        <Ckeditor5
-                          onBlur={field.onBlur}
-                          ref={field.ref}
-                          placeholder="Enter text"
-                          value={field.value}
-                          onChange={(e) => field.onChange(e)}
-                        />
-                        {error?.message ? (
-                          <p className="text-xs font-medium text-destructive">{error?.message}</p>
-                        ) : null}
-                      </div>
-                    )}
-                  />
-                  <div className="mt-auto ">
-                    <PopConfirm onOk={() => removeMission(index)}>
-                      <Button type="button" variant="destructive">
-                        <Trash size={14} />
-                      </Button>
-                    </PopConfirm>
-                  </div>
-                </div>
-
-                <Controller
-                  control={form.control}
-                  name={`body2.${index}.text.id`}
-                  render={({field, fieldState: {error}}) => (
-                    <div className="flex flex-col w-full space-y-2">
-                      <label
-                        htmlFor={field.name}
-                        className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                      >
-                        Text (ID)
-                      </label>
-                      <Ckeditor5
-                        onBlur={field.onBlur}
-                        ref={field.ref}
-                        placeholder="Enter text"
-                        value={field.value}
-                        onChange={(e) => field.onChange(e)}
-                      />
-                      {error?.message ? <p className="text-xs font-medium text-destructive">{error?.message}</p> : null}
-                    </div>
-                  )}
-                />
-              </div>
-            ))}
-
-            <div className="">
-              <Button
-                className="mt-2"
-                type="button"
-                onClick={() =>
-                  appendMission({
-                    text: {en: "", id: ""},
-                  })
-                }
-              >
-                Add Fields
-              </Button>
-            </div>
-          </section>
-
-          <Controller
-            control={form.control}
-            name="sub_title2.en"
-            render={({field, fieldState: {error}}) => (
-              <div className="flex flex-col space-y-2">
-                <label
-                  htmlFor={field.name}
-                  className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                >
-                  Small Text (EN)
-                </label>
-                <Input
-                  id={field.name}
-                  ref={field.ref}
-                  type="text"
-                  placeholder="Enter title"
-                  disabled={isLoading}
-                  value={field.value}
-                  onChange={(e) => field.onChange(e.target.value)}
-                />
-                {error?.message ? <p className="text-xs font-medium text-destructive">{error?.message}</p> : null}
-              </div>
-            )}
-          />
-          <Controller
-            control={form.control}
-            name="sub_title2.id"
-            render={({field, fieldState: {error}}) => (
-              <div className="flex flex-col space-y-2">
-                <label
-                  htmlFor={field.name}
-                  className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                >
-                  Small Text (ID)
-                </label>
-                <Input
-                  id={field.name}
-                  ref={field.ref}
-                  type="text"
-                  placeholder="Enter title"
-                  disabled={isLoading}
-                  value={field.value}
-                  onChange={(e) => field.onChange(e.target.value)}
-                />
-                {error?.message ? <p className="text-xs font-medium text-destructive">{error?.message}</p> : null}
-              </div>
-            )}
-          />
-          <Controller
-            control={form.control}
-            name="sub_title3.en"
-            render={({field, fieldState: {error}}) => (
-              <div className="flex flex-col space-y-2">
-                <label
-                  htmlFor={field.name}
-                  className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                >
-                  Tagline (EN)
-                </label>
-                <Input
-                  id={field.name}
-                  ref={field.ref}
-                  type="text"
-                  placeholder="Enter title"
-                  disabled={isLoading}
-                  value={field.value}
-                  onChange={(e) => field.onChange(e.target.value)}
-                />
-                {error?.message ? <p className="text-xs font-medium text-destructive">{error?.message}</p> : null}
-              </div>
-            )}
-          />
-          <Controller
-            control={form.control}
-            name="sub_title3.id"
-            render={({field, fieldState: {error}}) => (
-              <div className="flex flex-col space-y-2">
-                <label
-                  htmlFor={field.name}
-                  className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                >
-                  Tagline (ID)
-                </label>
-                <Input
-                  id={field.name}
-                  ref={field.ref}
-                  type="text"
-                  placeholder="Enter title"
-                  disabled={isLoading}
-                  value={field.value}
-                  onChange={(e) => field.onChange(e.target.value)}
-                />
-                {error?.message ? <p className="text-xs font-medium text-destructive">{error?.message}</p> : null}
-              </div>
-            )}
-          />
-          <h4 className="pb-2 text-lg font-medium border-b border-primary/10">Timeline</h4>
-          <section className="p-4 space-y-6 border">
-            {fields.map((item, index) => (
-              <div key={item.id} className="pb-8 space-y-4 border-b border-primary/10 ">
-                <div className="flex justify-between space-x-4">
-                  <Controller
-                    control={form.control}
-                    name={`body.${index}.title.en`}
+                    name={`body_commitment.${index}.title.en`}
                     render={({field, fieldState: {error}}) => (
                       <div className="flex flex-col w-full space-y-2">
                         <label
@@ -1019,7 +858,7 @@ const AboutPage = () => {
                     )}
                   />
                   <div className="mt-auto ">
-                    <PopConfirm onOk={() => remove(index)}>
+                    <PopConfirm onOk={() => removeCommitment(index)}>
                       <Button type="button" variant="destructive">
                         <Trash size={14} />
                       </Button>
@@ -1029,7 +868,7 @@ const AboutPage = () => {
 
                 <Controller
                   control={form.control}
-                  name={`body.${index}.title.id`}
+                  name={`body_commitment.${index}.title.id`}
                   render={({field, fieldState: {error}}) => (
                     <div className="flex flex-col w-full space-y-2">
                       <label
@@ -1053,34 +892,7 @@ const AboutPage = () => {
                 />
                 <Controller
                   control={form.control}
-                  name={`body.${index}.button_name.en`}
-                  render={({field, fieldState: {error}}) => (
-                    <div className="flex flex-col w-full space-y-2">
-                      <label
-                        htmlFor={field.name}
-                        className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                      >
-                        Year
-                      </label>
-                      <Input
-                        id={field.name}
-                        ref={field.ref}
-                        type="text"
-                        placeholder="Enter year"
-                        disabled={isLoading}
-                        value={field.value}
-                        onChange={(e) => {
-                          field.onChange(e.target.value);
-                          form.setValue(`body.${index}.button_name.id`, e.target.value);
-                        }}
-                      />
-                      {error?.message ? <p className="text-xs font-medium text-destructive">{error?.message}</p> : null}
-                    </div>
-                  )}
-                />
-                <Controller
-                  control={form.control}
-                  name={`body.${index}.text.en`}
+                  name={`body_commitment.${index}.text.en`}
                   render={({field, fieldState: {error}}) => (
                     <div className="flex flex-col w-full space-y-2">
                       <label
@@ -1102,7 +914,7 @@ const AboutPage = () => {
                 />
                 <Controller
                   control={form.control}
-                  name={`body.${index}.text.id`}
+                  name={`body_commitment.${index}.text.id`}
                   render={({field, fieldState: {error}}) => (
                     <div className="flex flex-col w-full space-y-2">
                       <label
@@ -1124,7 +936,7 @@ const AboutPage = () => {
                 />
                 <Controller
                   control={form.control}
-                  name={`body.${index}.image_en`}
+                  name={`body_commitment.${index}.image_en`}
                   render={({field}) => {
                     return (
                       <ImageRepository
@@ -1132,11 +944,11 @@ const AboutPage = () => {
                         limit={1}
                         mobileSize={false}
                         showButtonRoute
-                        img_type={IMG_TYPE.ABOUT}
+                        img_type={IMG_TYPE.CSR_PAGE}
                         value={field.value?.length ? field.value : []}
                         onChange={(data) => {
                           let value = data.map((img) => img._id);
-                          form.setValue(`body.${index}.image_id`, value);
+                          form.setValue(`body_commitment.${index}.image_id`, value);
                           field.onChange(value);
                         }}
                       />
@@ -1151,13 +963,12 @@ const AboutPage = () => {
                 className="mt-2"
                 type="button"
                 onClick={() =>
-                  append({
+                  appendCommitment({
                     title: {en: "", id: ""},
                     image_en: [],
                     image_id: [],
-                    type: 1,
+                    type: 3,
                     text: {en: "", id: ""},
-                    button_name: {en: "", id: ""},
                   })
                 }
               >
@@ -1165,28 +976,99 @@ const AboutPage = () => {
               </Button>
             </div>
           </section>
-          <h4 className="pb-2 text-lg font-medium border-b border-primary/10">Organizational Structure</h4>
+
+          <h4 className="pb-2 text-lg font-medium border-b border-primary/10">Priority Section</h4>
           <Controller
             control={form.control}
-            name={"thumbnail_images2_en"}
-            render={({field}) => {
-              return (
-                <ImageRepository
-                  label="Image"
-                  limit={1}
-                  mobileSize={false}
-                  img_type={IMG_TYPE.ABOUT}
-                  value={field.value?.length ? field.value : []}
-                  onChange={(data) => {
-                    let value = data.map((img) => img._id);
-                    form.setValue("thumbnail_images2_id", value);
-                    field.onChange(value);
-                  }}
+            name="sub_title2.en"
+            render={({field, fieldState: {error}}) => (
+              <div className="flex flex-col space-y-2">
+                <label
+                  htmlFor={field.name}
+                  className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                >
+                  Text (EN)
+                </label>
+                <Ckeditor5
+                  onBlur={field.onBlur}
+                  ref={field.ref}
+                  placeholder="Enter text"
+                  value={field.value}
+                  onChange={(e) => field.onChange(e)}
                 />
-              );
-            }}
+                {error?.message ? <p className="text-xs font-medium text-destructive">{error?.message}</p> : null}
+              </div>
+            )}
           />
-          <h4 className="pb-2 text-lg font-medium border-b border-primary/10">Corporate Governance Guidelines</h4>
+          <Controller
+            control={form.control}
+            name="sub_title2.id"
+            render={({field, fieldState: {error}}) => (
+              <div className="flex flex-col space-y-2">
+                <label
+                  htmlFor={field.name}
+                  className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                >
+                  Text (ID)
+                </label>
+                <Ckeditor5
+                  onBlur={field.onBlur}
+                  ref={field.ref}
+                  placeholder="Enter text"
+                  value={field.value}
+                  onChange={(e) => field.onChange(e)}
+                />
+                {error?.message ? <p className="text-xs font-medium text-destructive">{error?.message}</p> : null}
+              </div>
+            )}
+          />
+
+          <h4 className="pb-2 text-lg font-medium border-b border-primary/10">Zero Emission Section</h4>
+          <Controller
+            control={form.control}
+            name="sub_title3.en"
+            render={({field, fieldState: {error}}) => (
+              <div className="flex flex-col space-y-2">
+                <label
+                  htmlFor={field.name}
+                  className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                >
+                  Text (EN)
+                </label>
+                <Ckeditor5
+                  onBlur={field.onBlur}
+                  ref={field.ref}
+                  placeholder="Enter text"
+                  value={field.value}
+                  onChange={(e) => field.onChange(e)}
+                />
+                {error?.message ? <p className="text-xs font-medium text-destructive">{error?.message}</p> : null}
+              </div>
+            )}
+          />
+          <Controller
+            control={form.control}
+            name="sub_title3.id"
+            render={({field, fieldState: {error}}) => (
+              <div className="flex flex-col space-y-2">
+                <label
+                  htmlFor={field.name}
+                  className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                >
+                  Text (ID)
+                </label>
+                <Ckeditor5
+                  onBlur={field.onBlur}
+                  ref={field.ref}
+                  placeholder="Enter text"
+                  value={field.value}
+                  onChange={(e) => field.onChange(e)}
+                />
+                {error?.message ? <p className="text-xs font-medium text-destructive">{error?.message}</p> : null}
+              </div>
+            )}
+          />
+          <h4 className="pb-2 text-lg font-medium border-b border-primary/10">CSR Program</h4>
           <Controller
             control={form.control}
             name="small_text.en"
@@ -1196,16 +1078,14 @@ const AboutPage = () => {
                   htmlFor={field.name}
                   className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                 >
-                  Title (EN)
+                  Text (EN)
                 </label>
-                <Input
-                  id={field.name}
+                <Ckeditor5
+                  onBlur={field.onBlur}
                   ref={field.ref}
-                  type="text"
-                  placeholder="Enter title"
-                  disabled={isLoading}
+                  placeholder="Enter text"
                   value={field.value}
-                  onChange={(e) => field.onChange(e.target.value)}
+                  onChange={(e) => field.onChange(e)}
                 />
                 {error?.message ? <p className="text-xs font-medium text-destructive">{error?.message}</p> : null}
               </div>
@@ -1220,16 +1100,14 @@ const AboutPage = () => {
                   htmlFor={field.name}
                   className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                 >
-                  Title (ID)
+                  Text (ID)
                 </label>
-                <Input
-                  id={field.name}
+                <Ckeditor5
+                  onBlur={field.onBlur}
                   ref={field.ref}
-                  type="text"
-                  placeholder="Enter title"
-                  disabled={isLoading}
+                  placeholder="Enter text"
                   value={field.value}
-                  onChange={(e) => field.onChange(e.target.value)}
+                  onChange={(e) => field.onChange(e)}
                 />
                 {error?.message ? <p className="text-xs font-medium text-destructive">{error?.message}</p> : null}
               </div>
@@ -1345,85 +1223,6 @@ const AboutPage = () => {
                     </div>
                   )}
                 />
-
-                <Controller
-                  control={form.control}
-                  name={`body_review.${index}.button_name.en`}
-                  render={({field, fieldState: {error}}) => (
-                    <div className="flex flex-col w-full space-y-2">
-                      <label
-                        htmlFor={field.name}
-                        className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                      >
-                        Button (EN)
-                      </label>
-                      <Input
-                        id={field.name}
-                        ref={field.ref}
-                        type="text"
-                        placeholder="Enter name"
-                        disabled={isLoading}
-                        value={field.value}
-                        onChange={(e) => {
-                          field.onChange(e.target.value);
-                        }}
-                      />
-                      {error?.message ? <p className="text-xs font-medium text-destructive">{error?.message}</p> : null}
-                    </div>
-                  )}
-                />
-                <Controller
-                  control={form.control}
-                  name={`body_review.${index}.button_name.id`}
-                  render={({field, fieldState: {error}}) => (
-                    <div className="flex flex-col w-full space-y-2">
-                      <label
-                        htmlFor={field.name}
-                        className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                      >
-                        Button (ID)
-                      </label>
-                      <Input
-                        id={field.name}
-                        ref={field.ref}
-                        type="text"
-                        placeholder="Enter name"
-                        disabled={isLoading}
-                        value={field.value}
-                        onChange={(e) => {
-                          field.onChange(e.target.value);
-                        }}
-                      />
-                      {error?.message ? <p className="text-xs font-medium text-destructive">{error?.message}</p> : null}
-                    </div>
-                  )}
-                />
-                <Controller
-                  control={form.control}
-                  name={`body_review.${index}.button_route`}
-                  render={({field, fieldState: {error}}) => (
-                    <div className="flex flex-col w-full space-y-2">
-                      <label
-                        htmlFor={field.name}
-                        className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                      >
-                        Link
-                      </label>
-                      <Input
-                        id={field.name}
-                        ref={field.ref}
-                        type="text"
-                        placeholder="Enter name"
-                        disabled={isLoading}
-                        value={field.value}
-                        onChange={(e) => {
-                          field.onChange(e.target.value);
-                        }}
-                      />
-                      {error?.message ? <p className="text-xs font-medium text-destructive">{error?.message}</p> : null}
-                    </div>
-                  )}
-                />
               </div>
             ))}
 
@@ -1434,10 +1233,8 @@ const AboutPage = () => {
                 onClick={() =>
                   appendReview({
                     title: {en: "", id: ""},
-                    button_route: "",
                     type: 2,
                     text: {en: "", id: ""},
-                    button_name: {en: "", id: ""},
                   })
                 }
               >
@@ -1462,5 +1259,5 @@ const AboutPage = () => {
   );
 };
 
-export default AboutPage;
+export default CSRPage;
 

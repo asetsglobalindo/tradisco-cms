@@ -4,6 +4,7 @@ import {
   ClassicEditor,
   EventInfo,
   FindAndReplace,
+  GeneralHtmlSupport,
   Image,
   ImageCaption,
   ImageResize,
@@ -30,6 +31,7 @@ import {
   BlockQuote,
   Indent,
   IndentBlock,
+  ListProperties,
   Code,
   Strikethrough,
   Subscript,
@@ -54,7 +56,10 @@ const Ckeditor5: React.FC<Props> = ({ref, onBlur, placeholder, onChange, value})
       onBlur={onBlur}
       editor={ClassicEditor}
       data={value}
-      onChange={(_, editor) => onChange(editor.getData())}
+      onChange={(_, editor) => {
+        onChange(editor.getData());
+        console.log(editor.getData());
+      }}
       config={{
         placeholder: placeholder,
         toolbar: {
@@ -96,6 +101,7 @@ const Ckeditor5: React.FC<Props> = ({ref, onBlur, placeholder, onChange, value})
           ],
         },
         plugins: [
+          GeneralHtmlSupport,
           SourceEditing,
           FindAndReplace,
           Code,
@@ -113,6 +119,7 @@ const Ckeditor5: React.FC<Props> = ({ref, onBlur, placeholder, onChange, value})
           TableToolbar,
           Font,
           List,
+          ListProperties,
           Alignment,
           Link,
           AutoLink,
@@ -129,7 +136,16 @@ const Ckeditor5: React.FC<Props> = ({ref, onBlur, placeholder, onChange, value})
           SimpleUploadAdapter,
           ImageUpload,
         ],
-
+        htmlSupport: {
+          allow: [
+            {
+              name: /^(h1|h2|h3|p)$/, // Allow specific tags
+              attributes: true,
+              classes: true,
+              styles: true,
+            },
+          ],
+        },
         heading: {
           options: [
             {model: "paragraph", title: "Paragraph", class: ""},
