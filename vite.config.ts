@@ -25,7 +25,7 @@ export default defineConfig(({command, mode}: ConfigEnv) => {
     },
     base: "/",
     plugins: [react()],
-    preview: serverConfig,
+    preview: {...serverConfig, allowedHosts: ["cms-pertamina.192-168-100-100.xyz"]},
     server: serverConfig,
   };
 });
