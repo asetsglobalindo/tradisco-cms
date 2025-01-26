@@ -15,6 +15,8 @@ export default defineConfig(({command, mode}: ConfigEnv) => {
     host: true,
     port: Number(env.VITE_PORT),
     strictPort: true,
+    allowedHosts: true,
+    // allowedHosts: ["mysubdomain.domain.io"],
   };
 
   return {
