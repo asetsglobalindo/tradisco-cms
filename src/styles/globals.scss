@@ -1,5 +1,5 @@
-@import "./tiptap.scss";
-@import "./ck_editor.scss";
+@use "./tiptap.scss";
+@use "./ck_editor.scss";
 
 @tailwind base;
 @tailwind components;
