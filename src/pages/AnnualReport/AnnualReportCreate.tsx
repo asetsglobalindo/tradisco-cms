@@ -28,7 +28,7 @@ import Ckeditor5 from "@/components/Ckeditor5";
 import {Textarea} from "@/components/ui/textarea";
 
 const title_page = "Annual Report";
-const action_context = "Update";
+const action_context = "Create";
 
 const formSchema = z.object({
   meta_title: z.object({

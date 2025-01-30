@@ -55,7 +55,7 @@ const UsersCreate = () => {
     queryFn: async () => await getRole(),
   });
   const {mutate, isLoading} = useMutation({
-    mutationFn: async (payload: Payload) => ApiService.secure().post("/user", payload),
+    mutationFn: async (payload: Payload) => ApiService.secure().post("/user", {...payload, user_level: "admin"}),
     onSettled: async (response) =>
       settledHandler({
         response,
@@ -219,4 +219,3 @@ const UsersCreate = () => {
 };
 
 export default UsersCreate;
-

@@ -26,7 +26,7 @@ import {useEffect} from "react";
 import Ckeditor5 from "@/components/Ckeditor5";
 import combineImageMultiLang from "@/helper/combineImageMultiLang";
 
-const title_page = "Business";
+const title_page = "Partnership";
 const action_context = "Update";
 
 const formSchema = z.object({

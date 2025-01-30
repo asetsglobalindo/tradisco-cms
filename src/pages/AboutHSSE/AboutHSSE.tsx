@@ -27,7 +27,7 @@ import {Textarea} from "@/components/ui/textarea";
 import PopConfirm from "@/components/PopConfirm";
 import {Trash} from "lucide-react";
 
-const title_page = "About Work";
+const title_page = "About HSSE";
 
 const formSchema = z.object({
   meta_title: z.object({
