@@ -20,6 +20,9 @@ const CONTENT_TYPE = {
   MITRA_PAGE: "mitra_page",
   SUB_COMPANY: "sub_company",
   CSR: "csr",
+  CSR_LIST: "csr_list",
+  CSR_CONTENT: "csr_content",
+  BAZMA: "bazma",
   getTypeNumber: (type: string) => {
     return Object.keys(CONTENT_TYPE).indexOf(type.toUpperCase()) + 1;
   },

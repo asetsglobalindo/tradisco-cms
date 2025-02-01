@@ -66,6 +66,10 @@ const formSchema = z.object({
     en: z.string({required_error: "Field required"}).min(1),
     id: z.string({required_error: "Field required"}).min(1),
   }),
+  bottom_text: z.object({
+    en: z.string({required_error: "Field required"}).min(1),
+    id: z.string({required_error: "Field required"}).min(1),
+  }),
   body: z
     .object({
       title: z.object({
@@ -303,6 +307,10 @@ const AboutPage = () => {
             meta_description: {
               en: result?.meta_description?.en || "",
               id: result?.meta_description?.id || "",
+            },
+            bottom_text: {
+              en: result?.bottom_text?.en || "",
+              id: result?.bottom_text?.id || "",
             },
             active_status: true,
             title: {
@@ -987,7 +995,55 @@ const AboutPage = () => {
               </div>
             )}
           />
-          <h4 className="pb-2 text-lg font-medium border-b border-primary/10">Timeline</h4>
+          <h4 className="pb-2 text-lg font-medium border-b border-primary/10">Journey</h4>
+          <Controller
+            control={form.control}
+            name="bottom_text.en"
+            render={({field, fieldState: {error}}) => (
+              <div className="flex flex-col space-y-2">
+                <label
+                  htmlFor={field.name}
+                  className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                >
+                  Title (EN)
+                </label>
+                <Input
+                  id={field.name}
+                  ref={field.ref}
+                  type="text"
+                  placeholder="Enter title"
+                  disabled={isLoading}
+                  value={field.value}
+                  onChange={(e) => field.onChange(e.target.value)}
+                />
+                {error?.message ? <p className="text-xs font-medium text-destructive">{error?.message}</p> : null}
+              </div>
+            )}
+          />
+          <Controller
+            control={form.control}
+            name="bottom_text.id"
+            render={({field, fieldState: {error}}) => (
+              <div className="flex flex-col space-y-2">
+                <label
+                  htmlFor={field.name}
+                  className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                >
+                  Title (ID)
+                </label>
+                <Input
+                  id={field.name}
+                  ref={field.ref}
+                  type="text"
+                  placeholder="Enter title"
+                  disabled={isLoading}
+                  value={field.value}
+                  onChange={(e) => field.onChange(e.target.value)}
+                />
+                {error?.message ? <p className="text-xs font-medium text-destructive">{error?.message}</p> : null}
+              </div>
+            )}
+          />
           <section className="p-4 space-y-6 border">
             {fields.map((item, index) => (
               <div key={item.id} className="pb-8 space-y-4 border-b border-primary/10 ">
@@ -1165,7 +1221,7 @@ const AboutPage = () => {
               </Button>
             </div>
           </section>
-          <h4 className="pb-2 text-lg font-medium border-b border-primary/10">Organizational Structure</h4>
+          {/* <h4 className="pb-2 text-lg font-medium border-b border-primary/10">Organizational Structure</h4>
           <Controller
             control={form.control}
             name={"thumbnail_images2_en"}
@@ -1185,7 +1241,7 @@ const AboutPage = () => {
                 />
               );
             }}
-          />
+          /> */}
           <h4 className="pb-2 text-lg font-medium border-b border-primary/10">Corporate Governance Guidelines</h4>
           <Controller
             control={form.control}

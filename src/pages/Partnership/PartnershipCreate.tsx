@@ -50,6 +50,10 @@ const formSchema = z.object({
     en: z.string({required_error: "Field required"}).min(1),
     id: z.string({required_error: "Field required"}).min(1),
   }),
+  sub_title3: z.object({
+    en: z.string({required_error: "Field required"}).min(1),
+    id: z.string({required_error: "Field required"}).min(1),
+  }),
   bottom_button_route: z.string({required_error: "Field required"}).min(1),
   active_status: z.boolean().default(false),
   type: z.string().default(CONTENT_TYPE.MITRA),
@@ -343,6 +347,56 @@ const PartnershipCreate = () => {
                   ref={field.ref}
                   type="text"
                   placeholder="Enter button name"
+                  disabled={isLoading}
+                  value={field.value}
+                  onChange={(e) => field.onChange(e.target.value)}
+                />
+                {error?.message ? <p className="text-xs font-medium text-destructive">{error?.message}</p> : null}
+              </div>
+            )}
+          />
+
+          <h4 className="pb-2 text-lg font-medium border-b border-primary/10">Details</h4>
+          <Controller
+            control={form.control}
+            name="sub_title3.en"
+            render={({field, fieldState: {error}}) => (
+              <div className="flex flex-col space-y-2">
+                <label
+                  htmlFor={field.name}
+                  className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                >
+                  Title (EN)
+                </label>
+                <Input
+                  id={field.name}
+                  ref={field.ref}
+                  type="text"
+                  placeholder="Enter title"
+                  disabled={isLoading}
+                  value={field.value}
+                  onChange={(e) => field.onChange(e.target.value)}
+                />
+                {error?.message ? <p className="text-xs font-medium text-destructive">{error?.message}</p> : null}
+              </div>
+            )}
+          />
+          <Controller
+            control={form.control}
+            name="sub_title3.id"
+            render={({field, fieldState: {error}}) => (
+              <div className="flex flex-col space-y-2">
+                <label
+                  htmlFor={field.name}
+                  className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                >
+                  Title (ID)
+                </label>
+                <Input
+                  id={field.name}
+                  ref={field.ref}
+                  type="text"
+                  placeholder="Enter title"
                   disabled={isLoading}
                   value={field.value}
                   onChange={(e) => field.onChange(e.target.value)}

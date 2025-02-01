@@ -43,6 +43,17 @@ const formSchema = z.object({
       }),
       route: z.string(),
       order: z.number().default(0),
+      childs: z
+        .object({
+          name: z.object({
+            en: z.string({required_error: "Field required"}).min(1),
+            id: z.string({required_error: "Field required"}).min(1),
+          }),
+          route: z.string(),
+          order: z.number().default(0),
+        })
+        .array()
+        .default([]),
     })
     .array(),
 });
@@ -57,11 +68,11 @@ interface Paylod extends DataFormValue {
   header_id: string;
 }
 
-const FormArray: React.FC<FormArrayTpe> = ({isLoading}) => {
+const FormArrayChild: React.FC<{isLoading: boolean; fieldIndex: number}> = ({isLoading, fieldIndex}) => {
   const {control} = useFormContext();
   const {fields, append, remove, move} = useFieldArray({
     control: control,
-    name: "childs",
+    name: `childs.${fieldIndex}.childs`,
   });
 
   const handleDrag: OnDragEndResponder = ({source, destination}) => {
@@ -88,17 +99,17 @@ const FormArray: React.FC<FormArrayTpe> = ({isLoading}) => {
                         <div ref={provided.innerRef} {...provided.draggableProps} key={field.id} className="flex gap-4">
                           <Controller
                             control={control}
-                            name={`childs.${index}.name.en`}
+                            name={`childs.${fieldIndex}.childs.${index}.name.en`}
                             render={({field}) => (
                               <div className="flex flex-col flex-1 space-y-2">
                                 <label
-                                  htmlFor={`childs.${index}.name.en`}
+                                  htmlFor={`childs.${fieldIndex}.childs.${index}.name.en`}
                                   className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                                 >
                                   Route Name (EN)
                                 </label>
                                 <Input
-                                  id={`childs.${index}.name.en`}
+                                  id={`childs.${fieldIndex}.childs.${index}.name.en`}
                                   ref={field.ref}
                                   type="text"
                                   placeholder="Enter route name"
@@ -111,17 +122,17 @@ const FormArray: React.FC<FormArrayTpe> = ({isLoading}) => {
                           />
                           <Controller
                             control={control}
-                            name={`childs.${index}.name.id`}
+                            name={`childs.${fieldIndex}.childs.${index}.name.id`}
                             render={({field}) => (
                               <div className="flex flex-col flex-1 space-y-2">
                                 <label
-                                  htmlFor={`childs.${index}.name.id`}
+                                  htmlFor={`childs.${fieldIndex}.childs.${index}.name.id`}
                                   className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                                 >
                                   Route Name (ID)
                                 </label>
                                 <Input
-                                  id={`childs.${index}.name.id`}
+                                  id={`childs.${fieldIndex}.childs.${index}.name.id`}
                                   ref={field.ref}
                                   type="text"
                                   placeholder="Enter route name"
@@ -134,17 +145,17 @@ const FormArray: React.FC<FormArrayTpe> = ({isLoading}) => {
                           />
                           <Controller
                             control={control}
-                            name={`childs.${index}.route`}
+                            name={`childs.${fieldIndex}.childs.${index}.route`}
                             render={({field}) => (
                               <div className="flex flex-col flex-1 space-y-2">
                                 <label
-                                  htmlFor={`childs.${index}.route`}
+                                  htmlFor={`childs.${fieldIndex}.childs.${index}.route`}
                                   className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                                 >
                                   Route Path
                                 </label>
                                 <Input
-                                  id={`childs.${index}.route`}
+                                  id={`childs.${fieldIndex}.childs.${index}.route`}
                                   ref={field.ref}
                                   type="text"
                                   placeholder="Enter route path"
@@ -176,6 +187,153 @@ const FormArray: React.FC<FormArrayTpe> = ({isLoading}) => {
                                 <TooltipContent>Drag Me!</TooltipContent>
                               </Tooltip>
                             </TooltipProvider>
+                          </div>
+                        </div>
+                      )}
+                    </Draggable>
+                  );
+                })}
+
+                {provided.placeholder}
+              </div>
+            )}
+          </Droppable>
+          <Button
+            type="button"
+            className={cn(fields.length && "mt-5")}
+            onClick={() => append({name: "", order: 0, route: ""})}
+          >
+            Add Field
+          </Button>
+        </DragDropContext>
+      </section>
+    </React.Fragment>
+  );
+};
+const FormArray: React.FC<FormArrayTpe> = ({isLoading}) => {
+  const {control} = useFormContext();
+  const {fields, append, remove, move} = useFieldArray({
+    control: control,
+    name: "childs",
+  });
+
+  const handleDrag: OnDragEndResponder = ({source, destination}) => {
+    if (destination) {
+      move(source.index, destination.index);
+    }
+  };
+
+  return (
+    <React.Fragment>
+      <label className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+        Sub Header
+      </label>
+
+      <section className="p-5 mt-4 border">
+        <DragDropContext onDragEnd={handleDrag}>
+          <Droppable droppableId="test-items">
+            {(provided) => (
+              <div className="flex flex-col gap-6" {...provided.droppableProps} ref={provided.innerRef}>
+                {fields.map((field, index) => {
+                  return (
+                    <Draggable key={`test[${index}]`} draggableId={`item-${index}`} index={index}>
+                      {(provided) => (
+                        <div ref={provided.innerRef} {...provided.draggableProps} key={field.id}>
+                          <div className="flex gap-4">
+                            <Controller
+                              control={control}
+                              name={`childs.${index}.name.en`}
+                              render={({field}) => (
+                                <div className="flex flex-col flex-1 space-y-2">
+                                  <label
+                                    htmlFor={`childs.${index}.name.en`}
+                                    className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                                  >
+                                    Route Name (EN)
+                                  </label>
+                                  <Input
+                                    id={`childs.${index}.name.en`}
+                                    ref={field.ref}
+                                    type="text"
+                                    placeholder="Enter route name"
+                                    disabled={isLoading}
+                                    value={field.value}
+                                    onChange={(e) => field.onChange(e.target.value)}
+                                  />
+                                </div>
+                              )}
+                            />
+                            <Controller
+                              control={control}
+                              name={`childs.${index}.name.id`}
+                              render={({field}) => (
+                                <div className="flex flex-col flex-1 space-y-2">
+                                  <label
+                                    htmlFor={`childs.${index}.name.id`}
+                                    className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                                  >
+                                    Route Name (ID)
+                                  </label>
+                                  <Input
+                                    id={`childs.${index}.name.id`}
+                                    ref={field.ref}
+                                    type="text"
+                                    placeholder="Enter route name"
+                                    disabled={isLoading}
+                                    value={field.value}
+                                    onChange={(e) => field.onChange(e.target.value)}
+                                  />
+                                </div>
+                              )}
+                            />
+                            <Controller
+                              control={control}
+                              name={`childs.${index}.route`}
+                              render={({field}) => (
+                                <div className="flex flex-col flex-1 space-y-2">
+                                  <label
+                                    htmlFor={`childs.${index}.route`}
+                                    className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                                  >
+                                    Route Path
+                                  </label>
+                                  <Input
+                                    id={`childs.${index}.route`}
+                                    ref={field.ref}
+                                    type="text"
+                                    placeholder="Enter route path"
+                                    disabled={isLoading}
+                                    value={field.value}
+                                    onChange={(e) => field.onChange(e.target.value)}
+                                  />
+                                </div>
+                              )}
+                            />
+                            <div className="w-[100px] mt-auto">
+                              <Button
+                                className="w-full"
+                                type="button"
+                                onClick={() => remove(index)}
+                                variant={"destructive"}
+                              >
+                                Remove
+                              </Button>
+                            </div>
+                            <div className="mt-auto" {...provided.dragHandleProps}>
+                              <TooltipProvider>
+                                <Tooltip>
+                                  <TooltipTrigger>
+                                    <Button type="button">
+                                      <Grip />
+                                    </Button>
+                                  </TooltipTrigger>
+                                  <TooltipContent>Drag Me!</TooltipContent>
+                                </Tooltip>
+                              </TooltipProvider>
+                            </div>
+                          </div>
+                          <div className="mt-4 ml-[5%]">
+                            <FormArrayChild isLoading={isLoading} fieldIndex={index} />
                           </div>
                         </div>
                       )}
@@ -234,12 +392,16 @@ const HeaderUpdate = () => {
 
   const onSubmit = (data: DataFormValue) => {
     data.childs = data.childs.map((child, index) => {
-      return {...child, order: index};
+      return {
+        ...child,
+        order: index,
+        childs: child.childs.map((subChild, subIndex) => {
+          return {...subChild, order: subIndex};
+        }),
+      };
     });
     mutate({...data, header_id: id || ""});
   };
-
-  console.log(form.formState.errors);
 
   useEffect(() => {
     const getDetails = async () => {
