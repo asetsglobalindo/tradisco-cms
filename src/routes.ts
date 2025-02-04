@@ -48,6 +48,7 @@ import PartnershipUpdate from "./pages/Partnership/PartnershipUpdate";
 import PartnershipPage from "./pages/PartnershipPage/PartnershipPage";
 import CSRPage from "./pages/CSRPage/CSRPage";
 import CSROurPrograms from "./pages/CSROurPrograms/CSROurPrograms";
+import CompanyReport from "./pages/CompanyReport/CompanyReport";
 
 const pagesListWithChilds = [
   {
@@ -246,6 +247,12 @@ const pageListNoChild = [
   {
     route: "/dashboard/csr-our-programs",
     component: CSROurPrograms,
+    childs: [],
+    hasChild: false,
+  },
+  {
+    route: "/dashboard/company-report",
+    component: CompanyReport,
     childs: [],
     hasChild: false,
   },

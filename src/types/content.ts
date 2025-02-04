@@ -113,6 +113,14 @@ export interface ContentType {
     en: string;
     id: string;
   };
+  bottom_description2: {
+    en: string;
+    id: string;
+  };
+  bottom_text2: {
+    en: string;
+    id: string;
+  };
   bottom_button_route: string;
   active_status: boolean;
   total_view: number;

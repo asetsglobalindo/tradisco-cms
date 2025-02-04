@@ -16,6 +16,7 @@ const IMG_TYPE = {
   MITTA_PAGE: "mitra_page",
   SUB_COMPANY: "sub_company",
   CSR_PAGE: "csr_page",
+  COMPANY_REPORT: "company_report",
 
   getTypeNumber: (type: string) => {
     return Object.keys(IMG_TYPE).indexOf(type.toUpperCase()) + 1;

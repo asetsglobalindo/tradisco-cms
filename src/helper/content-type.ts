@@ -23,6 +23,7 @@ const CONTENT_TYPE = {
   CSR_LIST: "csr_list",
   CSR_CONTENT: "csr_content",
   BAZMA: "bazma",
+  COMPANY_REPORT: "company_report",
   getTypeNumber: (type: string) => {
     return Object.keys(CONTENT_TYPE).indexOf(type.toUpperCase()) + 1;
   },

@@ -1,5 +1,5 @@
 // hook
-import {Controller, FormProvider, useForm} from "react-hook-form";
+import {Controller, FormProvider, useFieldArray, useForm} from "react-hook-form";
 import {useMutation} from "react-query";
 import {useLocation, useNavigate} from "react-router-dom";
 
@@ -24,6 +24,8 @@ import ImageRepository from "@/components/ImageRepository";
 import combineImageMultiLang from "@/helper/combineImageMultiLang";
 import Ckeditor5 from "@/components/Ckeditor5";
 import {Textarea} from "@/components/ui/textarea";
+import PopConfirm from "@/components/PopConfirm";
+import {Trash} from "lucide-react";
 
 const title_page = "Procuremenet report Page";
 
@@ -46,19 +48,22 @@ const formSchema = z.object({
     en: z.string({required_error: "Field required"}).min(1),
     id: z.string({required_error: "Field required"}).min(1),
   }),
+  small_text: z.object({
+    en: z.string({required_error: "Field required"}).min(1),
+    id: z.string({required_error: "Field required"}).min(1),
+  }),
   body: z
     .object({
       title: z.object({
         en: z.string({required_error: "Field required"}).min(1),
         id: z.string({required_error: "Field required"}).min(1),
       }),
-      image_en: z.string({required_error: "Field required"}).array().default([]),
-      image_id: z.string({required_error: "Field required"}).array().default([]),
-      button_name: z.object({
+      text: z.object({
         en: z.string({required_error: "Field required"}).min(1),
         id: z.string({required_error: "Field required"}).min(1),
       }),
-      button_route: z.string({required_error: "Field required"}).min(1),
+      image_en: z.string({required_error: "Field required"}).array().default([]),
+      image_id: z.string({required_error: "Field required"}).array().default([]),
     })
     .array()
     .default([]),
@@ -83,15 +88,14 @@ type Payload = Omit<DataFormValue, "body"> & {
           en: string;
           id: string;
         };
+        text: {
+          en: string;
+          id: string;
+        };
         images: {
           en: string;
           id: string;
         }[];
-        button_name: {
-          en: string;
-          id: string;
-        };
-        button_route: string;
       }[]
     | [];
 };
@@ -105,6 +109,10 @@ const ProcuremenetReport = () => {
 
   const form = useForm<DataFormValue>({
     resolver: zodResolver(formSchema),
+  });
+  const {fields, remove, append} = useFieldArray({
+    name: "body",
+    control: form.control,
   });
 
   const {mutate, isLoading} = useMutation(
@@ -133,12 +141,10 @@ const ProcuremenetReport = () => {
           en: item.title.en,
           id: item.title.id,
         },
-        button_name: {
-          en: item.button_name.en,
-          id: item.button_name.id,
+        text: {
+          en: item.text.en,
+          id: item.text.id,
         },
-
-        button_route: item.button_route,
         images: combineImageMultiLang(item.image_en, item.image_id),
       }));
 
@@ -176,6 +182,20 @@ const ProcuremenetReport = () => {
         if (response.data.data.length) {
           const result: ContentType = response.data.data[0];
           form.reset({
+            body: result.body.map((item) => ({
+              title: {
+                en: item.title.en,
+                id: item.title.id,
+              },
+              text: {
+                en: item.text.en,
+                id: item.text.id,
+              },
+              image_en: item.images.map((img) => img.en._id) || [],
+              image_id: item.images.map((img) => img.id._id) || [],
+            })),
+            small_text: result.small_text,
+            type: CONTENT_TYPE.PROCUREMENT_INFORMATION,
             meta_title: {
               en: result?.meta_title?.en || "",
               id: result?.meta_title?.id || "",
@@ -434,7 +454,199 @@ const ProcuremenetReport = () => {
               </div>
             )}
           />
+          <h4 className="pb-2 text-lg font-medium border-b border-primary/10">Step :</h4>
+          <section className="p-4 space-y-6 border">
+            {fields.map((item, index) => (
+              <div key={item.id} className="pb-8 space-y-4 border-b border-primary/10 ">
+                <div className="flex justify-between space-x-4">
+                  <Controller
+                    control={form.control}
+                    name={`body.${index}.title.en`}
+                    render={({field, fieldState: {error}}) => (
+                      <div className="flex flex-col w-full space-y-2">
+                        <label
+                          htmlFor={field.name}
+                          className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                        >
+                          Title (EN)
+                        </label>
+                        <Input
+                          id={field.name}
+                          ref={field.ref}
+                          type="text"
+                          placeholder="Enter title"
+                          disabled={isLoading}
+                          value={field.value}
+                          onChange={(e) => field.onChange(e.target.value)}
+                        />
+                        {error?.message ? (
+                          <p className="text-xs font-medium text-destructive">{error?.message}</p>
+                        ) : null}
+                      </div>
+                    )}
+                  />
+                  <div className="mt-auto ">
+                    <PopConfirm onOk={() => remove(index)}>
+                      <Button type="button" variant="destructive">
+                        <Trash size={14} />
+                      </Button>
+                    </PopConfirm>
+                  </div>
+                </div>
 
+                <Controller
+                  control={form.control}
+                  name={`body.${index}.title.id`}
+                  render={({field, fieldState: {error}}) => (
+                    <div className="flex flex-col w-full space-y-2">
+                      <label
+                        htmlFor={field.name}
+                        className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                      >
+                        Title (ID)
+                      </label>
+                      <Input
+                        id={field.name}
+                        ref={field.ref}
+                        type="text"
+                        placeholder="Enter title"
+                        disabled={isLoading}
+                        value={field.value}
+                        onChange={(e) => field.onChange(e.target.value)}
+                      />
+                      {error?.message ? <p className="text-xs font-medium text-destructive">{error?.message}</p> : null}
+                    </div>
+                  )}
+                />
+                <Controller
+                  control={form.control}
+                  name={`body.${index}.text.en`}
+                  render={({field, fieldState: {error}}) => (
+                    <div className="flex flex-col w-full space-y-2">
+                      <label
+                        htmlFor={field.name}
+                        className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                      >
+                        Text (EN)
+                      </label>
+                      <Ckeditor5
+                        onBlur={field.onBlur}
+                        ref={field.ref}
+                        placeholder="Enter text"
+                        value={field.value}
+                        onChange={(e) => field.onChange(e)}
+                      />
+                      {error?.message ? <p className="text-xs font-medium text-destructive">{error?.message}</p> : null}
+                    </div>
+                  )}
+                />
+                <Controller
+                  control={form.control}
+                  name={`body.${index}.text.id`}
+                  render={({field, fieldState: {error}}) => (
+                    <div className="flex flex-col w-full space-y-2">
+                      <label
+                        htmlFor={field.name}
+                        className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                      >
+                        Text (ID)
+                      </label>
+                      <Ckeditor5
+                        onBlur={field.onBlur}
+                        ref={field.ref}
+                        placeholder="Enter text"
+                        value={field.value}
+                        onChange={(e) => field.onChange(e)}
+                      />
+                      {error?.message ? <p className="text-xs font-medium text-destructive">{error?.message}</p> : null}
+                    </div>
+                  )}
+                />
+                <Controller
+                  control={form.control}
+                  name={`body.${index}.image_en`}
+                  render={({field}) => {
+                    return (
+                      <ImageRepository
+                        label="Image"
+                        limit={1}
+                        mobileSize={false}
+                        showButtonRoute
+                        img_type={IMG_TYPE.PROCUREMENT_REPORT_BANNER}
+                        value={field.value?.length ? field.value : []}
+                        onChange={(data) => {
+                          let value = data.map((img) => img._id);
+                          form.setValue(`body.${index}.image_id`, value);
+                          field.onChange(value);
+                        }}
+                      />
+                    );
+                  }}
+                />
+              </div>
+            ))}
+
+            <div className="">
+              <Button
+                className="mt-2"
+                type="button"
+                onClick={() =>
+                  append({
+                    title: {en: "", id: ""},
+                    image_en: [],
+                    image_id: [],
+                    text: {en: "", id: ""},
+                  })
+                }
+              >
+                Add Fields
+              </Button>
+            </div>
+          </section>
+          <Controller
+            control={form.control}
+            name="small_text.en"
+            render={({field, fieldState: {error}}) => (
+              <div className="flex flex-col space-y-2">
+                <label
+                  htmlFor={field.name}
+                  className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                >
+                  Bottom Text (EN)
+                </label>
+                <Ckeditor5
+                  ref={field.ref}
+                  onBlur={field.onBlur}
+                  value={field.value}
+                  onChange={field.onChange}
+                  placeholder="Enter Body"
+                />
+                {error?.message ? <p className="text-xs font-medium text-destructive">{error?.message}</p> : null}
+              </div>
+            )}
+          />
+          <Controller
+            control={form.control}
+            name="small_text.id"
+            render={({field, fieldState: {error}}) => (
+              <div className="flex flex-col space-y-2">
+                <label
+                  htmlFor={field.name}
+                  className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                >
+                  Bottom Text (ID)
+                </label>
+                <Ckeditor5
+                  ref={field.ref}
+                  onBlur={field.onBlur}
+                  value={field.value}
+                  onChange={field.onChange}
+                  placeholder="Enter Body"
+                />
+                {error?.message ? <p className="text-xs font-medium text-destructive">{error?.message}</p> : null}
+              </div>
+            )}
+          />
           <div className="flex justify-center">
             <div className="flex gap-4 mt-5 mb-10">
               <Button className="w-[100px]" type="button" variant={"outline"} onClick={() => navigate(prevLocation)}>
