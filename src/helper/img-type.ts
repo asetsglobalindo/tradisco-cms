@@ -16,6 +16,7 @@ const IMG_TYPE = {
   MITTA_PAGE: "mitra_page",
   SUB_COMPANY: "sub_company",
   CSR_PAGE: "csr_page",
+  BAZMA: "bazma",
   COMPANY_REPORT: "company_report",
 
   getTypeNumber: (type: string) => {

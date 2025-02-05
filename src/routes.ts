@@ -49,6 +49,7 @@ import PartnershipPage from "./pages/PartnershipPage/PartnershipPage";
 import CSRPage from "./pages/CSRPage/CSRPage";
 import CSROurPrograms from "./pages/CSROurPrograms/CSROurPrograms";
 import CompanyReport from "./pages/CompanyReport/CompanyReport";
+import BazmaPage from "./pages/BazmaPage/BazmaPage";
 
 const pagesListWithChilds = [
   {
@@ -289,6 +290,12 @@ const pageListNoChild = [
   {
     route: "/dashboard/about-management",
     component: AboutManagement,
+    childs: [],
+    hasChild: false,
+  },
+  {
+    route: "/dashboard/bazma",
+    component: BazmaPage,
     childs: [],
     hasChild: false,
   },

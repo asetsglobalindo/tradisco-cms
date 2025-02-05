@@ -35,6 +35,7 @@ import {Permissions, TODO} from "@/types";
 import settledHandler from "@/helper/settledHandler";
 import {toast} from "react-toastify";
 import {Textarea} from "@/components/ui/textarea";
+import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from "@/components/ui/select";
 
 // schema
 const title_page = "Location";
@@ -49,6 +50,7 @@ interface ModalProps {
 }
 
 interface LocationType {
+  created_at: string;
   _id: string;
   name: string;
   slug: string;
@@ -56,10 +58,10 @@ interface LocationType {
   address: string;
   lat: string;
   long: string;
-  publish: 0;
-  created_at: string;
-  created_by: string;
-  __v: 0;
+  facility: string;
+  fuel: string;
+  operational_hour: string;
+  publish: number;
   city: null | string;
 }
 
@@ -86,7 +88,7 @@ const TableCallOut: React.FC<{row: Row<LocationType>; table: TODO}> = ({row, tab
   const [showDelete, setShowDelete] = useState(false);
   const [showUpdateModal, setShowUpdateModal] = useState(false);
   const {mutate: removeUser, isLoading} = useMutation({
-    mutationFn: async (data: {location_id: string[]}) => await ApiService.secure().delete("/page", data),
+    mutationFn: async (data: {location_id: string[]}) => await ApiService.secure().delete("/location", data),
     onSettled: async (response) =>
       settledHandler({
         response,
@@ -147,9 +149,12 @@ const PageModal: React.FC<ModalProps> = ({show, data, update, itemId, onHide, re
     name: z.string({required_error: "Field Required"}).min(1),
     lat: z.string({required_error: "Field Required"}).min(1),
     long: z.string({required_error: "Field Required"}).min(1),
-    slug: z.string({required_error: "Field Required"}).min(1),
+    slug: z.string({required_error: "Field Required"}).min(0).default(""),
     code: z.string({required_error: "Field Required"}).min(1),
     address: z.string({required_error: "Field Required"}).min(1),
+    fuel: z.string({required_error: "Field Required"}).min(1),
+    facility: z.string({required_error: "Field Required"}).min(1),
+    operational_hour: z.string({required_error: "Field Required"}).min(1),
     // publish: z.string({required_error: "Field Required"}).default(""),
   });
 
@@ -181,8 +186,11 @@ const PageModal: React.FC<ModalProps> = ({show, data, update, itemId, onHide, re
       return;
     }
 
-    mutate([payload]);
+    payload.slug = payload.name.split(" ").join("-");
+    mutate(payload);
   };
+
+  console.log(form.formState.errors);
 
   React.useEffect(() => {
     if (update && data) {
@@ -210,7 +218,7 @@ const PageModal: React.FC<ModalProps> = ({show, data, update, itemId, onHide, re
             )}
           />
 
-          <FormField
+          {/* <FormField
             control={form.control}
             name="slug"
             render={({field}) => (
@@ -222,7 +230,7 @@ const PageModal: React.FC<ModalProps> = ({show, data, update, itemId, onHide, re
                 <FormMessage className="text-xs" />
               </FormItem>
             )}
-          />
+          /> */}
 
           <FormField
             control={form.control}
@@ -271,6 +279,53 @@ const PageModal: React.FC<ModalProps> = ({show, data, update, itemId, onHide, re
                 <FormLabel>Latitude</FormLabel>
                 <FormControl>
                   <Input placeholder="Enter Latitude" disabled={isLoading} {...field} />
+                </FormControl>
+                <FormMessage className="text-xs" />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="facility"
+            render={({field}) => (
+              <FormItem>
+                <FormLabel>Facility</FormLabel>
+                <FormControl>
+                  <Input placeholder="Enter facility (with comma separated)" disabled={isLoading} {...field} />
+                </FormControl>
+                <FormMessage className="text-xs" />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="fuel"
+            render={({field}) => (
+              <FormItem>
+                <FormLabel>Fuel</FormLabel>
+                <FormControl>
+                  <Input placeholder="Enter fuel (with comma separated)" disabled={isLoading} {...field} />
+                </FormControl>
+                <FormMessage className="text-xs" />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="operational_hour"
+            render={({field}) => (
+              <FormItem>
+                <FormLabel>Operational Hour</FormLabel>
+                <FormControl>
+                  <Select onValueChange={field.onChange} value={field.value}>
+                    <SelectTrigger className="w-full">
+                      <SelectValue placeholder="Select operational hour" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="24 jam">24 Hours</SelectItem>
+                      <SelectItem value="16 Jam (06.00-22.00)">16 Hours (06.00-22.00)</SelectItem>
+                    </SelectContent>
+                  </Select>
                 </FormControl>
                 <FormMessage className="text-xs" />
               </FormItem>
