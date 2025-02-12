@@ -92,9 +92,9 @@ const ImageRepositoryUpload: React.FC<ImageRepositoryUploadProps> = ({
 
   type UserFormValue = z.infer<typeof formSchema>;
   const formSchema = z.object({
-    title: z.string({required_error: "Field required"}).min(1, {message: "Field required"}),
-    description: z.string({required_error: "Field required"}).min(1, {message: "Field required"}),
-    button_name: z.string({required_error: "Field required"}).min(0).default("/"),
+    title: z.string({required_error: "Field required"}).min(0).default(" "),
+    description: z.string({required_error: "Field required"}).min(0).default(""),
+    button_name: z.string({required_error: "Field required"}).min(0).default(""),
     button_route: z.string({required_error: "Field required"}).min(0).default("/"),
     is_embedded_video: z.boolean().default(false),
   });
