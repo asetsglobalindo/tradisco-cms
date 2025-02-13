@@ -807,7 +807,7 @@ const ImageRepository: React.FC<Props> = ({
                     setOpen(false);
                   }}
                 >
-                  Finish
+                  Close
                 </Button>
               </section>
             </TabsContent>
