@@ -1,5 +1,38 @@
 import {Icons} from "@/components/Icons";
 
+export interface OtherRoute {
+  title: {
+    id: string;
+    en: string;
+  };
+  route: string;
+  order: number;
+  _id: string;
+}
+
+export interface FooterType {
+  tagline: {
+    id: string;
+    en: string;
+  };
+  _id: string;
+  url_instagram: string;
+  url_facebook: string;
+  url_linkedin: string;
+  url_mail: string;
+  address: string;
+  mail: string;
+  tel: string;
+  copyright_text: string;
+  copyright_link: string;
+  created_at: string;
+  created_by: string;
+  __v: number;
+  other_routes: OtherRoute[];
+  updated_at: string;
+  updated_by: string;
+}
+
 export interface ResponseType<T> {
   success: boolean;
   status: number;

@@ -85,16 +85,16 @@ const formSchema = z.object({
     .array()
     .default([]),
   small_text: z.object({
-    en: z.string({required_error: "Field required"}).min(1),
-    id: z.string({required_error: "Field required"}).min(1),
+    en: z.string({required_error: "Field required"}).min(0).default(""),
+    id: z.string({required_error: "Field required"}).min(0).default(""),
   }),
   small_text2: z.object({
     en: z.string({required_error: "Field required"}).min(1),
     id: z.string({required_error: "Field required"}).min(1),
   }),
   bottom_button_name: z.object({
-    en: z.string({required_error: "Field required"}).min(1),
-    id: z.string({required_error: "Field required"}).min(1),
+    en: z.string({required_error: "Field required"}).min(0).default(""),
+    id: z.string({required_error: "Field required"}).min(0).default(""),
   }),
   active_status: z.boolean().default(true),
   type: z.string().default(CONTENT_TYPE.COMPANY_REPORT),
@@ -500,7 +500,7 @@ const CompanyReport = () => {
             )}
           />
           <h4 className="pb-2 text-lg font-medium border-b border-primary/10">Annual Report</h4>
-          <Controller
+          {/* <Controller
             control={form.control}
             name="small_text.en"
             render={({field, fieldState: {error}}) => (
@@ -547,7 +547,7 @@ const CompanyReport = () => {
                 {error?.message ? <p className="text-xs font-medium text-destructive">{error?.message}</p> : null}
               </div>
             )}
-          />
+          /> */}
           <Controller
             control={form.control}
             name="description.en"
@@ -773,7 +773,7 @@ const CompanyReport = () => {
             </div>
           </section>
           <h4 className="pb-2 text-lg font-medium border-b border-primary/10">Sustainability Report</h4>
-          <Controller
+          {/* <Controller
             control={form.control}
             name="bottom_button_name.en"
             render={({field, fieldState: {error}}) => (
@@ -820,7 +820,7 @@ const CompanyReport = () => {
                 {error?.message ? <p className="text-xs font-medium text-destructive">{error?.message}</p> : null}
               </div>
             )}
-          />
+          /> */}
           <Controller
             control={form.control}
             name="small_text2.en"

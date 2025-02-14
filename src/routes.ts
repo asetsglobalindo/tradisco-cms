@@ -50,6 +50,7 @@ import CSRPage from "./pages/CSRPage/CSRPage";
 import CSROurPrograms from "./pages/CSROurPrograms/CSROurPrograms";
 import CompanyReport from "./pages/CompanyReport/CompanyReport";
 import BazmaPage from "./pages/BazmaPage/BazmaPage";
+import FooterPage from "./pages/FooterPage/FooterPage";
 
 const pagesListWithChilds = [
   {
@@ -290,6 +291,12 @@ const pageListNoChild = [
   {
     route: "/dashboard/about-management",
     component: AboutManagement,
+    childs: [],
+    hasChild: false,
+  },
+  {
+    route: "/dashboard/footer-setting",
+    component: FooterPage,
     childs: [],
     hasChild: false,
   },

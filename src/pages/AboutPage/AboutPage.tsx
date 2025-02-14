@@ -512,6 +512,7 @@ const AboutPage = () => {
               <TabsTrigger value="vision">Vision</TabsTrigger>
               <TabsTrigger value="mission">Mission</TabsTrigger>
               <TabsTrigger value="journey">Milestone</TabsTrigger>
+              <TabsTrigger value="subsidiary-company">Subsidiary Company</TabsTrigger>
               <TabsTrigger value="our-worker">Our Workers</TabsTrigger>
               <TabsTrigger value="corporate">Corporate Governance</TabsTrigger>
             </TabsList>
@@ -1100,6 +1101,77 @@ const AboutPage = () => {
                 )}
               />
             </TabsContent>
+            <TabsContent className="flex flex-col w-full space-y-4" value="subsidiary-company">
+              <Controller
+                control={form.control}
+                name="bottom_text2.en"
+                render={({field, fieldState: {error}}) => (
+                  <div className="flex flex-col space-y-2">
+                    <label
+                      htmlFor={field.name}
+                      className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                    >
+                      Title (EN)
+                    </label>
+                    <Input
+                      id={field.name}
+                      ref={field.ref}
+                      type="text"
+                      placeholder="Enter title"
+                      disabled={isLoading}
+                      value={field.value}
+                      onChange={(e) => field.onChange(e.target.value)}
+                    />
+                    {error?.message ? <p className="text-xs font-medium text-destructive">{error?.message}</p> : null}
+                  </div>
+                )}
+              />
+              <Controller
+                control={form.control}
+                name="bottom_text2.id"
+                render={({field, fieldState: {error}}) => (
+                  <div className="flex flex-col space-y-2">
+                    <label
+                      htmlFor={field.name}
+                      className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                    >
+                      Title (ID)
+                    </label>
+                    <Input
+                      id={field.name}
+                      ref={field.ref}
+                      type="text"
+                      placeholder="Enter title"
+                      disabled={isLoading}
+                      value={field.value}
+                      onChange={(e) => field.onChange(e.target.value)}
+                    />
+                    {error?.message ? <p className="text-xs font-medium text-destructive">{error?.message}</p> : null}
+                  </div>
+                )}
+              />
+              <Controller
+                control={form.control}
+                name={`thumbnail_images2_en`}
+                render={({field}) => {
+                  return (
+                    <ImageRepository
+                      label="Image"
+                      limit={1}
+                      mobileSize={false}
+                      showButtonRoute
+                      img_type={IMG_TYPE.ABOUT}
+                      value={field.value?.length ? field.value : []}
+                      onChange={(data) => {
+                        let value = data.map((img) => img._id);
+                        form.setValue(`thumbnail_images2_id`, value);
+                        field.onChange(value);
+                      }}
+                    />
+                  );
+                }}
+              />
+            </TabsContent>
             <TabsContent className="flex flex-col w-full space-y-4" value="journey">
               <h4 className="pb-2 text-lg font-medium border-b border-primary/10">Journey</h4>
               <Controller
@@ -1338,54 +1410,6 @@ const AboutPage = () => {
             </TabsContent>
             <TabsContent className="flex flex-col w-full space-y-4" value="our-worker">
               <h4 className="pb-2 text-lg font-medium border-b border-primary/10">Our Worker</h4>
-              <Controller
-                control={form.control}
-                name="bottom_text2.en"
-                render={({field, fieldState: {error}}) => (
-                  <div className="flex flex-col space-y-2">
-                    <label
-                      htmlFor={field.name}
-                      className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                    >
-                      Title (EN)
-                    </label>
-                    <Input
-                      id={field.name}
-                      ref={field.ref}
-                      type="text"
-                      placeholder="Enter title"
-                      disabled={isLoading}
-                      value={field.value}
-                      onChange={(e) => field.onChange(e.target.value)}
-                    />
-                    {error?.message ? <p className="text-xs font-medium text-destructive">{error?.message}</p> : null}
-                  </div>
-                )}
-              />
-              <Controller
-                control={form.control}
-                name="bottom_text2.id"
-                render={({field, fieldState: {error}}) => (
-                  <div className="flex flex-col space-y-2">
-                    <label
-                      htmlFor={field.name}
-                      className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                    >
-                      Title (ID)
-                    </label>
-                    <Input
-                      id={field.name}
-                      ref={field.ref}
-                      type="text"
-                      placeholder="Enter title"
-                      disabled={isLoading}
-                      value={field.value}
-                      onChange={(e) => field.onChange(e.target.value)}
-                    />
-                    {error?.message ? <p className="text-xs font-medium text-destructive">{error?.message}</p> : null}
-                  </div>
-                )}
-              />
               <Controller
                 control={form.control}
                 name={`bottom_description2.en`}
