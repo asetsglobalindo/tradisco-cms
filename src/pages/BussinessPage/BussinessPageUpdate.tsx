@@ -447,8 +447,7 @@ const BussinessPageUpdate = () => {
                 <ImageRepository
                   label="Banner"
                   limit={1}
-                  mobileSize={false}
-                  img_type={IMG_TYPE.NEWS}
+                  img_type={IMG_TYPE.BUSINESS}
                   value={field.value?.length ? field.value : []}
                   onChange={(data) => {
                     let value = data.map((img) => img._id);
