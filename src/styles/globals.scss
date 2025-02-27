@@ -5,10 +5,16 @@
 @tailwind components;
 @tailwind utilities;
 
+// WARNA PERTAMINA
+// 32599c
+// da251c
+// 85c226
 @layer base {
   :root {
+    // background
     --background: 0 0% 100%;
-    --foreground: 240 10% 3.9%;
+    // --background: 218 51.5% 64%; /* Merah Pertamina untuk latar belakang terang */
+    // --foreground: 240 10% 3.9%;
 
     --card: 0 0% 100%;
     --card-foreground: 240 10% 3.9%;
@@ -16,10 +22,10 @@
     --popover: 0 0% 100%;
     --popover-foreground: 240 10% 3.9%;
 
-    --primary: 240 10% 3.9%;
-    --primary-foreground: 210 40% 98%;
+    // --primary: 240 10% 3.9%;
+    // --primary-foreground: 210 40% 98%;
 
-    --secondary: 210 40% 96.1%;
+    // --secondary: 210 40% 96.1%;
     --secondary-foreground: 240 10% 3.9%;
 
     --muted: 210 40% 96.1%;
@@ -72,7 +78,15 @@
 
     // Used when no type is provided
     // toast("**hello**")
-    --toastify-color-progress-light: linear-gradient(to right, #4ccd99, #5ac8fa, #007aff, #34aadc, #5856d6, #ff2d55);
+    --toastify-color-progress-light: linear-gradient(
+      to right,
+      #4ccd99,
+      #5ac8fa,
+      #007aff,
+      #34aadc,
+      #5856d6,
+      #ff2d55
+    );
     // Used when no type is provided
     --toastify-color-progress-dark: #bb86fc;
     --toastify-color-progress-info: var(--toastify-color-info);
@@ -86,33 +100,44 @@
   }
 
   .dark {
-    --background: 0, 0%, 10%;
-    --foreground: 210 40% 98%;
+    // --background: 0, 0%, 10%; // before update
+    // --background: 3 77.2% 13%; //red
+    --background: 218 51.5% 13%; //blue
+    // --background: 100 43% 10%; //green
+    --foreground: 210 40% 98%; // warna text
 
     --card: 0, 0%, 10%;
+    // --card: 218 51.5% 13%;
     --card-foreground: 210 40% 98%;
 
-    --popover: 0, 0%, 10%;
+    --popover: 0, 0%, 10%; // warna untuk profile dropdown
+    // --popover: 218 51.5% 13%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 210 40% 98%;
+    --primary: 210 40% 98%; // warna primari untuk tombol backto home dan hr
     --primary-foreground: 0, 0%, 10%;
 
-    --secondary: 240 3.7% 15.9%;
-    --secondary-foreground: 210 40% 98%;
+    // --secondary: 240 3.7% 15.9%;
+    --secondary: 120 60% 40%; /* Hijau untuk tombol + dan titik 3 */
+    --secondary-foreground: 210 40% 98%; // warna textnya
 
-    --muted: 240 3.7% 15.9%;
-    --muted-foreground: 215 20.2% 65.1%;
+    // --muted: 240 3.7% 15.9%;
+    --muted: 120 60% 40%; /* Hijau untuk tombol information vision, dll di halaman aboutManagement/aboutProfile*/
+    --muted-foreground: 215 20.2% 25.1%; //tombol secondarynya
 
-    --accent: 240 3.7% 15.9%;
-    --accent-foreground: 210 40% 98%;
+    // --accent: 240 3.7% 15.9%;
+    --accent: 120 60% 40%; // untuk tombol sidebarnya ( hijau )
+    --accent-foreground: 210 40% 98%; // warna text waktu di hover
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    // --destructive: 0 62.8% 30.6%;
+    --destructive: 0 60% 40%; // tombol remove dan delete ( red )
+    --destructive-foreground: 210 40% 98%; // warna textnya
 
-    --border: 240 3.7% 15.9%;
-    --input: 240 3.7% 15.9%;
-    --ring: 212.7 26.8% 83.9%;
+    // --border: 240 3.7% 15.9%;
+    --border: 218 51.5% 23%; // border biru
+    // --input: 240 3.7% 15.9%;
+    --input: 218 51.5% 23%; // boder biru untuk input
+    --ring: 212.7 26.8% 83.9%; //page business category edit
   }
 }
 
