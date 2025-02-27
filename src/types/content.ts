@@ -12,6 +12,10 @@ export interface ContentImage {
   }[];
 }
 export interface ContentType {
+  page_title: {
+    en: string;
+    id: string;
+  };
   _id: string;
   meta_title: {
     en: string;
@@ -156,4 +160,3 @@ export interface ContentType {
   created_at: string;
   created_by: string;
 }
-

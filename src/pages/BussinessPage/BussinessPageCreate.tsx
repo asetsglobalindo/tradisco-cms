@@ -1,32 +1,43 @@
 // hook
-import {Controller, FormProvider, useForm} from "react-hook-form";
-import {useMutation, useQuery} from "react-query";
-import {useLocation, useNavigate} from "react-router-dom";
+import { Controller, FormProvider, useForm } from "react-hook-form";
+import { useMutation, useQuery } from "react-query";
+import { useLocation, useNavigate } from "react-router-dom";
 
 // component
 import Breadcrumb from "@/components/Breadcrumb";
-import {Button} from "@/components/ui/button";
-import {Input} from "@/components/ui/input";
-import {Separator} from "@/components/ui/separator";
-import {Popover, PopoverContent, PopoverTrigger} from "@/components/ui/popover";
-import {Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList} from "@/components/ui/command";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Separator } from "@/components/ui/separator";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import {
+  Command,
+  CommandEmpty,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+  CommandList,
+} from "@/components/ui/command";
 
 // utils
 import settledHandler from "@/helper/settledHandler";
 import ApiService from "@/lib/ApiService";
-import {zodResolver} from "@hookform/resolvers/zod";
-import {z} from "zod";
-import {Textarea} from "@/components/ui/textarea";
-import {toast} from "react-toastify";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
+import { Textarea } from "@/components/ui/textarea";
+import { toast } from "react-toastify";
 import ToastBody from "@/components/ToastBody";
-import {Switch} from "@/components/ui/switch";
+import { Switch } from "@/components/ui/switch";
 import ImageRepository from "@/components/ImageRepository";
 import IMG_TYPE from "@/helper/img-type";
 import CONTENT_TYPE from "@/helper/content-type";
 
-import {cn} from "@/lib/utils";
-import {Check, ChevronsUpDown} from "lucide-react";
-import {CategoryType} from "../NewsCategory/NewsCategory";
+import { cn } from "@/lib/utils";
+import { Check, ChevronsUpDown } from "lucide-react";
+import { CategoryType } from "../NewsCategory/NewsCategory";
 import combineImageMultiLang from "@/helper/combineImageMultiLang";
 import Ckeditor5 from "@/components/Ckeditor5";
 
@@ -35,33 +46,37 @@ const action_context = "Create";
 
 const formSchema = z.object({
   meta_title: z.object({
-    en: z.string({required_error: "Field required"}).min(1),
-    id: z.string({required_error: "Field required"}).min(1),
+    en: z.string({ required_error: "Field required" }).min(1),
+    id: z.string({ required_error: "Field required" }).min(1),
   }),
   meta_description: z.object({
-    en: z.string({required_error: "Field required"}).min(1),
-    id: z.string({required_error: "Field required"}).min(1),
+    en: z.string({ required_error: "Field required" }).min(1),
+    id: z.string({ required_error: "Field required" }).min(1),
   }),
   thumbnail_images_en: z.string().array().default([]),
   thumbnail_images_id: z.string().array().default([]),
   banner_en: z.string().array().default([]),
   banner_id: z.string().array().default([]),
+  page_title: z.object({
+    en: z.string({ required_error: "Field required" }).min(1),
+    id: z.string({ required_error: "Field required" }).min(1),
+  }),
 
   title: z.object({
-    en: z.string({required_error: "Field required"}).min(1),
-    id: z.string({required_error: "Field required"}).min(1),
+    en: z.string({ required_error: "Field required" }).min(1),
+    id: z.string({ required_error: "Field required" }).min(1),
   }),
 
   small_text: z.object({
-    en: z.string({required_error: "Field required"}).min(1),
-    id: z.string({required_error: "Field required"}).min(1),
+    en: z.string({ required_error: "Field required" }).min(1),
+    id: z.string({ required_error: "Field required" }).min(1),
   }),
   // bottom_button_name: z.object({
   //   en: z.string({required_error: "Field required"}).min(1),
   //   id: z.string({required_error: "Field required"}).min(1),
   // }),
   // bottom_button_route: z.string({required_error: "Field required"}).min(1),
-  category_id: z.string({required_error: "Field required"}).min(1),
+  category_id: z.string({ required_error: "Field required" }).min(1),
   active_status: z.boolean().default(false),
   type: z.string().default(CONTENT_TYPE.BUSINESS_PAGE),
   order: z.number().default(0),
@@ -89,28 +104,40 @@ const BussinessPageCreate = () => {
   const location = useLocation();
   const prevLocation = location.pathname.split("/").slice(0, 3).join("/");
   const breadcrumbItems = [
-    {title: title_page, link: prevLocation},
-    {title: title_page + " " + action_context, link: location.pathname},
+    { title: title_page, link: prevLocation },
+    { title: title_page + " " + action_context, link: location.pathname },
   ];
 
   const form = useForm<DataFormValue>({
     resolver: zodResolver(formSchema),
   });
 
-  const {mutate, isLoading} = useMutation(
-    async (payload: Payload) => await ApiService.secure().post("/content", payload),
+  const { mutate, isLoading } = useMutation(
+    async (payload: Payload) =>
+      await ApiService.secure().post("/content", payload),
     {
       onSettled: (response) =>
-        settledHandler({response, contextAction: action_context, onFinish: () => navigate(prevLocation)}),
+        settledHandler({
+          response,
+          contextAction: action_context,
+          onFinish: () => navigate(prevLocation),
+        }),
     }
   );
 
-  const {data: categoryOptions} = useQuery({
+  const { data: categoryOptions } = useQuery({
     queryKey: ["category-option", title_page],
-    queryFn: async () => await getCategoryHandler({pageIndex: 0, pageSize: 200}),
+    queryFn: async () =>
+      await getCategoryHandler({ pageIndex: 0, pageSize: 200 }),
   });
 
-  const getCategoryHandler = async ({pageIndex, pageSize}: {pageIndex: number; pageSize: number}) => {
+  const getCategoryHandler = async ({
+    pageIndex,
+    pageSize,
+  }: {
+    pageIndex: number;
+    pageSize: number;
+  }) => {
     try {
       const response = await ApiService.secure().get(`/category`, {
         page: pageIndex + 1,
@@ -124,13 +151,21 @@ const BussinessPageCreate = () => {
 
       return response.data.data as CategoryType[] | [];
     } catch (error: any) {
-      toast.error(<ToastBody title="an error occurred" description={error.message || "Something went wrong"} />);
+      toast.error(
+        <ToastBody
+          title="an error occurred"
+          description={error.message || "Something went wrong"}
+        />
+      );
     }
   };
 
   const onSubmit = async (data: DataFormValue) => {
     try {
-      const thumbnail_images = combineImageMultiLang(data.thumbnail_images_en, data.thumbnail_images_id);
+      const thumbnail_images = combineImageMultiLang(
+        data.thumbnail_images_en,
+        data.thumbnail_images_id
+      );
       const banner = combineImageMultiLang(data.banner_en, data.banner_id);
 
       mutate({
@@ -139,7 +174,12 @@ const BussinessPageCreate = () => {
         thumbnail_images: thumbnail_images,
       });
     } catch (error: any) {
-      toast.error(<ToastBody title="an error occurred" description={error.message || "Something went wrong"} />);
+      toast.error(
+        <ToastBody
+          title="an error occurred"
+          description={error.message || "Something went wrong"}
+        />
+      );
     }
   };
 
@@ -150,17 +190,24 @@ const BussinessPageCreate = () => {
         <h1 className="text-2xl font-bold">
           {action_context} {title_page}
         </h1>
-        <Button onClick={() => navigate(prevLocation)}>Back to {title_page}</Button>
+        <Button onClick={() => navigate(prevLocation)}>
+          Back to {title_page}
+        </Button>
       </section>
       <Separator />
 
       <FormProvider {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col w-full mt-5 space-y-4">
-          <h4 className="pb-2 text-lg font-medium border-b border-primary/10">Meta Fields</h4>
+        <form
+          onSubmit={form.handleSubmit(onSubmit)}
+          className="flex flex-col w-full mt-5 space-y-4"
+        >
+          <h4 className="pb-2 text-lg font-medium border-b border-primary/10">
+            Meta Fields
+          </h4>
           <Controller
             control={form.control}
             name="meta_title.en"
-            render={({field, fieldState: {error}}) => (
+            render={({ field, fieldState: { error } }) => (
               <div className="flex flex-col space-y-2">
                 <label
                   htmlFor={field.name}
@@ -177,14 +224,18 @@ const BussinessPageCreate = () => {
                   value={field.value}
                   onChange={(e) => field.onChange(e.target.value)}
                 />
-                {error?.message ? <p className="text-xs font-medium text-destructive">{error?.message}</p> : null}
+                {error?.message ? (
+                  <p className="text-xs font-medium text-destructive">
+                    {error?.message}
+                  </p>
+                ) : null}
               </div>
             )}
           />
           <Controller
             control={form.control}
             name="meta_description.en"
-            render={({field, fieldState: {error}}) => (
+            render={({ field, fieldState: { error } }) => (
               <div className="flex flex-col space-y-2">
                 <label
                   htmlFor={field.name}
@@ -200,14 +251,18 @@ const BussinessPageCreate = () => {
                   value={field.value}
                   onChange={(e) => field.onChange(e.target.value)}
                 />
-                {error?.message ? <p className="text-xs font-medium text-destructive">{error?.message}</p> : null}
+                {error?.message ? (
+                  <p className="text-xs font-medium text-destructive">
+                    {error?.message}
+                  </p>
+                ) : null}
               </div>
             )}
           />
           <Controller
             control={form.control}
             name="meta_title.id"
-            render={({field, fieldState: {error}}) => (
+            render={({ field, fieldState: { error } }) => (
               <div className="flex flex-col space-y-2">
                 <label
                   htmlFor={field.name}
@@ -224,14 +279,18 @@ const BussinessPageCreate = () => {
                   value={field.value}
                   onChange={(e) => field.onChange(e.target.value)}
                 />
-                {error?.message ? <p className="text-xs font-medium text-destructive">{error?.message}</p> : null}
+                {error?.message ? (
+                  <p className="text-xs font-medium text-destructive">
+                    {error?.message}
+                  </p>
+                ) : null}
               </div>
             )}
           />
           <Controller
             control={form.control}
             name="meta_description.id"
-            render={({field, fieldState: {error}}) => (
+            render={({ field, fieldState: { error } }) => (
               <div className="flex flex-col space-y-2">
                 <label
                   htmlFor={field.name}
@@ -247,15 +306,21 @@ const BussinessPageCreate = () => {
                   value={field.value}
                   onChange={(e) => field.onChange(e.target.value)}
                 />
-                {error?.message ? <p className="text-xs font-medium text-destructive">{error?.message}</p> : null}
+                {error?.message ? (
+                  <p className="text-xs font-medium text-destructive">
+                    {error?.message}
+                  </p>
+                ) : null}
               </div>
             )}
           />
-          <h4 className="pb-2 text-lg font-medium border-b border-primary/10">Content Fields</h4>
+          <h4 className="pb-2 text-lg font-medium border-b border-primary/10">
+            Content Fields
+          </h4>
           <Controller
             control={form.control}
             name="title.en"
-            render={({field, fieldState: {error}}) => (
+            render={({ field, fieldState: { error } }) => (
               <div className="flex flex-col space-y-2">
                 <label
                   htmlFor={field.name}
@@ -272,14 +337,18 @@ const BussinessPageCreate = () => {
                   value={field.value}
                   onChange={(e) => field.onChange(e.target.value)}
                 />
-                {error?.message ? <p className="text-xs font-medium text-destructive">{error?.message}</p> : null}
+                {error?.message ? (
+                  <p className="text-xs font-medium text-destructive">
+                    {error?.message}
+                  </p>
+                ) : null}
               </div>
             )}
           />
           <Controller
             control={form.control}
             name="title.id"
-            render={({field, fieldState: {error}}) => (
+            render={({ field, fieldState: { error } }) => (
               <div className="flex flex-col space-y-2">
                 <label
                   htmlFor={field.name}
@@ -296,14 +365,18 @@ const BussinessPageCreate = () => {
                   value={field.value}
                   onChange={(e) => field.onChange(e.target.value)}
                 />
-                {error?.message ? <p className="text-xs font-medium text-destructive">{error?.message}</p> : null}
+                {error?.message ? (
+                  <p className="text-xs font-medium text-destructive">
+                    {error?.message}
+                  </p>
+                ) : null}
               </div>
             )}
           />
           <Controller
             control={form.control}
             name="category_id"
-            render={({field}) => (
+            render={({ field }) => (
               <div className="flex flex-col space-y-2">
                 <label
                   htmlFor="category"
@@ -323,7 +396,9 @@ const BussinessPageCreate = () => {
                       )}
                     >
                       {field.value
-                        ? categoryOptions?.find((option) => option._id === field.value)?.name.en
+                        ? categoryOptions?.find(
+                            (option) => option._id === field.value
+                          )?.name.en
                         : "Select category"}
                       <ChevronsUpDown className="w-4 h-4 ml-2 opacity-50 shrink-0" />
                     </Button>
@@ -343,7 +418,12 @@ const BussinessPageCreate = () => {
                               }}
                             >
                               <Check
-                                className={cn("mr-2 h-4 w-4", field.value === option._id ? "opacity-100" : "opacity-0")}
+                                className={cn(
+                                  "mr-2 h-4 w-4",
+                                  field.value === option._id
+                                    ? "opacity-100"
+                                    : "opacity-0"
+                                )}
                               />
                               {option.name.en}
                             </CommandItem>
@@ -354,7 +434,9 @@ const BussinessPageCreate = () => {
                   </PopoverContent>
                 </Popover>
                 {form?.formState?.errors?.category_id ? (
-                  <p className="text-xs font-medium text-destructive">{form.formState.errors.category_id.message}</p>
+                  <p className="text-xs font-medium text-destructive">
+                    {form.formState.errors.category_id.message}
+                  </p>
                 ) : null}
               </div>
             )}
@@ -362,7 +444,7 @@ const BussinessPageCreate = () => {
           <Controller
             control={form.control}
             name="small_text.en"
-            render={({field, fieldState: {error}}) => (
+            render={({ field, fieldState: { error } }) => (
               <div className="flex flex-col space-y-2">
                 <label
                   htmlFor={field.name}
@@ -377,14 +459,18 @@ const BussinessPageCreate = () => {
                   onChange={field.onChange}
                   placeholder="Enter Body"
                 />
-                {error?.message ? <p className="text-xs font-medium text-destructive">{error?.message}</p> : null}
+                {error?.message ? (
+                  <p className="text-xs font-medium text-destructive">
+                    {error?.message}
+                  </p>
+                ) : null}
               </div>
             )}
           />
           <Controller
             control={form.control}
             name="small_text.id"
-            render={({field, fieldState: {error}}) => (
+            render={({ field, fieldState: { error } }) => (
               <div className="flex flex-col space-y-2">
                 <label
                   htmlFor={field.name}
@@ -399,7 +485,11 @@ const BussinessPageCreate = () => {
                   onChange={field.onChange}
                   placeholder="Enter Body"
                 />
-                {error?.message ? <p className="text-xs font-medium text-destructive">{error?.message}</p> : null}
+                {error?.message ? (
+                  <p className="text-xs font-medium text-destructive">
+                    {error?.message}
+                  </p>
+                ) : null}
               </div>
             )}
           />
@@ -407,7 +497,7 @@ const BussinessPageCreate = () => {
           <Controller
             control={form.control}
             name="banner_en"
-            render={({field}) => {
+            render={({ field }) => {
               return (
                 <ImageRepository
                   label="Banner"
@@ -426,11 +516,70 @@ const BussinessPageCreate = () => {
 
           <Controller
             control={form.control}
+            name="page_title.id"
+            render={({ field, fieldState: { error } }) => (
+              <div className="flex flex-col space-y-2">
+                <label
+                  htmlFor={field.name}
+                  className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                >
+                  Page Title (ID)
+                </label>
+                <Textarea
+                  id={field.name}
+                  ref={field.ref}
+                  placeholder="Enter meta description"
+                  disabled={isLoading}
+                  value={field.value}
+                  onChange={(e) => field.onChange(e.target.value)}
+                />
+                {error?.message ? (
+                  <p className="text-xs font-medium text-destructive">
+                    {error?.message}
+                  </p>
+                ) : null}
+              </div>
+            )}
+          />
+          <Controller
+            control={form.control}
+            name="page_title.en"
+            render={({ field, fieldState: { error } }) => (
+              <div className="flex flex-col space-y-2">
+                <label
+                  htmlFor={field.name}
+                  className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                >
+                  Page Title (EN)
+                </label>
+                <Textarea
+                  id={field.name}
+                  ref={field.ref}
+                  placeholder="Enter meta description"
+                  disabled={isLoading}
+                  value={field.value}
+                  onChange={(e) => field.onChange(e.target.value)}
+                />
+                {error?.message ? (
+                  <p className="text-xs font-medium text-destructive">
+                    {error?.message}
+                  </p>
+                ) : null}
+              </div>
+            )}
+          />
+
+          <Controller
+            control={form.control}
             name="active_status"
             defaultValue={false}
-            render={({field}) => (
+            render={({ field }) => (
               <div className="flex items-center gap-2">
-                <Switch id={field.name} checked={field.value} onCheckedChange={field.onChange} />
+                <Switch
+                  id={field.name}
+                  checked={field.value}
+                  onCheckedChange={field.onChange}
+                />
                 <label
                   htmlFor={field.name}
                   className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
@@ -443,7 +592,12 @@ const BussinessPageCreate = () => {
 
           <div className="flex justify-center">
             <div className="flex gap-4 mt-5 mb-10">
-              <Button className="w-[100px]" type="button" variant={"outline"} onClick={() => navigate(prevLocation)}>
+              <Button
+                className="w-[100px]"
+                type="button"
+                variant={"outline"}
+                onClick={() => navigate(prevLocation)}
+              >
                 Back
               </Button>
               <Button className="w-[100px]" size={"sm"} isLoading={isLoading}>
@@ -458,4 +612,3 @@ const BussinessPageCreate = () => {
 };
 
 export default BussinessPageCreate;
-

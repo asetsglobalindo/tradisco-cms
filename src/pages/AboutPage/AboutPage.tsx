@@ -1,129 +1,150 @@
 // hook
-import {Controller, FormProvider, useFieldArray, useForm} from "react-hook-form";
-import {useMutation} from "react-query";
-import {useLocation, useNavigate} from "react-router-dom";
+import {
+  Controller,
+  FormProvider,
+  useFieldArray,
+  useForm,
+} from "react-hook-form";
+import { useMutation } from "react-query";
+import { useLocation, useNavigate } from "react-router-dom";
 
 // component
 import Breadcrumb from "@/components/Breadcrumb";
-import {Button} from "@/components/ui/button";
-import {Input} from "@/components/ui/input";
-import {Separator} from "@/components/ui/separator";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Separator } from "@/components/ui/separator";
 
 // utils
 import settledHandler from "@/helper/settledHandler";
 import ApiService from "@/lib/ApiService";
-import {zodResolver} from "@hookform/resolvers/zod";
-import {z} from "zod";
-import {toast} from "react-toastify";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
+import { toast } from "react-toastify";
 import ToastBody from "@/components/ToastBody";
 import CONTENT_TYPE from "@/helper/content-type";
-import {ContentType} from "@/types/content";
-import React, {useEffect, useState} from "react";
+import { ContentType } from "@/types/content";
+import React, { useEffect, useState } from "react";
 import IMG_TYPE from "@/helper/img-type";
 import ImageRepository from "@/components/ImageRepository";
 import combineImageMultiLang from "@/helper/combineImageMultiLang";
 import Ckeditor5 from "@/components/Ckeditor5";
-import {Textarea} from "@/components/ui/textarea";
-import {Trash} from "lucide-react";
+import { Textarea } from "@/components/ui/textarea";
+import { Trash } from "lucide-react";
 import PopConfirm from "@/components/PopConfirm";
-import {Tabs, TabsContent, TabsList, TabsTrigger} from "@/components/ui/tabs";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const title_page = "About Profile Page";
 
 const formSchema = z.object({
   meta_title: z.object({
-    en: z.string({required_error: "Field required"}).min(1),
-    id: z.string({required_error: "Field required"}).min(1),
+    en: z.string({ required_error: "Field required" }).min(1),
+    id: z.string({ required_error: "Field required" }).min(1),
   }),
   meta_description: z.object({
-    en: z.string({required_error: "Field required"}).min(1),
-    id: z.string({required_error: "Field required"}).min(1),
+    en: z.string({ required_error: "Field required" }).min(1),
+    id: z.string({ required_error: "Field required" }).min(1),
   }),
   title: z.object({
-    en: z.string({required_error: "Field required"}).min(1),
-    id: z.string({required_error: "Field required"}).min(1),
+    en: z.string({ required_error: "Field required" }).min(1),
+    id: z.string({ required_error: "Field required" }).min(1),
   }),
   banner_en: z.string().array().default([]),
   banner_id: z.string().array().default([]),
+  page_title: z.object({
+    en: z.string({ required_error: "Field required" }).min(1),
+    id: z.string({ required_error: "Field required" }).min(1),
+  }),
   images_en: z.string().array().default([]),
   images_id: z.string().array().default([]),
   images2_en: z.string().array().default([]),
   images2_id: z.string().array().default([]),
   sub_title1: z.object({
-    en: z.string({required_error: "Field required"}).min(1),
-    id: z.string({required_error: "Field required"}).min(1),
+    en: z.string({ required_error: "Field required" }).min(1),
+    id: z.string({ required_error: "Field required" }).min(1),
   }),
   sub_title2: z.object({
-    en: z.string({required_error: "Field required"}).min(1),
-    id: z.string({required_error: "Field required"}).min(1),
+    en: z.string({ required_error: "Field required" }).min(1),
+    id: z.string({ required_error: "Field required" }).min(1),
   }),
   sub_title3: z.object({
-    en: z.string({required_error: "Field required"}).min(1),
-    id: z.string({required_error: "Field required"}).min(1),
+    en: z.string({ required_error: "Field required" }).min(1),
+    id: z.string({ required_error: "Field required" }).min(1),
   }),
   bottom_text2: z.object({
-    en: z.string({required_error: "Field required"}).min(1),
-    id: z.string({required_error: "Field required"}).min(1),
+    en: z.string({ required_error: "Field required" }).min(1),
+    id: z.string({ required_error: "Field required" }).min(1),
   }),
   bottom_description2: z.object({
-    en: z.string({required_error: "Field required"}).min(1),
-    id: z.string({required_error: "Field required"}).min(1),
+    en: z.string({ required_error: "Field required" }).min(1),
+    id: z.string({ required_error: "Field required" }).min(1),
   }),
   thumbnail_images2_en: z.string().array().default([]),
   thumbnail_images2_id: z.string().array().default([]),
   description: z.object({
-    en: z.string({required_error: "Field required"}).min(1),
-    id: z.string({required_error: "Field required"}).min(1),
+    en: z.string({ required_error: "Field required" }).min(1),
+    id: z.string({ required_error: "Field required" }).min(1),
   }),
   bottom_text: z.object({
-    en: z.string({required_error: "Field required"}).min(1),
-    id: z.string({required_error: "Field required"}).min(1),
+    en: z.string({ required_error: "Field required" }).min(1),
+    id: z.string({ required_error: "Field required" }).min(1),
   }),
   our_workers: z
     .object({
       title: z.object({
-        en: z.string({required_error: "Field required"}).min(1),
-        id: z.string({required_error: "Field required"}).min(1),
+        en: z.string({ required_error: "Field required" }).min(1),
+        id: z.string({ required_error: "Field required" }).min(1),
       }),
       text: z.object({
-        en: z.string({required_error: "Field required"}).min(0),
-        id: z.string({required_error: "Field required"}).min(0),
+        en: z.string({ required_error: "Field required" }).min(0),
+        id: z.string({ required_error: "Field required" }).min(0),
       }),
       button_name: z.object({
-        en: z.string({required_error: "Field required"}).min(1),
-        id: z.string({required_error: "Field required"}).min(1),
+        en: z.string({ required_error: "Field required" }).min(1),
+        id: z.string({ required_error: "Field required" }).min(1),
       }),
       type: z.number().optional().default(1), // 1 mean section top
-      image_en: z.string({required_error: "Field required"}).array().default([]),
-      image_id: z.string({required_error: "Field required"}).array().default([]),
+      image_en: z
+        .string({ required_error: "Field required" })
+        .array()
+        .default([]),
+      image_id: z
+        .string({ required_error: "Field required" })
+        .array()
+        .default([]),
     })
     .array()
     .default([]),
   body: z
     .object({
       title: z.object({
-        en: z.string({required_error: "Field required"}).min(1),
-        id: z.string({required_error: "Field required"}).min(1),
+        en: z.string({ required_error: "Field required" }).min(1),
+        id: z.string({ required_error: "Field required" }).min(1),
       }),
       text: z.object({
-        en: z.string({required_error: "Field required"}).min(1),
-        id: z.string({required_error: "Field required"}).min(1),
+        en: z.string({ required_error: "Field required" }).min(1),
+        id: z.string({ required_error: "Field required" }).min(1),
       }),
       button_name: z.object({
-        en: z.string({required_error: "Field required"}).min(1),
-        id: z.string({required_error: "Field required"}).min(1),
+        en: z.string({ required_error: "Field required" }).min(1),
+        id: z.string({ required_error: "Field required" }).min(1),
       }),
       type: z.number().optional().default(1), // 1 mean section top
-      image_en: z.string({required_error: "Field required"}).array().default([]),
-      image_id: z.string({required_error: "Field required"}).array().default([]),
+      image_en: z
+        .string({ required_error: "Field required" })
+        .array()
+        .default([]),
+      image_id: z
+        .string({ required_error: "Field required" })
+        .array()
+        .default([]),
     })
     .array()
     .default([]),
   body2: z
     .object({
       text: z.object({
-        en: z.string({required_error: "Field required"}).min(1),
-        id: z.string({required_error: "Field required"}).min(1),
+        en: z.string({ required_error: "Field required" }).min(1),
+        id: z.string({ required_error: "Field required" }).min(1),
       }),
     })
     .array()
@@ -131,33 +152,33 @@ const formSchema = z.object({
   body_review: z
     .object({
       title: z.object({
-        en: z.string({required_error: "Field required"}).min(1),
-        id: z.string({required_error: "Field required"}).min(1),
+        en: z.string({ required_error: "Field required" }).min(1),
+        id: z.string({ required_error: "Field required" }).min(1),
       }),
       text: z.object({
-        en: z.string({required_error: "Field required"}).min(1),
-        id: z.string({required_error: "Field required"}).min(1),
+        en: z.string({ required_error: "Field required" }).min(1),
+        id: z.string({ required_error: "Field required" }).min(1),
       }),
       button_name: z.object({
-        en: z.string({required_error: "Field required"}).min(1),
-        id: z.string({required_error: "Field required"}).min(1),
+        en: z.string({ required_error: "Field required" }).min(1),
+        id: z.string({ required_error: "Field required" }).min(1),
       }),
-      button_route: z.string({required_error: "Field required"}).min(1),
+      button_route: z.string({ required_error: "Field required" }).min(1),
       type: z.number().optional().default(4), // 2 mean section top
     })
     .array()
     .default([]),
   small_text: z.object({
-    en: z.string({required_error: "Field required"}).min(1),
-    id: z.string({required_error: "Field required"}).min(1),
+    en: z.string({ required_error: "Field required" }).min(1),
+    id: z.string({ required_error: "Field required" }).min(1),
   }),
   small_text2: z.object({
-    en: z.string({required_error: "Field required"}).min(1),
-    id: z.string({required_error: "Field required"}).min(1),
+    en: z.string({ required_error: "Field required" }).min(1),
+    id: z.string({ required_error: "Field required" }).min(1),
   }),
   bottom_button_name: z.object({
-    en: z.string({required_error: "Field required"}).min(1),
-    id: z.string({required_error: "Field required"}).min(1),
+    en: z.string({ required_error: "Field required" }).min(1),
+    id: z.string({ required_error: "Field required" }).min(1),
   }),
   active_status: z.boolean().default(true),
   type: z.string().default(CONTENT_TYPE.ABOUT_PROFILE),
@@ -206,13 +227,13 @@ const AboutPage = () => {
   const location = useLocation();
   const [id, setId] = useState<string | null>(null);
   const prevLocation = location.pathname.split("/").slice(0, 3).join("/");
-  const breadcrumbItems = [{title: title_page, link: prevLocation}];
+  const breadcrumbItems = [{ title: title_page, link: prevLocation }];
 
   const form = useForm<DataFormValue>({
     resolver: zodResolver(formSchema),
   });
 
-  const {fields, remove, append} = useFieldArray({
+  const { fields, remove, append } = useFieldArray({
     name: "body",
     control: form.control,
   });
@@ -241,12 +262,19 @@ const AboutPage = () => {
     control: form.control,
   });
 
-  const {mutate, isLoading} = useMutation(
+  const { mutate, isLoading } = useMutation(
     async (payload: Payload) =>
-      await ApiService.secure().post(id ? "/content/edit" : "/content", {...payload, content_id: id || ""}),
+      await ApiService.secure().post(id ? "/content/edit" : "/content", {
+        ...payload,
+        content_id: id || "",
+      }),
     {
       onSettled: (response) =>
-        settledHandler({response, contextAction: "Update", onFinish: () => navigate(prevLocation)}),
+        settledHandler({
+          response,
+          contextAction: "Update",
+          onFinish: () => navigate(prevLocation),
+        }),
     }
   );
 
@@ -317,7 +345,22 @@ const AboutPage = () => {
       const banner = combineImageMultiLang(data.banner_en, data.banner_id);
       const images = combineImageMultiLang(data.images_en, data.images_id);
       const images2 = combineImageMultiLang(data.images2_en, data.images2_id);
-      const thumbnail_images2 = combineImageMultiLang(data.thumbnail_images2_en, data.thumbnail_images2_id);
+      const thumbnail_images2 = combineImageMultiLang(
+        data.thumbnail_images2_en,
+        data.thumbnail_images2_id
+      );
+
+      console.log("ini page title", data.page_title);
+      console.log("ini yang dikirim saat submit", {
+        ...data,
+        banner: banner,
+        content_id: id || "",
+        body: [...body, ...bodyReview, ...bodyOurWorkers],
+        images: images,
+        images2: images2,
+        type: CONTENT_TYPE.ABOUT_PROFILE,
+        thumbnail_images2,
+      });
 
       mutate({
         ...data,
@@ -332,7 +375,9 @@ const AboutPage = () => {
 
       // mutate();
     } catch (error) {
-      toast.error(<ToastBody title="an error occurred" description={error as string} />);
+      toast.error(
+        <ToastBody title="an error occurred" description={error as string} />
+      );
     }
   };
 
@@ -391,8 +436,10 @@ const AboutPage = () => {
               en: result.sub_title3.en,
               id: result.sub_title3.id,
             },
-            thumbnail_images2_en: result.thumbnail_images2.map((img) => img.en._id) || [],
-            thumbnail_images2_id: result.thumbnail_images2.map((img) => img.id._id) || [],
+            thumbnail_images2_en:
+              result.thumbnail_images2.map((img) => img.en._id) || [],
+            thumbnail_images2_id:
+              result.thumbnail_images2.map((img) => img.id._id) || [],
             images2_en: result?.images2?.map((img) => img.en._id) || [],
             images2_id: result?.images2?.map((img) => img.id._id) || [],
             images_en: result.images.map((img) => img.en._id) || [],
@@ -445,6 +492,10 @@ const AboutPage = () => {
               })),
             banner_en: result.banner.map((img) => img.en._id) || [],
             banner_id: result.banner.map((img) => img.id._id) || [],
+            page_title: {
+              en: result?.page_title?.en || "",
+              id: result?.page_title?.id || "",
+            },
             description: {
               en: result.description.en,
               id: result.description.id,
@@ -483,7 +534,12 @@ const AboutPage = () => {
           setId(result._id);
         }
       } catch (error: any) {
-        toast.error(<ToastBody title="an error occurred" description={error.message || "Something went wrong"} />);
+        toast.error(
+          <ToastBody
+            title="an error occurred"
+            description={error.message || "Something went wrong"}
+          />
+        );
       }
     };
     getDetails();
@@ -491,7 +547,12 @@ const AboutPage = () => {
 
   useEffect(() => {
     if (Object.keys(form.formState.errors).length) {
-      toast.error(<ToastBody title="an error occurred" description={"Please check your fields"} />);
+      toast.error(
+        <ToastBody
+          title="an error occurred"
+          description={"Please check your fields"}
+        />
+      );
     }
   }, [form.formState]);
 
@@ -500,29 +561,41 @@ const AboutPage = () => {
       <Breadcrumb items={breadcrumbItems} />
       <section className="flex items-center justify-between mb-5">
         <h1 className="text-2xl font-bold">{title_page}</h1>
-        <Button onClick={() => navigate(prevLocation)}>Back to {title_page}</Button>
+        <Button onClick={() => navigate(prevLocation)}>
+          Back to {title_page}
+        </Button>
       </section>
       <Separator />
 
       <FormProvider {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col w-full mt-5 space-y-4">
+        <form
+          onSubmit={form.handleSubmit(onSubmit)}
+          className="flex flex-col w-full mt-5 space-y-4"
+        >
           <Tabs defaultValue="information" className="">
             <TabsList>
               <TabsTrigger value="information">Informations</TabsTrigger>
               <TabsTrigger value="vision">Vision</TabsTrigger>
               <TabsTrigger value="mission">Mission</TabsTrigger>
               <TabsTrigger value="journey">Milestone</TabsTrigger>
-              <TabsTrigger value="subsidiary-company">Subsidiary Company</TabsTrigger>
+              <TabsTrigger value="subsidiary-company">
+                Subsidiary Company
+              </TabsTrigger>
               <TabsTrigger value="our-worker">Our Workers</TabsTrigger>
               <TabsTrigger value="corporate">Corporate Governance</TabsTrigger>
             </TabsList>
-            <TabsContent className="flex flex-col w-full space-y-4" value="information">
+            <TabsContent
+              className="flex flex-col w-full space-y-4"
+              value="information"
+            >
               <React.Fragment>
-                <h4 className="pb-2 text-lg font-medium border-b border-primary/10">Meta Fields</h4>
+                <h4 className="pb-2 text-lg font-medium border-b border-primary/10">
+                  Meta Fields
+                </h4>
                 <Controller
                   control={form.control}
                   name="meta_title.en"
-                  render={({field, fieldState: {error}}) => (
+                  render={({ field, fieldState: { error } }) => (
                     <div className="flex flex-col space-y-2">
                       <label
                         htmlFor={field.name}
@@ -539,14 +612,18 @@ const AboutPage = () => {
                         value={field.value}
                         onChange={(e) => field.onChange(e.target.value)}
                       />
-                      {error?.message ? <p className="text-xs font-medium text-destructive">{error?.message}</p> : null}
+                      {error?.message ? (
+                        <p className="text-xs font-medium text-destructive">
+                          {error?.message}
+                        </p>
+                      ) : null}
                     </div>
                   )}
                 />
                 <Controller
                   control={form.control}
                   name="meta_description.en"
-                  render={({field, fieldState: {error}}) => (
+                  render={({ field, fieldState: { error } }) => (
                     <div className="flex flex-col space-y-2">
                       <label
                         htmlFor={field.name}
@@ -562,7 +639,11 @@ const AboutPage = () => {
                         value={field.value}
                         onChange={(e) => field.onChange(e.target.value)}
                       />
-                      {error?.message ? <p className="text-xs font-medium text-destructive">{error?.message}</p> : null}
+                      {error?.message ? (
+                        <p className="text-xs font-medium text-destructive">
+                          {error?.message}
+                        </p>
+                      ) : null}
                     </div>
                   )}
                 />
@@ -570,7 +651,7 @@ const AboutPage = () => {
                 <Controller
                   control={form.control}
                   name="meta_title.id"
-                  render={({field, fieldState: {error}}) => (
+                  render={({ field, fieldState: { error } }) => (
                     <div className="flex flex-col space-y-2">
                       <label
                         htmlFor={field.name}
@@ -587,7 +668,11 @@ const AboutPage = () => {
                         value={field.value}
                         onChange={(e) => field.onChange(e.target.value)}
                       />
-                      {error?.message ? <p className="text-xs font-medium text-destructive">{error?.message}</p> : null}
+                      {error?.message ? (
+                        <p className="text-xs font-medium text-destructive">
+                          {error?.message}
+                        </p>
+                      ) : null}
                     </div>
                   )}
                 />
@@ -595,7 +680,7 @@ const AboutPage = () => {
                 <Controller
                   control={form.control}
                   name="meta_description.id"
-                  render={({field, fieldState: {error}}) => (
+                  render={({ field, fieldState: { error } }) => (
                     <div className="flex flex-col space-y-2">
                       <label
                         htmlFor={field.name}
@@ -611,17 +696,23 @@ const AboutPage = () => {
                         value={field.value}
                         onChange={(e) => field.onChange(e.target.value)}
                       />
-                      {error?.message ? <p className="text-xs font-medium text-destructive">{error?.message}</p> : null}
+                      {error?.message ? (
+                        <p className="text-xs font-medium text-destructive">
+                          {error?.message}
+                        </p>
+                      ) : null}
                     </div>
                   )}
                 />
               </React.Fragment>
               <React.Fragment>
-                <h4 className="pb-2 text-lg font-medium border-b border-primary/10">Banner</h4>
+                <h4 className="pb-2 text-lg font-medium border-b border-primary/10">
+                  Banner
+                </h4>
                 <Controller
                   control={form.control}
                   name={"banner_en"}
-                  render={({field}) => {
+                  render={({ field }) => {
                     return (
                       <ImageRepository
                         label="Banner"
@@ -637,13 +728,69 @@ const AboutPage = () => {
                     );
                   }}
                 />
+                <Controller
+                  control={form.control}
+                  name="page_title.id"
+                  render={({ field, fieldState: { error } }) => (
+                    <div className="flex flex-col space-y-2">
+                      <label
+                        htmlFor={field.name}
+                        className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                      >
+                        Page Title (ID)
+                      </label>
+                      <Textarea
+                        id={field.name}
+                        ref={field.ref}
+                        placeholder="Enter meta description"
+                        disabled={isLoading}
+                        value={field.value}
+                        onChange={(e) => field.onChange(e.target.value)}
+                      />
+                      {error?.message ? (
+                        <p className="text-xs font-medium text-destructive">
+                          {error?.message}
+                        </p>
+                      ) : null}
+                    </div>
+                  )}
+                />
+                <Controller
+                  control={form.control}
+                  name="page_title.en"
+                  render={({ field, fieldState: { error } }) => (
+                    <div className="flex flex-col space-y-2">
+                      <label
+                        htmlFor={field.name}
+                        className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                      >
+                        Page Title (EN)
+                      </label>
+                      <Textarea
+                        id={field.name}
+                        ref={field.ref}
+                        placeholder="Enter meta description"
+                        disabled={isLoading}
+                        value={field.value}
+                        onChange={(e) => field.onChange(e.target.value)}
+                      />
+                      {error?.message ? (
+                        <p className="text-xs font-medium text-destructive">
+                          {error?.message}
+                        </p>
+                      ) : null}
+                    </div>
+                  )}
+                />
               </React.Fragment>
 
-              <h4 className="pb-2 text-lg font-medium border-b border-primary/10">Content Fields</h4>
+              <h4 className="pb-2 text-lg font-medium border-b border-primary/10">
+                Content Fields
+              </h4>
               <Controller
                 control={form.control}
                 name="title.en"
-                render={({field, fieldState: {error}}) => (
+                render={({ field, fieldState: { error } }) => (
                   <div className="flex flex-col space-y-2">
                     <label
                       htmlFor={field.name}
@@ -660,14 +807,18 @@ const AboutPage = () => {
                       value={field.value}
                       onChange={(e) => field.onChange(e.target.value)}
                     />
-                    {error?.message ? <p className="text-xs font-medium text-destructive">{error?.message}</p> : null}
+                    {error?.message ? (
+                      <p className="text-xs font-medium text-destructive">
+                        {error?.message}
+                      </p>
+                    ) : null}
                   </div>
                 )}
               />
               <Controller
                 control={form.control}
                 name="title.id"
-                render={({field, fieldState: {error}}) => (
+                render={({ field, fieldState: { error } }) => (
                   <div className="flex flex-col space-y-2">
                     <label
                       htmlFor={field.name}
@@ -684,7 +835,11 @@ const AboutPage = () => {
                       value={field.value}
                       onChange={(e) => field.onChange(e.target.value)}
                     />
-                    {error?.message ? <p className="text-xs font-medium text-destructive">{error?.message}</p> : null}
+                    {error?.message ? (
+                      <p className="text-xs font-medium text-destructive">
+                        {error?.message}
+                      </p>
+                    ) : null}
                   </div>
                 )}
               />
@@ -692,7 +847,7 @@ const AboutPage = () => {
               <Controller
                 control={form.control}
                 name={`description.en`}
-                render={({field, fieldState: {error}}) => (
+                render={({ field, fieldState: { error } }) => (
                   <div className="flex flex-col w-full space-y-2">
                     <label
                       htmlFor={field.name}
@@ -707,14 +862,18 @@ const AboutPage = () => {
                       value={field.value}
                       onChange={(e) => field.onChange(e)}
                     />
-                    {error?.message ? <p className="text-xs font-medium text-destructive">{error?.message}</p> : null}
+                    {error?.message ? (
+                      <p className="text-xs font-medium text-destructive">
+                        {error?.message}
+                      </p>
+                    ) : null}
                   </div>
                 )}
               />
               <Controller
                 control={form.control}
                 name={`description.id`}
-                render={({field, fieldState: {error}}) => (
+                render={({ field, fieldState: { error } }) => (
                   <div className="flex flex-col w-full space-y-2">
                     <label
                       htmlFor={field.name}
@@ -729,17 +888,26 @@ const AboutPage = () => {
                       value={field.value}
                       onChange={(e) => field.onChange(e)}
                     />
-                    {error?.message ? <p className="text-xs font-medium text-destructive">{error?.message}</p> : null}
+                    {error?.message ? (
+                      <p className="text-xs font-medium text-destructive">
+                        {error?.message}
+                      </p>
+                    ) : null}
                   </div>
                 )}
               />
             </TabsContent>
-            <TabsContent className="flex flex-col w-full space-y-4" value="vision">
-              <h4 className="pb-2 text-lg font-medium border-b border-primary/10">Vision Section</h4>
+            <TabsContent
+              className="flex flex-col w-full space-y-4"
+              value="vision"
+            >
+              <h4 className="pb-2 text-lg font-medium border-b border-primary/10">
+                Vision Section
+              </h4>
               <Controller
                 control={form.control}
                 name="small_text2.en"
-                render={({field, fieldState: {error}}) => (
+                render={({ field, fieldState: { error } }) => (
                   <div className="flex flex-col space-y-2">
                     <label
                       htmlFor={field.name}
@@ -756,14 +924,18 @@ const AboutPage = () => {
                       value={field.value}
                       onChange={(e) => field.onChange(e.target.value)}
                     />
-                    {error?.message ? <p className="text-xs font-medium text-destructive">{error?.message}</p> : null}
+                    {error?.message ? (
+                      <p className="text-xs font-medium text-destructive">
+                        {error?.message}
+                      </p>
+                    ) : null}
                   </div>
                 )}
               />
               <Controller
                 control={form.control}
                 name="small_text2.id"
-                render={({field, fieldState: {error}}) => (
+                render={({ field, fieldState: { error } }) => (
                   <div className="flex flex-col space-y-2">
                     <label
                       htmlFor={field.name}
@@ -780,7 +952,11 @@ const AboutPage = () => {
                       value={field.value}
                       onChange={(e) => field.onChange(e.target.value)}
                     />
-                    {error?.message ? <p className="text-xs font-medium text-destructive">{error?.message}</p> : null}
+                    {error?.message ? (
+                      <p className="text-xs font-medium text-destructive">
+                        {error?.message}
+                      </p>
+                    ) : null}
                   </div>
                 )}
               />
@@ -788,7 +964,7 @@ const AboutPage = () => {
               <Controller
                 control={form.control}
                 name="bottom_button_name.en"
-                render={({field, fieldState: {error}}) => (
+                render={({ field, fieldState: { error } }) => (
                   <div className="flex flex-col space-y-2">
                     <label
                       htmlFor={field.name}
@@ -805,14 +981,18 @@ const AboutPage = () => {
                       value={field.value}
                       onChange={(e) => field.onChange(e.target.value)}
                     />
-                    {error?.message ? <p className="text-xs font-medium text-destructive">{error?.message}</p> : null}
+                    {error?.message ? (
+                      <p className="text-xs font-medium text-destructive">
+                        {error?.message}
+                      </p>
+                    ) : null}
                   </div>
                 )}
               />
               <Controller
                 control={form.control}
                 name="bottom_button_name.id"
-                render={({field, fieldState: {error}}) => (
+                render={({ field, fieldState: { error } }) => (
                   <div className="flex flex-col space-y-2">
                     <label
                       htmlFor={field.name}
@@ -829,7 +1009,11 @@ const AboutPage = () => {
                       value={field.value}
                       onChange={(e) => field.onChange(e.target.value)}
                     />
-                    {error?.message ? <p className="text-xs font-medium text-destructive">{error?.message}</p> : null}
+                    {error?.message ? (
+                      <p className="text-xs font-medium text-destructive">
+                        {error?.message}
+                      </p>
+                    ) : null}
                   </div>
                 )}
               />
@@ -837,7 +1021,7 @@ const AboutPage = () => {
               <Controller
                 control={form.control}
                 name={"images_en"}
-                render={({field}) => {
+                render={({ field }) => {
                   return (
                     <ImageRepository
                       label="Vision Images"
@@ -855,12 +1039,17 @@ const AboutPage = () => {
                 }}
               />
             </TabsContent>
-            <TabsContent className="flex flex-col w-full space-y-4" value="mission">
-              <h4 className="pb-2 text-lg font-medium border-b border-primary/10">Mission</h4>
+            <TabsContent
+              className="flex flex-col w-full space-y-4"
+              value="mission"
+            >
+              <h4 className="pb-2 text-lg font-medium border-b border-primary/10">
+                Mission
+              </h4>
               <Controller
                 control={form.control}
                 name="sub_title1.en"
-                render={({field, fieldState: {error}}) => (
+                render={({ field, fieldState: { error } }) => (
                   <div className="flex flex-col space-y-2">
                     <label
                       htmlFor={field.name}
@@ -877,14 +1066,18 @@ const AboutPage = () => {
                       value={field.value}
                       onChange={(e) => field.onChange(e.target.value)}
                     />
-                    {error?.message ? <p className="text-xs font-medium text-destructive">{error?.message}</p> : null}
+                    {error?.message ? (
+                      <p className="text-xs font-medium text-destructive">
+                        {error?.message}
+                      </p>
+                    ) : null}
                   </div>
                 )}
               />
               <Controller
                 control={form.control}
                 name="sub_title1.id"
-                render={({field, fieldState: {error}}) => (
+                render={({ field, fieldState: { error } }) => (
                   <div className="flex flex-col space-y-2">
                     <label
                       htmlFor={field.name}
@@ -901,14 +1094,18 @@ const AboutPage = () => {
                       value={field.value}
                       onChange={(e) => field.onChange(e.target.value)}
                     />
-                    {error?.message ? <p className="text-xs font-medium text-destructive">{error?.message}</p> : null}
+                    {error?.message ? (
+                      <p className="text-xs font-medium text-destructive">
+                        {error?.message}
+                      </p>
+                    ) : null}
                   </div>
                 )}
               />
               <Controller
                 control={form.control}
                 name={"images2_en"}
-                render={({field}) => {
+                render={({ field }) => {
                   return (
                     <ImageRepository
                       label="Mision Background"
@@ -927,12 +1124,15 @@ const AboutPage = () => {
               />
               <section className="p-4 space-y-6 border">
                 {fieldsMission.map((item, index) => (
-                  <div key={item.id} className="pb-8 space-y-4 border-b border-primary/10 ">
+                  <div
+                    key={item.id}
+                    className="pb-8 space-y-4 border-b border-primary/10 "
+                  >
                     <div className="flex justify-between space-x-4">
                       <Controller
                         control={form.control}
                         name={`body2.${index}.text.en`}
-                        render={({field, fieldState: {error}}) => (
+                        render={({ field, fieldState: { error } }) => (
                           <div className="flex flex-col w-full space-y-2">
                             <label
                               htmlFor={field.name}
@@ -948,7 +1148,9 @@ const AboutPage = () => {
                               onChange={(e) => field.onChange(e)}
                             />
                             {error?.message ? (
-                              <p className="text-xs font-medium text-destructive">{error?.message}</p>
+                              <p className="text-xs font-medium text-destructive">
+                                {error?.message}
+                              </p>
                             ) : null}
                           </div>
                         )}
@@ -965,7 +1167,7 @@ const AboutPage = () => {
                     <Controller
                       control={form.control}
                       name={`body2.${index}.text.id`}
-                      render={({field, fieldState: {error}}) => (
+                      render={({ field, fieldState: { error } }) => (
                         <div className="flex flex-col w-full space-y-2">
                           <label
                             htmlFor={field.name}
@@ -981,7 +1183,9 @@ const AboutPage = () => {
                             onChange={(e) => field.onChange(e)}
                           />
                           {error?.message ? (
-                            <p className="text-xs font-medium text-destructive">{error?.message}</p>
+                            <p className="text-xs font-medium text-destructive">
+                              {error?.message}
+                            </p>
                           ) : null}
                         </div>
                       )}
@@ -995,7 +1199,7 @@ const AboutPage = () => {
                     type="button"
                     onClick={() =>
                       appendMission({
-                        text: {en: "", id: ""},
+                        text: { en: "", id: "" },
                       })
                     }
                   >
@@ -1007,7 +1211,7 @@ const AboutPage = () => {
               <Controller
                 control={form.control}
                 name="sub_title2.en"
-                render={({field, fieldState: {error}}) => (
+                render={({ field, fieldState: { error } }) => (
                   <div className="flex flex-col space-y-2">
                     <label
                       htmlFor={field.name}
@@ -1024,14 +1228,18 @@ const AboutPage = () => {
                       value={field.value}
                       onChange={(e) => field.onChange(e.target.value)}
                     />
-                    {error?.message ? <p className="text-xs font-medium text-destructive">{error?.message}</p> : null}
+                    {error?.message ? (
+                      <p className="text-xs font-medium text-destructive">
+                        {error?.message}
+                      </p>
+                    ) : null}
                   </div>
                 )}
               />
               <Controller
                 control={form.control}
                 name="sub_title2.id"
-                render={({field, fieldState: {error}}) => (
+                render={({ field, fieldState: { error } }) => (
                   <div className="flex flex-col space-y-2">
                     <label
                       htmlFor={field.name}
@@ -1048,14 +1256,18 @@ const AboutPage = () => {
                       value={field.value}
                       onChange={(e) => field.onChange(e.target.value)}
                     />
-                    {error?.message ? <p className="text-xs font-medium text-destructive">{error?.message}</p> : null}
+                    {error?.message ? (
+                      <p className="text-xs font-medium text-destructive">
+                        {error?.message}
+                      </p>
+                    ) : null}
                   </div>
                 )}
               />
               <Controller
                 control={form.control}
                 name="sub_title3.en"
-                render={({field, fieldState: {error}}) => (
+                render={({ field, fieldState: { error } }) => (
                   <div className="flex flex-col space-y-2">
                     <label
                       htmlFor={field.name}
@@ -1072,14 +1284,18 @@ const AboutPage = () => {
                       value={field.value}
                       onChange={(e) => field.onChange(e.target.value)}
                     />
-                    {error?.message ? <p className="text-xs font-medium text-destructive">{error?.message}</p> : null}
+                    {error?.message ? (
+                      <p className="text-xs font-medium text-destructive">
+                        {error?.message}
+                      </p>
+                    ) : null}
                   </div>
                 )}
               />
               <Controller
                 control={form.control}
                 name="sub_title3.id"
-                render={({field, fieldState: {error}}) => (
+                render={({ field, fieldState: { error } }) => (
                   <div className="flex flex-col space-y-2">
                     <label
                       htmlFor={field.name}
@@ -1096,16 +1312,23 @@ const AboutPage = () => {
                       value={field.value}
                       onChange={(e) => field.onChange(e.target.value)}
                     />
-                    {error?.message ? <p className="text-xs font-medium text-destructive">{error?.message}</p> : null}
+                    {error?.message ? (
+                      <p className="text-xs font-medium text-destructive">
+                        {error?.message}
+                      </p>
+                    ) : null}
                   </div>
                 )}
               />
             </TabsContent>
-            <TabsContent className="flex flex-col w-full space-y-4" value="subsidiary-company">
+            <TabsContent
+              className="flex flex-col w-full space-y-4"
+              value="subsidiary-company"
+            >
               <Controller
                 control={form.control}
                 name="bottom_text2.en"
-                render={({field, fieldState: {error}}) => (
+                render={({ field, fieldState: { error } }) => (
                   <div className="flex flex-col space-y-2">
                     <label
                       htmlFor={field.name}
@@ -1122,14 +1345,18 @@ const AboutPage = () => {
                       value={field.value}
                       onChange={(e) => field.onChange(e.target.value)}
                     />
-                    {error?.message ? <p className="text-xs font-medium text-destructive">{error?.message}</p> : null}
+                    {error?.message ? (
+                      <p className="text-xs font-medium text-destructive">
+                        {error?.message}
+                      </p>
+                    ) : null}
                   </div>
                 )}
               />
               <Controller
                 control={form.control}
                 name="bottom_text2.id"
-                render={({field, fieldState: {error}}) => (
+                render={({ field, fieldState: { error } }) => (
                   <div className="flex flex-col space-y-2">
                     <label
                       htmlFor={field.name}
@@ -1146,14 +1373,18 @@ const AboutPage = () => {
                       value={field.value}
                       onChange={(e) => field.onChange(e.target.value)}
                     />
-                    {error?.message ? <p className="text-xs font-medium text-destructive">{error?.message}</p> : null}
+                    {error?.message ? (
+                      <p className="text-xs font-medium text-destructive">
+                        {error?.message}
+                      </p>
+                    ) : null}
                   </div>
                 )}
               />
               <Controller
                 control={form.control}
                 name={`thumbnail_images2_en`}
-                render={({field}) => {
+                render={({ field }) => {
                   return (
                     <ImageRepository
                       label="Image"
@@ -1172,12 +1403,17 @@ const AboutPage = () => {
                 }}
               />
             </TabsContent>
-            <TabsContent className="flex flex-col w-full space-y-4" value="journey">
-              <h4 className="pb-2 text-lg font-medium border-b border-primary/10">Journey</h4>
+            <TabsContent
+              className="flex flex-col w-full space-y-4"
+              value="journey"
+            >
+              <h4 className="pb-2 text-lg font-medium border-b border-primary/10">
+                Journey
+              </h4>
               <Controller
                 control={form.control}
                 name="bottom_text.en"
-                render={({field, fieldState: {error}}) => (
+                render={({ field, fieldState: { error } }) => (
                   <div className="flex flex-col space-y-2">
                     <label
                       htmlFor={field.name}
@@ -1194,14 +1430,18 @@ const AboutPage = () => {
                       value={field.value}
                       onChange={(e) => field.onChange(e.target.value)}
                     />
-                    {error?.message ? <p className="text-xs font-medium text-destructive">{error?.message}</p> : null}
+                    {error?.message ? (
+                      <p className="text-xs font-medium text-destructive">
+                        {error?.message}
+                      </p>
+                    ) : null}
                   </div>
                 )}
               />
               <Controller
                 control={form.control}
                 name="bottom_text.id"
-                render={({field, fieldState: {error}}) => (
+                render={({ field, fieldState: { error } }) => (
                   <div className="flex flex-col space-y-2">
                     <label
                       htmlFor={field.name}
@@ -1218,18 +1458,25 @@ const AboutPage = () => {
                       value={field.value}
                       onChange={(e) => field.onChange(e.target.value)}
                     />
-                    {error?.message ? <p className="text-xs font-medium text-destructive">{error?.message}</p> : null}
+                    {error?.message ? (
+                      <p className="text-xs font-medium text-destructive">
+                        {error?.message}
+                      </p>
+                    ) : null}
                   </div>
                 )}
               />
               <section className="p-4 space-y-6 border">
                 {fields.map((item, index) => (
-                  <div key={item.id} className="pb-8 space-y-4 border-b border-primary/10 ">
+                  <div
+                    key={item.id}
+                    className="pb-8 space-y-4 border-b border-primary/10 "
+                  >
                     <div className="flex justify-between space-x-4">
                       <Controller
                         control={form.control}
                         name={`body.${index}.title.en`}
-                        render={({field, fieldState: {error}}) => (
+                        render={({ field, fieldState: { error } }) => (
                           <div className="flex flex-col w-full space-y-2">
                             <label
                               htmlFor={field.name}
@@ -1247,7 +1494,9 @@ const AboutPage = () => {
                               onChange={(e) => field.onChange(e.target.value)}
                             />
                             {error?.message ? (
-                              <p className="text-xs font-medium text-destructive">{error?.message}</p>
+                              <p className="text-xs font-medium text-destructive">
+                                {error?.message}
+                              </p>
                             ) : null}
                           </div>
                         )}
@@ -1264,7 +1513,7 @@ const AboutPage = () => {
                     <Controller
                       control={form.control}
                       name={`body.${index}.title.id`}
-                      render={({field, fieldState: {error}}) => (
+                      render={({ field, fieldState: { error } }) => (
                         <div className="flex flex-col w-full space-y-2">
                           <label
                             htmlFor={field.name}
@@ -1282,7 +1531,9 @@ const AboutPage = () => {
                             onChange={(e) => field.onChange(e.target.value)}
                           />
                           {error?.message ? (
-                            <p className="text-xs font-medium text-destructive">{error?.message}</p>
+                            <p className="text-xs font-medium text-destructive">
+                              {error?.message}
+                            </p>
                           ) : null}
                         </div>
                       )}
@@ -1290,7 +1541,7 @@ const AboutPage = () => {
                     <Controller
                       control={form.control}
                       name={`body.${index}.button_name.en`}
-                      render={({field, fieldState: {error}}) => (
+                      render={({ field, fieldState: { error } }) => (
                         <div className="flex flex-col w-full space-y-2">
                           <label
                             htmlFor={field.name}
@@ -1307,11 +1558,16 @@ const AboutPage = () => {
                             value={field.value}
                             onChange={(e) => {
                               field.onChange(e.target.value);
-                              form.setValue(`body.${index}.button_name.id`, e.target.value);
+                              form.setValue(
+                                `body.${index}.button_name.id`,
+                                e.target.value
+                              );
                             }}
                           />
                           {error?.message ? (
-                            <p className="text-xs font-medium text-destructive">{error?.message}</p>
+                            <p className="text-xs font-medium text-destructive">
+                              {error?.message}
+                            </p>
                           ) : null}
                         </div>
                       )}
@@ -1319,7 +1575,7 @@ const AboutPage = () => {
                     <Controller
                       control={form.control}
                       name={`body.${index}.text.en`}
-                      render={({field, fieldState: {error}}) => (
+                      render={({ field, fieldState: { error } }) => (
                         <div className="flex flex-col w-full space-y-2">
                           <label
                             htmlFor={field.name}
@@ -1335,7 +1591,9 @@ const AboutPage = () => {
                             onChange={(e) => field.onChange(e)}
                           />
                           {error?.message ? (
-                            <p className="text-xs font-medium text-destructive">{error?.message}</p>
+                            <p className="text-xs font-medium text-destructive">
+                              {error?.message}
+                            </p>
                           ) : null}
                         </div>
                       )}
@@ -1343,7 +1601,7 @@ const AboutPage = () => {
                     <Controller
                       control={form.control}
                       name={`body.${index}.text.id`}
-                      render={({field, fieldState: {error}}) => (
+                      render={({ field, fieldState: { error } }) => (
                         <div className="flex flex-col w-full space-y-2">
                           <label
                             htmlFor={field.name}
@@ -1359,7 +1617,9 @@ const AboutPage = () => {
                             onChange={(e) => field.onChange(e)}
                           />
                           {error?.message ? (
-                            <p className="text-xs font-medium text-destructive">{error?.message}</p>
+                            <p className="text-xs font-medium text-destructive">
+                              {error?.message}
+                            </p>
                           ) : null}
                         </div>
                       )}
@@ -1367,7 +1627,7 @@ const AboutPage = () => {
                     <Controller
                       control={form.control}
                       name={`body.${index}.image_en`}
-                      render={({field}) => {
+                      render={({ field }) => {
                         return (
                           <ImageRepository
                             label="Image"
@@ -1394,12 +1654,12 @@ const AboutPage = () => {
                     type="button"
                     onClick={() =>
                       append({
-                        title: {en: "", id: ""},
+                        title: { en: "", id: "" },
                         image_en: [],
                         image_id: [],
                         type: 1,
-                        text: {en: "", id: ""},
-                        button_name: {en: "", id: ""},
+                        text: { en: "", id: "" },
+                        button_name: { en: "", id: "" },
                       })
                     }
                   >
@@ -1408,12 +1668,17 @@ const AboutPage = () => {
                 </div>
               </section>
             </TabsContent>
-            <TabsContent className="flex flex-col w-full space-y-4" value="our-worker">
-              <h4 className="pb-2 text-lg font-medium border-b border-primary/10">Our Worker</h4>
+            <TabsContent
+              className="flex flex-col w-full space-y-4"
+              value="our-worker"
+            >
+              <h4 className="pb-2 text-lg font-medium border-b border-primary/10">
+                Our Worker
+              </h4>
               <Controller
                 control={form.control}
                 name={`bottom_description2.en`}
-                render={({field, fieldState: {error}}) => (
+                render={({ field, fieldState: { error } }) => (
                   <div className="flex flex-col w-full space-y-2">
                     <label
                       htmlFor={field.name}
@@ -1428,14 +1693,18 @@ const AboutPage = () => {
                       value={field.value}
                       onChange={(e) => field.onChange(e)}
                     />
-                    {error?.message ? <p className="text-xs font-medium text-destructive">{error?.message}</p> : null}
+                    {error?.message ? (
+                      <p className="text-xs font-medium text-destructive">
+                        {error?.message}
+                      </p>
+                    ) : null}
                   </div>
                 )}
               />
               <Controller
                 control={form.control}
                 name={`bottom_description2.id`}
-                render={({field, fieldState: {error}}) => (
+                render={({ field, fieldState: { error } }) => (
                   <div className="flex flex-col w-full space-y-2">
                     <label
                       htmlFor={field.name}
@@ -1450,18 +1719,25 @@ const AboutPage = () => {
                       value={field.value}
                       onChange={(e) => field.onChange(e)}
                     />
-                    {error?.message ? <p className="text-xs font-medium text-destructive">{error?.message}</p> : null}
+                    {error?.message ? (
+                      <p className="text-xs font-medium text-destructive">
+                        {error?.message}
+                      </p>
+                    ) : null}
                   </div>
                 )}
               />
               <section className="p-4 space-y-6 border">
                 {ourWorkerFields.map((item, index) => (
-                  <div key={item.id} className="pb-8 space-y-4 border-b border-primary/10 ">
+                  <div
+                    key={item.id}
+                    className="pb-8 space-y-4 border-b border-primary/10 "
+                  >
                     <div className="flex justify-between space-x-4">
                       <Controller
                         control={form.control}
                         name={`our_workers.${index}.title.en`}
-                        render={({field, fieldState: {error}}) => (
+                        render={({ field, fieldState: { error } }) => (
                           <div className="flex flex-col w-full space-y-2">
                             <label
                               htmlFor={field.name}
@@ -1479,7 +1755,9 @@ const AboutPage = () => {
                               onChange={(e) => field.onChange(e.target.value)}
                             />
                             {error?.message ? (
-                              <p className="text-xs font-medium text-destructive">{error?.message}</p>
+                              <p className="text-xs font-medium text-destructive">
+                                {error?.message}
+                              </p>
                             ) : null}
                           </div>
                         )}
@@ -1496,7 +1774,7 @@ const AboutPage = () => {
                     <Controller
                       control={form.control}
                       name={`our_workers.${index}.title.id`}
-                      render={({field, fieldState: {error}}) => (
+                      render={({ field, fieldState: { error } }) => (
                         <div className="flex flex-col w-full space-y-2">
                           <label
                             htmlFor={field.name}
@@ -1514,7 +1792,9 @@ const AboutPage = () => {
                             onChange={(e) => field.onChange(e.target.value)}
                           />
                           {error?.message ? (
-                            <p className="text-xs font-medium text-destructive">{error?.message}</p>
+                            <p className="text-xs font-medium text-destructive">
+                              {error?.message}
+                            </p>
                           ) : null}
                         </div>
                       )}
@@ -1522,7 +1802,7 @@ const AboutPage = () => {
                     <Controller
                       control={form.control}
                       name={`our_workers.${index}.text.en`}
-                      render={({field, fieldState: {error}}) => (
+                      render={({ field, fieldState: { error } }) => (
                         <div className="flex flex-col w-full space-y-2">
                           <label
                             htmlFor={field.name}
@@ -1538,7 +1818,9 @@ const AboutPage = () => {
                             onChange={(e) => field.onChange(e)}
                           />
                           {error?.message ? (
-                            <p className="text-xs font-medium text-destructive">{error?.message}</p>
+                            <p className="text-xs font-medium text-destructive">
+                              {error?.message}
+                            </p>
                           ) : null}
                         </div>
                       )}
@@ -1546,7 +1828,7 @@ const AboutPage = () => {
                     <Controller
                       control={form.control}
                       name={`our_workers.${index}.text.id`}
-                      render={({field, fieldState: {error}}) => (
+                      render={({ field, fieldState: { error } }) => (
                         <div className="flex flex-col w-full space-y-2">
                           <label
                             htmlFor={field.name}
@@ -1562,7 +1844,9 @@ const AboutPage = () => {
                             onChange={(e) => field.onChange(e)}
                           />
                           {error?.message ? (
-                            <p className="text-xs font-medium text-destructive">{error?.message}</p>
+                            <p className="text-xs font-medium text-destructive">
+                              {error?.message}
+                            </p>
                           ) : null}
                         </div>
                       )}
@@ -1570,7 +1854,7 @@ const AboutPage = () => {
                     <Controller
                       control={form.control}
                       name={`our_workers.${index}.image_en`}
-                      render={({field}) => {
+                      render={({ field }) => {
                         return (
                           <ImageRepository
                             label="Image"
@@ -1581,7 +1865,10 @@ const AboutPage = () => {
                             value={field.value?.length ? field.value : []}
                             onChange={(data) => {
                               let value = data.map((img) => img._id);
-                              form.setValue(`our_workers.${index}.image_id`, value);
+                              form.setValue(
+                                `our_workers.${index}.image_id`,
+                                value
+                              );
                               field.onChange(value);
                             }}
                           />
@@ -1592,7 +1879,7 @@ const AboutPage = () => {
                     <Controller
                       control={form.control}
                       name={`our_workers.${index}.button_name.en`}
-                      render={({field, fieldState: {error}}) => (
+                      render={({ field, fieldState: { error } }) => (
                         <div className="flex flex-col w-full space-y-2">
                           <label
                             htmlFor={field.name}
@@ -1610,7 +1897,9 @@ const AboutPage = () => {
                             onChange={(e) => field.onChange(e.target.value)}
                           />
                           {error?.message ? (
-                            <p className="text-xs font-medium text-destructive">{error?.message}</p>
+                            <p className="text-xs font-medium text-destructive">
+                              {error?.message}
+                            </p>
                           ) : null}
                         </div>
                       )}
@@ -1618,7 +1907,7 @@ const AboutPage = () => {
                     <Controller
                       control={form.control}
                       name={`our_workers.${index}.button_name.id`}
-                      render={({field, fieldState: {error}}) => (
+                      render={({ field, fieldState: { error } }) => (
                         <div className="flex flex-col w-full space-y-2">
                           <label
                             htmlFor={field.name}
@@ -1636,7 +1925,9 @@ const AboutPage = () => {
                             onChange={(e) => field.onChange(e.target.value)}
                           />
                           {error?.message ? (
-                            <p className="text-xs font-medium text-destructive">{error?.message}</p>
+                            <p className="text-xs font-medium text-destructive">
+                              {error?.message}
+                            </p>
                           ) : null}
                         </div>
                       )}
@@ -1650,12 +1941,12 @@ const AboutPage = () => {
                     type="button"
                     onClick={() =>
                       ourWorkerAppend({
-                        title: {en: "", id: ""},
+                        title: { en: "", id: "" },
                         image_en: [],
                         image_id: [],
                         type: 1,
-                        text: {en: "", id: ""},
-                        button_name: {en: "", id: ""},
+                        text: { en: "", id: "" },
+                        button_name: { en: "", id: "" },
                       })
                     }
                   >
@@ -1664,12 +1955,17 @@ const AboutPage = () => {
                 </div>
               </section>
             </TabsContent>
-            <TabsContent className="flex flex-col w-full space-y-4" value="corporate">
-              <h4 className="pb-2 text-lg font-medium border-b border-primary/10">Corporate Governance Guidelines</h4>
+            <TabsContent
+              className="flex flex-col w-full space-y-4"
+              value="corporate"
+            >
+              <h4 className="pb-2 text-lg font-medium border-b border-primary/10">
+                Corporate Governance Guidelines
+              </h4>
               <Controller
                 control={form.control}
                 name="small_text.en"
-                render={({field, fieldState: {error}}) => (
+                render={({ field, fieldState: { error } }) => (
                   <div className="flex flex-col space-y-2">
                     <label
                       htmlFor={field.name}
@@ -1686,14 +1982,18 @@ const AboutPage = () => {
                       value={field.value}
                       onChange={(e) => field.onChange(e.target.value)}
                     />
-                    {error?.message ? <p className="text-xs font-medium text-destructive">{error?.message}</p> : null}
+                    {error?.message ? (
+                      <p className="text-xs font-medium text-destructive">
+                        {error?.message}
+                      </p>
+                    ) : null}
                   </div>
                 )}
               />
               <Controller
                 control={form.control}
                 name="small_text.id"
-                render={({field, fieldState: {error}}) => (
+                render={({ field, fieldState: { error } }) => (
                   <div className="flex flex-col space-y-2">
                     <label
                       htmlFor={field.name}
@@ -1710,18 +2010,25 @@ const AboutPage = () => {
                       value={field.value}
                       onChange={(e) => field.onChange(e.target.value)}
                     />
-                    {error?.message ? <p className="text-xs font-medium text-destructive">{error?.message}</p> : null}
+                    {error?.message ? (
+                      <p className="text-xs font-medium text-destructive">
+                        {error?.message}
+                      </p>
+                    ) : null}
                   </div>
                 )}
               />
               <section className="p-4 space-y-6 border">
                 {fieldsReview.map((item, index) => (
-                  <div key={item.id} className="pb-8 space-y-4 border-b border-primary/10 ">
+                  <div
+                    key={item.id}
+                    className="pb-8 space-y-4 border-b border-primary/10 "
+                  >
                     <div className="flex justify-between space-x-4">
                       <Controller
                         control={form.control}
                         name={`body_review.${index}.title.en`}
-                        render={({field, fieldState: {error}}) => (
+                        render={({ field, fieldState: { error } }) => (
                           <div className="flex flex-col w-full space-y-2">
                             <label
                               htmlFor={field.name}
@@ -1741,7 +2048,9 @@ const AboutPage = () => {
                               }}
                             />
                             {error?.message ? (
-                              <p className="text-xs font-medium text-destructive">{error?.message}</p>
+                              <p className="text-xs font-medium text-destructive">
+                                {error?.message}
+                              </p>
                             ) : null}
                           </div>
                         )}
@@ -1757,7 +2066,7 @@ const AboutPage = () => {
                     <Controller
                       control={form.control}
                       name={`body_review.${index}.title.id`}
-                      render={({field, fieldState: {error}}) => (
+                      render={({ field, fieldState: { error } }) => (
                         <div className="flex flex-col w-full space-y-2">
                           <label
                             htmlFor={field.name}
@@ -1777,7 +2086,9 @@ const AboutPage = () => {
                             }}
                           />
                           {error?.message ? (
-                            <p className="text-xs font-medium text-destructive">{error?.message}</p>
+                            <p className="text-xs font-medium text-destructive">
+                              {error?.message}
+                            </p>
                           ) : null}
                         </div>
                       )}
@@ -1785,7 +2096,7 @@ const AboutPage = () => {
                     <Controller
                       control={form.control}
                       name={`body_review.${index}.text.en`}
-                      render={({field, fieldState: {error}}) => (
+                      render={({ field, fieldState: { error } }) => (
                         <div className="flex flex-col w-full space-y-2">
                           <label
                             htmlFor={field.name}
@@ -1801,7 +2112,9 @@ const AboutPage = () => {
                             onChange={(e) => field.onChange(e)}
                           />
                           {error?.message ? (
-                            <p className="text-xs font-medium text-destructive">{error?.message}</p>
+                            <p className="text-xs font-medium text-destructive">
+                              {error?.message}
+                            </p>
                           ) : null}
                         </div>
                       )}
@@ -1809,7 +2122,7 @@ const AboutPage = () => {
                     <Controller
                       control={form.control}
                       name={`body_review.${index}.text.id`}
-                      render={({field, fieldState: {error}}) => (
+                      render={({ field, fieldState: { error } }) => (
                         <div className="flex flex-col w-full space-y-2">
                           <label
                             htmlFor={field.name}
@@ -1825,7 +2138,9 @@ const AboutPage = () => {
                             onChange={(e) => field.onChange(e)}
                           />
                           {error?.message ? (
-                            <p className="text-xs font-medium text-destructive">{error?.message}</p>
+                            <p className="text-xs font-medium text-destructive">
+                              {error?.message}
+                            </p>
                           ) : null}
                         </div>
                       )}
@@ -1834,7 +2149,7 @@ const AboutPage = () => {
                     <Controller
                       control={form.control}
                       name={`body_review.${index}.button_name.en`}
-                      render={({field, fieldState: {error}}) => (
+                      render={({ field, fieldState: { error } }) => (
                         <div className="flex flex-col w-full space-y-2">
                           <label
                             htmlFor={field.name}
@@ -1854,7 +2169,9 @@ const AboutPage = () => {
                             }}
                           />
                           {error?.message ? (
-                            <p className="text-xs font-medium text-destructive">{error?.message}</p>
+                            <p className="text-xs font-medium text-destructive">
+                              {error?.message}
+                            </p>
                           ) : null}
                         </div>
                       )}
@@ -1862,7 +2179,7 @@ const AboutPage = () => {
                     <Controller
                       control={form.control}
                       name={`body_review.${index}.button_name.id`}
-                      render={({field, fieldState: {error}}) => (
+                      render={({ field, fieldState: { error } }) => (
                         <div className="flex flex-col w-full space-y-2">
                           <label
                             htmlFor={field.name}
@@ -1882,7 +2199,9 @@ const AboutPage = () => {
                             }}
                           />
                           {error?.message ? (
-                            <p className="text-xs font-medium text-destructive">{error?.message}</p>
+                            <p className="text-xs font-medium text-destructive">
+                              {error?.message}
+                            </p>
                           ) : null}
                         </div>
                       )}
@@ -1890,7 +2209,7 @@ const AboutPage = () => {
                     <Controller
                       control={form.control}
                       name={`body_review.${index}.button_route`}
-                      render={({field, fieldState: {error}}) => (
+                      render={({ field, fieldState: { error } }) => (
                         <div className="flex flex-col w-full space-y-2">
                           <label
                             htmlFor={field.name}
@@ -1910,7 +2229,9 @@ const AboutPage = () => {
                             }}
                           />
                           {error?.message ? (
-                            <p className="text-xs font-medium text-destructive">{error?.message}</p>
+                            <p className="text-xs font-medium text-destructive">
+                              {error?.message}
+                            </p>
                           ) : null}
                         </div>
                       )}
@@ -1924,11 +2245,11 @@ const AboutPage = () => {
                     type="button"
                     onClick={() =>
                       appendReview({
-                        title: {en: "", id: ""},
+                        title: { en: "", id: "" },
                         button_route: "",
                         type: 2,
-                        text: {en: "", id: ""},
-                        button_name: {en: "", id: ""},
+                        text: { en: "", id: "" },
+                        button_name: { en: "", id: "" },
                       })
                     }
                   >
@@ -1941,7 +2262,12 @@ const AboutPage = () => {
 
           <div className="flex justify-center">
             <div className="flex gap-4 mt-5 mb-10">
-              <Button className="w-[100px]" type="button" variant={"outline"} onClick={() => navigate(prevLocation)}>
+              <Button
+                className="w-[100px]"
+                type="button"
+                variant={"outline"}
+                onClick={() => navigate(prevLocation)}
+              >
                 Back
               </Button>
               <Button className="w-[100px]" size={"sm"} isLoading={isLoading}>
@@ -1956,4 +2282,3 @@ const AboutPage = () => {
 };
 
 export default AboutPage;
-

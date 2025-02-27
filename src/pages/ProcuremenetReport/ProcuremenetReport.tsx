@@ -1,69 +1,84 @@
 // hook
-import {Controller, FormProvider, useFieldArray, useForm} from "react-hook-form";
-import {useMutation} from "react-query";
-import {useLocation, useNavigate} from "react-router-dom";
+import {
+  Controller,
+  FormProvider,
+  useFieldArray,
+  useForm,
+} from "react-hook-form";
+import { useMutation } from "react-query";
+import { useLocation, useNavigate } from "react-router-dom";
 
 // component
 import Breadcrumb from "@/components/Breadcrumb";
-import {Button} from "@/components/ui/button";
-import {Input} from "@/components/ui/input";
-import {Separator} from "@/components/ui/separator";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Separator } from "@/components/ui/separator";
 
 // utils
 import settledHandler from "@/helper/settledHandler";
 import ApiService from "@/lib/ApiService";
-import {zodResolver} from "@hookform/resolvers/zod";
-import {z} from "zod";
-import {toast} from "react-toastify";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
+import { toast } from "react-toastify";
 import ToastBody from "@/components/ToastBody";
 import CONTENT_TYPE from "@/helper/content-type";
-import {ContentType} from "@/types/content";
-import React, {useEffect, useState} from "react";
+import { ContentType } from "@/types/content";
+import React, { useEffect, useState } from "react";
 import IMG_TYPE from "@/helper/img-type";
 import ImageRepository from "@/components/ImageRepository";
 import combineImageMultiLang from "@/helper/combineImageMultiLang";
 import Ckeditor5 from "@/components/Ckeditor5";
-import {Textarea} from "@/components/ui/textarea";
+import { Textarea } from "@/components/ui/textarea";
 import PopConfirm from "@/components/PopConfirm";
-import {Trash} from "lucide-react";
+import { Trash } from "lucide-react";
 
 const title_page = "Procuremenet report Page";
 
 const formSchema = z.object({
   meta_title: z.object({
-    en: z.string({required_error: "Field required"}).min(1),
-    id: z.string({required_error: "Field required"}).min(1),
+    en: z.string({ required_error: "Field required" }).min(1),
+    id: z.string({ required_error: "Field required" }).min(1),
   }),
   meta_description: z.object({
-    en: z.string({required_error: "Field required"}).min(1),
-    id: z.string({required_error: "Field required"}).min(1),
+    en: z.string({ required_error: "Field required" }).min(1),
+    id: z.string({ required_error: "Field required" }).min(1),
   }),
   title: z.object({
-    en: z.string({required_error: "Field required"}).min(1),
-    id: z.string({required_error: "Field required"}).min(1),
+    en: z.string({ required_error: "Field required" }).min(1),
+    id: z.string({ required_error: "Field required" }).min(1),
   }),
   banner_en: z.string().array().default([]),
   banner_id: z.string().array().default([]),
+  page_title: z.object({
+    en: z.string({ required_error: "Field required" }).min(1),
+    id: z.string({ required_error: "Field required" }).min(1),
+  }),
   description: z.object({
-    en: z.string({required_error: "Field required"}).min(1),
-    id: z.string({required_error: "Field required"}).min(1),
+    en: z.string({ required_error: "Field required" }).min(1),
+    id: z.string({ required_error: "Field required" }).min(1),
   }),
   small_text: z.object({
-    en: z.string({required_error: "Field required"}).min(1),
-    id: z.string({required_error: "Field required"}).min(1),
+    en: z.string({ required_error: "Field required" }).min(1),
+    id: z.string({ required_error: "Field required" }).min(1),
   }),
   body: z
     .object({
       title: z.object({
-        en: z.string({required_error: "Field required"}).min(1),
-        id: z.string({required_error: "Field required"}).min(1),
+        en: z.string({ required_error: "Field required" }).min(1),
+        id: z.string({ required_error: "Field required" }).min(1),
       }),
       text: z.object({
-        en: z.string({required_error: "Field required"}).min(1),
-        id: z.string({required_error: "Field required"}).min(1),
+        en: z.string({ required_error: "Field required" }).min(1),
+        id: z.string({ required_error: "Field required" }).min(1),
       }),
-      image_en: z.string({required_error: "Field required"}).array().default([]),
-      image_id: z.string({required_error: "Field required"}).array().default([]),
+      image_en: z
+        .string({ required_error: "Field required" })
+        .array()
+        .default([]),
+      image_id: z
+        .string({ required_error: "Field required" })
+        .array()
+        .default([]),
     })
     .array()
     .default([]),
@@ -105,22 +120,29 @@ const ProcuremenetReport = () => {
   const location = useLocation();
   const [id, setId] = useState<string | null>(null);
   const prevLocation = location.pathname.split("/").slice(0, 3).join("/");
-  const breadcrumbItems = [{title: title_page, link: prevLocation}];
+  const breadcrumbItems = [{ title: title_page, link: prevLocation }];
 
   const form = useForm<DataFormValue>({
     resolver: zodResolver(formSchema),
   });
-  const {fields, remove, append} = useFieldArray({
+  const { fields, remove, append } = useFieldArray({
     name: "body",
     control: form.control,
   });
 
-  const {mutate, isLoading} = useMutation(
+  const { mutate, isLoading } = useMutation(
     async (payload: Payload) =>
-      await ApiService.secure().post(id ? "/content/edit" : "/content", {...payload, content_id: id || ""}),
+      await ApiService.secure().post(id ? "/content/edit" : "/content", {
+        ...payload,
+        content_id: id || "",
+      }),
     {
       onSettled: (response) =>
-        settledHandler({response, contextAction: "Update", onFinish: () => navigate(prevLocation)}),
+        settledHandler({
+          response,
+          contextAction: "Update",
+          onFinish: () => navigate(prevLocation),
+        }),
     }
   );
 
@@ -159,7 +181,9 @@ const ProcuremenetReport = () => {
 
       // mutate();
     } catch (error) {
-      toast.error(<ToastBody title="an error occurred" description={error as string} />);
+      toast.error(
+        <ToastBody title="an error occurred" description={error as string} />
+      );
     }
   };
 
@@ -211,6 +235,10 @@ const ProcuremenetReport = () => {
             },
             banner_en: result.banner.map((img) => img.en._id) || [],
             banner_id: result.banner.map((img) => img.id._id) || [],
+            page_title: {
+              en: result?.page_title?.en || "",
+              id: result?.page_title?.id || "",
+            },
             description: {
               en: result.description.en,
               id: result.description.id,
@@ -222,7 +250,12 @@ const ProcuremenetReport = () => {
           setId(result._id);
         }
       } catch (error: any) {
-        toast.error(<ToastBody title="an error occurred" description={error.message || "Something went wrong"} />);
+        toast.error(
+          <ToastBody
+            title="an error occurred"
+            description={error.message || "Something went wrong"}
+          />
+        );
       }
     };
     getDetails();
@@ -233,18 +266,25 @@ const ProcuremenetReport = () => {
       <Breadcrumb items={breadcrumbItems} />
       <section className="flex items-center justify-between mb-5">
         <h1 className="text-2xl font-bold">{title_page}</h1>
-        <Button onClick={() => navigate(prevLocation)}>Back to {title_page}</Button>
+        <Button onClick={() => navigate(prevLocation)}>
+          Back to {title_page}
+        </Button>
       </section>
       <Separator />
 
       <FormProvider {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col w-full mt-5 space-y-4">
+        <form
+          onSubmit={form.handleSubmit(onSubmit)}
+          className="flex flex-col w-full mt-5 space-y-4"
+        >
           <React.Fragment>
-            <h4 className="pb-2 text-lg font-medium border-b border-primary/10">Meta Fields</h4>
+            <h4 className="pb-2 text-lg font-medium border-b border-primary/10">
+              Meta Fields
+            </h4>
             <Controller
               control={form.control}
               name="meta_title.en"
-              render={({field, fieldState: {error}}) => (
+              render={({ field, fieldState: { error } }) => (
                 <div className="flex flex-col space-y-2">
                   <label
                     htmlFor={field.name}
@@ -261,14 +301,18 @@ const ProcuremenetReport = () => {
                     value={field.value}
                     onChange={(e) => field.onChange(e.target.value)}
                   />
-                  {error?.message ? <p className="text-xs font-medium text-destructive">{error?.message}</p> : null}
+                  {error?.message ? (
+                    <p className="text-xs font-medium text-destructive">
+                      {error?.message}
+                    </p>
+                  ) : null}
                 </div>
               )}
             />
             <Controller
               control={form.control}
               name="meta_description.en"
-              render={({field, fieldState: {error}}) => (
+              render={({ field, fieldState: { error } }) => (
                 <div className="flex flex-col space-y-2">
                   <label
                     htmlFor={field.name}
@@ -284,7 +328,11 @@ const ProcuremenetReport = () => {
                     value={field.value}
                     onChange={(e) => field.onChange(e.target.value)}
                   />
-                  {error?.message ? <p className="text-xs font-medium text-destructive">{error?.message}</p> : null}
+                  {error?.message ? (
+                    <p className="text-xs font-medium text-destructive">
+                      {error?.message}
+                    </p>
+                  ) : null}
                 </div>
               )}
             />
@@ -292,7 +340,7 @@ const ProcuremenetReport = () => {
             <Controller
               control={form.control}
               name="meta_title.id"
-              render={({field, fieldState: {error}}) => (
+              render={({ field, fieldState: { error } }) => (
                 <div className="flex flex-col space-y-2">
                   <label
                     htmlFor={field.name}
@@ -309,7 +357,11 @@ const ProcuremenetReport = () => {
                     value={field.value}
                     onChange={(e) => field.onChange(e.target.value)}
                   />
-                  {error?.message ? <p className="text-xs font-medium text-destructive">{error?.message}</p> : null}
+                  {error?.message ? (
+                    <p className="text-xs font-medium text-destructive">
+                      {error?.message}
+                    </p>
+                  ) : null}
                 </div>
               )}
             />
@@ -317,7 +369,7 @@ const ProcuremenetReport = () => {
             <Controller
               control={form.control}
               name="meta_description.id"
-              render={({field, fieldState: {error}}) => (
+              render={({ field, fieldState: { error } }) => (
                 <div className="flex flex-col space-y-2">
                   <label
                     htmlFor={field.name}
@@ -333,17 +385,23 @@ const ProcuremenetReport = () => {
                     value={field.value}
                     onChange={(e) => field.onChange(e.target.value)}
                   />
-                  {error?.message ? <p className="text-xs font-medium text-destructive">{error?.message}</p> : null}
+                  {error?.message ? (
+                    <p className="text-xs font-medium text-destructive">
+                      {error?.message}
+                    </p>
+                  ) : null}
                 </div>
               )}
             />
           </React.Fragment>
           <React.Fragment>
-            <h4 className="pb-2 text-lg font-medium border-b border-primary/10">Banner</h4>
+            <h4 className="pb-2 text-lg font-medium border-b border-primary/10">
+              Banner
+            </h4>
             <Controller
               control={form.control}
               name={"banner_en"}
-              render={({field}) => {
+              render={({ field }) => {
                 return (
                   <ImageRepository
                     label="Banner"
@@ -359,13 +417,69 @@ const ProcuremenetReport = () => {
                 );
               }}
             />
+            <Controller
+              control={form.control}
+              name="page_title.id"
+              render={({ field, fieldState: { error } }) => (
+                <div className="flex flex-col space-y-2">
+                  <label
+                    htmlFor={field.name}
+                    className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                  >
+                    Page Title (ID)
+                  </label>
+                  <Textarea
+                    id={field.name}
+                    ref={field.ref}
+                    placeholder="Enter meta description"
+                    disabled={isLoading}
+                    value={field.value}
+                    onChange={(e) => field.onChange(e.target.value)}
+                  />
+                  {error?.message ? (
+                    <p className="text-xs font-medium text-destructive">
+                      {error?.message}
+                    </p>
+                  ) : null}
+                </div>
+              )}
+            />
+            <Controller
+              control={form.control}
+              name="page_title.en"
+              render={({ field, fieldState: { error } }) => (
+                <div className="flex flex-col space-y-2">
+                  <label
+                    htmlFor={field.name}
+                    className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                  >
+                    Page Title (EN)
+                  </label>
+                  <Textarea
+                    id={field.name}
+                    ref={field.ref}
+                    placeholder="Enter meta description"
+                    disabled={isLoading}
+                    value={field.value}
+                    onChange={(e) => field.onChange(e.target.value)}
+                  />
+                  {error?.message ? (
+                    <p className="text-xs font-medium text-destructive">
+                      {error?.message}
+                    </p>
+                  ) : null}
+                </div>
+              )}
+            />
           </React.Fragment>
 
-          <h4 className="pb-2 text-lg font-medium border-b border-primary/10">Content Fields</h4>
+          <h4 className="pb-2 text-lg font-medium border-b border-primary/10">
+            Content Fields
+          </h4>
           <Controller
             control={form.control}
             name="title.en"
-            render={({field, fieldState: {error}}) => (
+            render={({ field, fieldState: { error } }) => (
               <div className="flex flex-col space-y-2">
                 <label
                   htmlFor={field.name}
@@ -382,14 +496,18 @@ const ProcuremenetReport = () => {
                   value={field.value}
                   onChange={(e) => field.onChange(e.target.value)}
                 />
-                {error?.message ? <p className="text-xs font-medium text-destructive">{error?.message}</p> : null}
+                {error?.message ? (
+                  <p className="text-xs font-medium text-destructive">
+                    {error?.message}
+                  </p>
+                ) : null}
               </div>
             )}
           />
           <Controller
             control={form.control}
             name="title.id"
-            render={({field, fieldState: {error}}) => (
+            render={({ field, fieldState: { error } }) => (
               <div className="flex flex-col space-y-2">
                 <label
                   htmlFor={field.name}
@@ -406,14 +524,18 @@ const ProcuremenetReport = () => {
                   value={field.value}
                   onChange={(e) => field.onChange(e.target.value)}
                 />
-                {error?.message ? <p className="text-xs font-medium text-destructive">{error?.message}</p> : null}
+                {error?.message ? (
+                  <p className="text-xs font-medium text-destructive">
+                    {error?.message}
+                  </p>
+                ) : null}
               </div>
             )}
           />
           <Controller
             control={form.control}
             name="description.en"
-            render={({field, fieldState: {error}}) => (
+            render={({ field, fieldState: { error } }) => (
               <div className="flex flex-col space-y-2">
                 <label
                   htmlFor={field.name}
@@ -428,14 +550,18 @@ const ProcuremenetReport = () => {
                   onChange={field.onChange}
                   placeholder="Enter Body"
                 />
-                {error?.message ? <p className="text-xs font-medium text-destructive">{error?.message}</p> : null}
+                {error?.message ? (
+                  <p className="text-xs font-medium text-destructive">
+                    {error?.message}
+                  </p>
+                ) : null}
               </div>
             )}
           />
           <Controller
             control={form.control}
             name="description.id"
-            render={({field, fieldState: {error}}) => (
+            render={({ field, fieldState: { error } }) => (
               <div className="flex flex-col space-y-2">
                 <label
                   htmlFor={field.name}
@@ -450,19 +576,28 @@ const ProcuremenetReport = () => {
                   onChange={field.onChange}
                   placeholder="Enter Body"
                 />
-                {error?.message ? <p className="text-xs font-medium text-destructive">{error?.message}</p> : null}
+                {error?.message ? (
+                  <p className="text-xs font-medium text-destructive">
+                    {error?.message}
+                  </p>
+                ) : null}
               </div>
             )}
           />
-          <h4 className="pb-2 text-lg font-medium border-b border-primary/10">Step :</h4>
+          <h4 className="pb-2 text-lg font-medium border-b border-primary/10">
+            Step :
+          </h4>
           <section className="p-4 space-y-6 border">
             {fields.map((item, index) => (
-              <div key={item.id} className="pb-8 space-y-4 border-b border-primary/10 ">
+              <div
+                key={item.id}
+                className="pb-8 space-y-4 border-b border-primary/10 "
+              >
                 <div className="flex justify-between space-x-4">
                   <Controller
                     control={form.control}
                     name={`body.${index}.title.en`}
-                    render={({field, fieldState: {error}}) => (
+                    render={({ field, fieldState: { error } }) => (
                       <div className="flex flex-col w-full space-y-2">
                         <label
                           htmlFor={field.name}
@@ -480,7 +615,9 @@ const ProcuremenetReport = () => {
                           onChange={(e) => field.onChange(e.target.value)}
                         />
                         {error?.message ? (
-                          <p className="text-xs font-medium text-destructive">{error?.message}</p>
+                          <p className="text-xs font-medium text-destructive">
+                            {error?.message}
+                          </p>
                         ) : null}
                       </div>
                     )}
@@ -497,7 +634,7 @@ const ProcuremenetReport = () => {
                 <Controller
                   control={form.control}
                   name={`body.${index}.title.id`}
-                  render={({field, fieldState: {error}}) => (
+                  render={({ field, fieldState: { error } }) => (
                     <div className="flex flex-col w-full space-y-2">
                       <label
                         htmlFor={field.name}
@@ -514,14 +651,18 @@ const ProcuremenetReport = () => {
                         value={field.value}
                         onChange={(e) => field.onChange(e.target.value)}
                       />
-                      {error?.message ? <p className="text-xs font-medium text-destructive">{error?.message}</p> : null}
+                      {error?.message ? (
+                        <p className="text-xs font-medium text-destructive">
+                          {error?.message}
+                        </p>
+                      ) : null}
                     </div>
                   )}
                 />
                 <Controller
                   control={form.control}
                   name={`body.${index}.text.en`}
-                  render={({field, fieldState: {error}}) => (
+                  render={({ field, fieldState: { error } }) => (
                     <div className="flex flex-col w-full space-y-2">
                       <label
                         htmlFor={field.name}
@@ -536,14 +677,18 @@ const ProcuremenetReport = () => {
                         value={field.value}
                         onChange={(e) => field.onChange(e)}
                       />
-                      {error?.message ? <p className="text-xs font-medium text-destructive">{error?.message}</p> : null}
+                      {error?.message ? (
+                        <p className="text-xs font-medium text-destructive">
+                          {error?.message}
+                        </p>
+                      ) : null}
                     </div>
                   )}
                 />
                 <Controller
                   control={form.control}
                   name={`body.${index}.text.id`}
-                  render={({field, fieldState: {error}}) => (
+                  render={({ field, fieldState: { error } }) => (
                     <div className="flex flex-col w-full space-y-2">
                       <label
                         htmlFor={field.name}
@@ -558,14 +703,18 @@ const ProcuremenetReport = () => {
                         value={field.value}
                         onChange={(e) => field.onChange(e)}
                       />
-                      {error?.message ? <p className="text-xs font-medium text-destructive">{error?.message}</p> : null}
+                      {error?.message ? (
+                        <p className="text-xs font-medium text-destructive">
+                          {error?.message}
+                        </p>
+                      ) : null}
                     </div>
                   )}
                 />
                 <Controller
                   control={form.control}
                   name={`body.${index}.image_en`}
-                  render={({field}) => {
+                  render={({ field }) => {
                     return (
                       <ImageRepository
                         label="Image"
@@ -592,10 +741,10 @@ const ProcuremenetReport = () => {
                 type="button"
                 onClick={() =>
                   append({
-                    title: {en: "", id: ""},
+                    title: { en: "", id: "" },
                     image_en: [],
                     image_id: [],
-                    text: {en: "", id: ""},
+                    text: { en: "", id: "" },
                   })
                 }
               >
@@ -606,7 +755,7 @@ const ProcuremenetReport = () => {
           <Controller
             control={form.control}
             name="small_text.en"
-            render={({field, fieldState: {error}}) => (
+            render={({ field, fieldState: { error } }) => (
               <div className="flex flex-col space-y-2">
                 <label
                   htmlFor={field.name}
@@ -621,14 +770,18 @@ const ProcuremenetReport = () => {
                   onChange={field.onChange}
                   placeholder="Enter Body"
                 />
-                {error?.message ? <p className="text-xs font-medium text-destructive">{error?.message}</p> : null}
+                {error?.message ? (
+                  <p className="text-xs font-medium text-destructive">
+                    {error?.message}
+                  </p>
+                ) : null}
               </div>
             )}
           />
           <Controller
             control={form.control}
             name="small_text.id"
-            render={({field, fieldState: {error}}) => (
+            render={({ field, fieldState: { error } }) => (
               <div className="flex flex-col space-y-2">
                 <label
                   htmlFor={field.name}
@@ -643,13 +796,22 @@ const ProcuremenetReport = () => {
                   onChange={field.onChange}
                   placeholder="Enter Body"
                 />
-                {error?.message ? <p className="text-xs font-medium text-destructive">{error?.message}</p> : null}
+                {error?.message ? (
+                  <p className="text-xs font-medium text-destructive">
+                    {error?.message}
+                  </p>
+                ) : null}
               </div>
             )}
           />
           <div className="flex justify-center">
             <div className="flex gap-4 mt-5 mb-10">
-              <Button className="w-[100px]" type="button" variant={"outline"} onClick={() => navigate(prevLocation)}>
+              <Button
+                className="w-[100px]"
+                type="button"
+                variant={"outline"}
+                onClick={() => navigate(prevLocation)}
+              >
                 Back
               </Button>
               <Button className="w-[100px]" size={"sm"} isLoading={isLoading}>
@@ -664,4 +826,3 @@ const ProcuremenetReport = () => {
 };
 
 export default ProcuremenetReport;
-
