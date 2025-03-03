@@ -1,14 +1,19 @@
-import {cn} from "@/lib/utils";
-import {Dispatch, SetStateAction, useEffect, useState} from "react";
-import {Link, useLocation} from "react-router-dom";
-import {Accordion, AccordionContent, AccordionItem, AccordionTrigger} from "../ui/accordion";
-import {Circle} from "lucide-react";
+import { cn } from "@/lib/utils";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "../ui/accordion";
+import { Circle } from "lucide-react";
 import useUserStore from "@/store/userStore";
-import {UseQueryResult, useQuery} from "react-query";
+import { UseQueryResult, useQuery } from "react-query";
 import PageServices from "@/services/page";
-import {toast} from "react-toastify";
+import { toast } from "react-toastify";
 import ToastBody from "../ToastBody";
-import {PageMenuItemType} from "@/types/page";
+import { PageMenuItemType } from "@/types/page";
 // import BasePageNav from "../../assets/json/base_page.json";
 
 interface DashboardNavProps {
@@ -19,19 +24,28 @@ interface PageMenuItemExtendedType extends PageMenuItemType {
   total_order: number;
 }
 
-export function DashboardNav({setOpen}: DashboardNavProps) {
+export function DashboardNav({ setOpen }: DashboardNavProps) {
   const userStore = useUserStore();
   const location = useLocation();
   const [defaultValue, setDefaultValue] = useState("");
-  const {data}: UseQueryResult<PageMenuItemType[]> = useQuery({
+  const { data }: UseQueryResult<PageMenuItemType[]> = useQuery({
     queryKey: ["pages"],
-    queryFn: async () => await getPage({pageIndex: 0, pageSize: 200}),
+    queryFn: async () => await getPage({ pageIndex: 0, pageSize: 200 }),
     enabled: !!userStore.development,
   });
 
-  const getPage = async ({pageIndex, pageSize}: {pageIndex: number; pageSize: number}) => {
+  const getPage = async ({
+    pageIndex,
+    pageSize,
+  }: {
+    pageIndex: number;
+    pageSize: number;
+  }) => {
     try {
-      const response = await PageServices.get({page: pageIndex + 1, limit: pageSize});
+      const response = await PageServices.get({
+        page: pageIndex + 1,
+        limit: pageSize,
+      });
 
       if (response.data.status !== 200) {
         throw new Error(response.data.err);
@@ -42,7 +56,9 @@ export function DashboardNav({setOpen}: DashboardNavProps) {
 
       for (let i = 0; i < result.length; i++) {
         let currentPage = result[i];
-        let groupIndex = page_menu.findIndex((pm) => pm.label === currentPage.group);
+        let groupIndex = page_menu.findIndex(
+          (pm) => pm.label === currentPage.group
+        );
         let mapData = {
           _id: currentPage._id,
           actions: currentPage.actions,
@@ -57,18 +73,30 @@ export function DashboardNav({setOpen}: DashboardNavProps) {
           page_menu[groupIndex].items.push(mapData);
 
           // increase total order
-          page_menu[groupIndex].total_order = page_menu[groupIndex].total_order + mapData.order;
+          page_menu[groupIndex].total_order =
+            page_menu[groupIndex].total_order + mapData.order;
 
           // sorting
-          page_menu[groupIndex].items = page_menu[groupIndex].items.sort((a, b) => a.order - b.order);
+          page_menu[groupIndex].items = page_menu[groupIndex].items.sort(
+            (a, b) => a.order - b.order
+          );
         } else {
-          page_menu.push({label: currentPage.group, items: [mapData], total_order: mapData.order});
+          page_menu.push({
+            label: currentPage.group,
+            items: [mapData],
+            total_order: mapData.order,
+          });
         }
       }
 
       return page_menu.sort((a, b) => a.total_order - b.total_order);
     } catch (error: any) {
-      toast.error(<ToastBody title="an error occurred" description={error.message || "Something went wrong"} />);
+      toast.error(
+        <ToastBody
+          title="an error occurred"
+          description={error.message || "Something went wrong"}
+        />
+      );
     }
   };
 
@@ -94,7 +122,12 @@ export function DashboardNav({setOpen}: DashboardNavProps) {
 
   return (
     <nav className="grid items-start gap-2 ">
-      <Accordion defaultValue={defaultValue} type="single" collapsible className="w-full">
+      <Accordion
+        defaultValue={defaultValue}
+        type="single"
+        collapsible
+        className="w-full"
+      >
         {userStore.development
           ? // ? BasePageNav?.map((parent) => (
             data?.map((parent) => (
@@ -116,14 +149,17 @@ export function DashboardNav({setOpen}: DashboardNavProps) {
                       >
                         <span
                           className={cn(
-                            "group flex items-center rounded-md  p-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground",
-                            "/dashboard/" + location.pathname.split("/")[2] === item.to
+                            "group flex items-center rounded-xl  p-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground transition-colors",
+                            "/dashboard/" + location.pathname.split("/")[2] ===
+                              item.to
                               ? "font-semibold bg-accent"
                               : "font-normal"
                           )}
                         >
                           <Circle size={8} className="mr-2" />
-                          <span className="text-xs tracking-wide">{item.label}</span>
+                          <span className="text-xs tracking-wide">
+                            {item.label}
+                          </span>
                         </span>
                       </Link>
                     );
@@ -150,14 +186,17 @@ export function DashboardNav({setOpen}: DashboardNavProps) {
                       >
                         <span
                           className={cn(
-                            "group flex items-center rounded-md  p-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground",
-                            "/dashboard/" + location.pathname.split("/")[2] === item.to
+                            "group flex items-center menu-item-rounded mt-1  p-2.5 text-sm font-medium hover:bg-accent hover:text-accent-foreground transition-colors",
+                            "/dashboard/" + location.pathname.split("/")[2] ===
+                              item.to
                               ? "font-semibold bg-accent"
                               : "font-normal"
                           )}
                         >
                           <Circle size={8} className="mr-2" />
-                          <span className="text-xs tracking-wide">{item.label}</span>
+                          <span className="text-xs tracking-wide">
+                            {item.label}
+                          </span>
                         </span>
                       </Link>
                     );

@@ -6,9 +6,9 @@
 @tailwind utilities;
 
 // WARNA PERTAMINA
-// 32599c
-// da251c
-// 85c226
+// 32599c //biru
+// da251c //merah
+// 85c226 //hijau
 @layer base {
   :root {
     // background
@@ -99,10 +99,14 @@
     --toastify-color-progress-bgo: 0.2;
   }
 
+  .menu-item-rounded {
+    border-radius: 0.5rem !important;
+  }
+
   .dark {
     // --background: 0, 0%, 10%; // before update
     // --background: 3 77.2% 13%; //red
-    --background: 218 51.5% 13%; //blue
+    --background: 218 51.5% 15%; //blue
     // --background: 100 43% 10%; //green
     --foreground: 210 40% 98%; // warna text
 

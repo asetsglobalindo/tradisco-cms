@@ -122,7 +122,7 @@ const NewsUpdate = () => {
       const response = await ApiService.secure().get(`/category`, {
         page: pageIndex + 1,
         limit: pageSize,
-        type: CONTENT_TYPE.BUSINESS,
+        type: CONTENT_TYPE.NEWS,
       });
 
       if (response.data.status !== 200) {
