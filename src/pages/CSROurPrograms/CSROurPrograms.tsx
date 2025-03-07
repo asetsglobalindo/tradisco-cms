@@ -718,7 +718,6 @@ const CSROurPrograms = () => {
                     return (
                       <ImageRepository
                         label="Image"
-                        limit={1}
                         mobileSize={false}
                         img_type={IMG_TYPE.CSR_PAGE}
                         value={field.value?.length ? field.value : []}
