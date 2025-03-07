@@ -119,31 +119,25 @@ const Dashboard = () => {
         </Card>
         <Card className="bg-background rounded-sm menu-item-rounded">
           <CardHeader className="flex flex-row items-center justify-between pb-2 space-y-0">
-            <CardTitle className="text-sm font-medium">
-              Total Complete order
-            </CardTitle>
+            <CardTitle className="text-sm font-medium">Total</CardTitle>
             <CircleCheckBig size={16} />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">0</div>
           </CardContent>
         </Card>
-        <Card>
+        <Card className="bg-background rounded-sm menu-item-rounded">
           <CardHeader className="flex flex-row items-center justify-between pb-2 space-y-0">
-            <CardTitle className="text-sm font-medium">
-              Total customer
-            </CardTitle>
+            <CardTitle className="text-sm font-medium">Total</CardTitle>
             <Users size={16} />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">0</div>
           </CardContent>
         </Card>
-        <Card>
+        <Card className="bg-background rounded-sm menu-item-rounded">
           <CardHeader className="flex flex-row items-center justify-between pb-2 space-y-0">
-            <CardTitle className="text-sm font-medium">
-              Margin dari omset dikurangi HPP
-            </CardTitle>
+            <CardTitle className="text-sm font-medium">Total</CardTitle>
             <HandCoins size={16} />
           </CardHeader>
           <CardContent>
@@ -163,14 +157,14 @@ const Dashboard = () => {
             </div>
           </CardContent>
         </Card>
-        <Card className="col-span-4 md:col-span-3">
+        <Card className="col-span-4 md:col-span-3 bg-background rounded-sm menu-item-rounded">
           <CardHeader>
-            <CardTitle>Recent Sales</CardTitle>
-            <CardDescription>You made 0 sales this month.</CardDescription>
+            <CardTitle>Total</CardTitle>
+            <CardDescription>You made 0 this month.</CardDescription>
           </CardHeader>
           <CardContent>
             <div className="space-y-8">
-              <p>You don't have any sales.</p>
+              <p>You don't have any.</p>
             </div>
           </CardContent>
         </Card>
