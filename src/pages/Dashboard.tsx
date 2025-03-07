@@ -32,8 +32,8 @@ ChartJS.register(
 const Dashboard = () => {
   const [userCount, setUserCount] = useState<number>(0); // State to store the user count
   const [visitorData, setVisitorData] = useState<any>({});
-  const [startMonth, setStartMonth] = useState<string>("");
-  const [endMonth, setEndMonth] = useState<string>("");
+  // const [startMonth, setStartMonth] = useState<string>("");
+  // const [endMonth, setEndMonth] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(true); // State to manage loading state
   const [error, setError] = useState<string | null>(null); // State to store any error
 
