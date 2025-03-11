@@ -1,4 +1,4 @@
-import {CKEditor} from "@ckeditor/ckeditor5-react";
+import { CKEditor } from "@ckeditor/ckeditor5-react";
 import {
   Base64UploadAdapter,
   ClassicEditor,
@@ -39,17 +39,19 @@ import {
   Underline,
   Heading,
 } from "ckeditor5";
-import React from "react";
+import React, { forwardRef } from "react";
 
 interface Props {
-  ref: React.LegacyRef<CKEditor<ClassicEditor>> | undefined;
   placeholder: string;
   value: string;
   onBlur: ((event: EventInfo, editor: ClassicEditor) => void) | undefined;
   onChange: (value: string) => void;
 }
 
-const Ckeditor5: React.FC<Props> = ({ref, onBlur, placeholder, onChange, value}) => {
+// Convert to forwardRef to properly handle ref forwarding
+const Ckeditor5 = forwardRef<CKEditor<ClassicEditor>, Props>((props, ref) => {
+  const { onBlur, placeholder, onChange, value } = props;
+
   return (
     <CKEditor
       ref={ref}
@@ -148,28 +150,28 @@ const Ckeditor5: React.FC<Props> = ({ref, onBlur, placeholder, onChange, value})
         },
         heading: {
           options: [
-            {model: "paragraph", title: "Paragraph", class: ""},
+            { model: "paragraph", title: "Paragraph", class: "" },
             {
               model: "heading1",
-              view: {name: "h1", classes: "title-1"},
+              view: { name: "h1", classes: "title-1" },
               title: "Heading 1",
               class: "ck-heading_heading1",
             },
             {
               model: "heading2",
-              view: {name: "h2", classes: "title-2"},
+              view: { name: "h2", classes: "title-2" },
               title: "Heading 2",
               class: "ck-heading_heading2",
             },
             {
               model: "heading3",
-              view: {name: "h3", classes: "title-3"},
+              view: { name: "h3", classes: "title-3" },
               title: "Heading 3",
               class: "ck-heading_heading3",
             },
             {
               model: "heading4",
-              view: {name: "h4", classes: "title-4"},
+              view: { name: "h4", classes: "title-4" },
               title: "Heading 4",
               class: "ck-heading_heading4",
             },
@@ -178,7 +180,9 @@ const Ckeditor5: React.FC<Props> = ({ref, onBlur, placeholder, onChange, value})
       }}
     />
   );
-};
+});
+
+// Add display name for better debugging
+Ckeditor5.displayName = "Ckeditor5";
 
 export default Ckeditor5;
-
