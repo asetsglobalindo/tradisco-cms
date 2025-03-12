@@ -80,6 +80,7 @@ const formSchema = z.object({
   }),
   thumbnail_images2_en: z.string().array().default([]),
   thumbnail_images2_id: z.string().array().default([]),
+  jam_kerja: z.string({ required_error: "Field required" }).min(1),
   description: z.object({
     en: z.string({ required_error: "Field required" }).min(1),
     id: z.string({ required_error: "Field required" }).min(1),
@@ -440,6 +441,7 @@ const AboutPage = () => {
               result.thumbnail_images2.map((img) => img.en._id) || [],
             thumbnail_images2_id:
               result.thumbnail_images2.map((img) => img.id._id) || [],
+            jam_kerja: result?.jam_kerja,
             images2_en: result?.images2?.map((img) => img.en._id) || [],
             images2_id: result?.images2?.map((img) => img.id._id) || [],
             images_en: result.images.map((img) => img.en._id) || [],
@@ -1401,6 +1403,34 @@ const AboutPage = () => {
                     />
                   );
                 }}
+              />
+              <Controller
+                control={form.control}
+                name="jam_kerja"
+                render={({ field, fieldState: { error } }) => (
+                  <div className="flex flex-col space-y-2">
+                    <label
+                      htmlFor={field.name}
+                      className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                    >
+                      Jam Kerja
+                    </label>
+                    <Input
+                      id={field.name}
+                      ref={field.ref}
+                      type="text"
+                      placeholder="Enter title"
+                      disabled={isLoading}
+                      value={field.value}
+                      onChange={(e) => field.onChange(e.target.value)}
+                    />
+                    {error?.message ? (
+                      <p className="text-xs font-medium text-destructive">
+                        {error?.message}
+                      </p>
+                    ) : null}
+                  </div>
+                )}
               />
             </TabsContent>
             <TabsContent

@@ -153,6 +153,7 @@ export interface ContentType {
         en: ContentImage;
       }[]
     | [];
+  jam_kerja: string;
   related: ContentType[] | [];
   related2: [];
   category: number;
